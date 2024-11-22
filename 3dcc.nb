@@ -1,0 +1,2710 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    169019,       2702]
+NotebookOptionsPosition[    168306,       2681]
+NotebookOutlinePosition[    168699,       2697]
+CellTagsIndexPosition[    168656,       2694]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Define", " ", "the", " ", "growing", " ", "basis"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"growingBasis", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"rOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"gOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"bOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"yOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
+     " ", "for", " ", "a", " ", "given", " ", "origin", " ", "and", " ", 
+     "basis"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"latticeColorK", "[", 
+      RowBox[{"origin_", ",", "basis_", ",", "k_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"vertices", "=", 
+         RowBox[{"{", "}"}]}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"Do", "[", 
+             RowBox[{
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"vertices", ",", 
+                RowBox[{"origin", "+", 
+                 RowBox[{"x", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+                 RowBox[{"y", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "+", 
+                 RowBox[{"z", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}]}]}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"z", ",", "0", ",", 
+                RowBox[{"k", "-", "x", "-", "y", "-", "1"}]}], "}"}]}], "]"}],
+             ",", 
+            RowBox[{"{", 
+             RowBox[{"y", ",", "0", ",", 
+              RowBox[{"k", "-", "x", "-", "1"}]}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", 
+            RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "vertices"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
+     " ", "for", " ", "multiple", " ", "origins"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"latticeK", "[", 
+      RowBox[{"origins_", ",", "basis_", ",", "k_"}], "]"}], ":=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"latticeColorK", "[", 
+        RowBox[{"origin", ",", "basis", ",", "k"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Generate", " ", "vertices"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"vertices", "=", 
+     RowBox[{"latticeK", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"rOrigin", ",", "gOrigin", ",", "bOrigin", ",", "yOrigin"}], 
+        "}"}], ",", "growingBasis", ",", "5"}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"colors", "=", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", "Green", ",", "Blue", ",", "Orange"}], "}"}]}], 
+    ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Plot", " ", "the", " ", "vertices"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"colors", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"vertices", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "vertices", "]"}]}], "}"}]}], "]"}], ",", 
+       "1"}], "]"}], ",", 
+     RowBox[{"Axes", "->", "True"}], ",", 
+     RowBox[{"AxesLabel", "->", 
+      RowBox[{"{", 
+       RowBox[{"\"\<X\>\"", ",", "\"\<Y\>\"", ",", "\"\<Z\>\""}], "}"}]}], 
+     ",", 
+     RowBox[{"AspectRatio", "->", "1"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.941250371765716*^9, 3.941250371769381*^9}, {
+  3.941250433821493*^9, 3.9412504854201727`*^9}, {3.941251507323024*^9, 
+  3.941251507711534*^9}, {3.9412527712385683`*^9, 3.9412527718947973`*^9}, {
+  3.941252836048805*^9, 3.941252836215789*^9}, {3.941253524578764*^9, 
+  3.941253553963764*^9}, {3.9412535963617897`*^9, 3.941253596647341*^9}},
+ CellLabel->
+  "In[124]:=",ExpressionUUID->"86a360cf-f174-4c7c-8532-398bf87ac3c9"],
+
+Cell[BoxData[
+ Graphics3DBox[{
+   {RGBColor[1, 0, 0], PointSize[Large], 
+    Point3DBox[{{0, 0, 0}, {1, 1, 0}, {2, 2, 0}, {3, 3, 0}, {4, 4, 0}, {1, 0, 
+     1}, {2, 1, 1}, {3, 2, 1}, {4, 3, 1}, {2, 0, 2}, {3, 1, 2}, {4, 2, 2}, {3,
+      0, 3}, {4, 1, 3}, {4, 0, 4}, {0, 1, 1}, {1, 2, 1}, {2, 3, 1}, {3, 4, 
+     1}, {1, 1, 2}, {2, 2, 2}, {3, 3, 2}, {2, 1, 3}, {3, 2, 3}, {3, 1, 4}, {0,
+      2, 2}, {1, 3, 2}, {2, 4, 2}, {1, 2, 3}, {2, 3, 3}, {2, 2, 4}, {0, 3, 
+     3}, {1, 4, 3}, {1, 3, 4}, {0, 4, 4}}]}, 
+   {RGBColor[0, 1, 0], PointSize[Large], 
+    Point3DBox[{{1, 0, 0}, {2, 1, 0}, {3, 2, 0}, {4, 3, 0}, {5, 4, 0}, {2, 0, 
+     1}, {3, 1, 1}, {4, 2, 1}, {5, 3, 1}, {3, 0, 2}, {4, 1, 2}, {5, 2, 2}, {4,
+      0, 3}, {5, 1, 3}, {5, 0, 4}, {1, 1, 1}, {2, 2, 1}, {3, 3, 1}, {4, 4, 
+     1}, {2, 1, 2}, {3, 2, 2}, {4, 3, 2}, {3, 1, 3}, {4, 2, 3}, {4, 1, 4}, {1,
+      2, 2}, {2, 3, 2}, {3, 4, 2}, {2, 2, 3}, {3, 3, 3}, {3, 2, 4}, {1, 3, 
+     3}, {2, 4, 3}, {2, 3, 4}, {1, 4, 4}}]}, 
+   {RGBColor[0, 0, 1], PointSize[Large], 
+    Point3DBox[
+     NCache[{{Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+       Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+       Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+       Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+       Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {
+       Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+       Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+       Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+       Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+       Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+       Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+       Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+       Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+       Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+       Rational[9, 2], Rational[1, 2], Rational[9, 2]}, {
+       Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+       Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+       Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+       Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {
+       Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+       Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+       Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+       Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+       Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+       Rational[7, 2], Rational[3, 2], Rational[9, 2]}, {
+       Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {
+       Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+       Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {
+       Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+       Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+       Rational[5, 2], Rational[5, 2], Rational[9, 2]}, {
+       Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {
+       Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {
+       Rational[3, 2], Rational[7, 2], Rational[9, 2]}, {
+       Rational[1, 2], Rational[9, 2], Rational[9, 2]}}, CompressedData["
+1:eJyNksENgCAUQ3+UIyc3MA4iMziCiWdXdgyOeumBpw2SkIby09/ymfdzO4aI
+WJ49hta1fmMFik+lRfG5tCh+Ki1Sn2fpsr90eS/dDJ7+UqdOOszHPBn19Mec
+LjeRuZxf19/pOeS8eM9+rCPPebj/4ubp5uDe428O+un57r33+1/f7+5C5Q==
+
+      "]]]}, 
+   {RGBColor[1, 0.5, 0], PointSize[Large], 
+    Point3DBox[
+     NCache[{{Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {
+       Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {
+       Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {
+       Rational[7, 2], Rational[7, 2], Rational[-1, 2]}, {
+       Rational[9, 2], Rational[9, 2], Rational[-1, 2]}, {
+       Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+       Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+       Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+       Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {
+       Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+       Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+       Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {
+       Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+       Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {
+       Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {
+       Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+       Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+       Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+       Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {
+       Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+       Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+       Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+       Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+       Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+       Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+       Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+       Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+       Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {
+       Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+       Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+       Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+       Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+       Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {
+       Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+       Rational[1, 2], Rational[9, 2], Rational[7, 2]}}, CompressedData["
+1:eJyFktEJgDAMRIP62a9uIA7SzuAIgt+O6CqO0U8FOSUPQoVy5EzvLtF5O9Z9
+MLPlOaPpuQrwfLEVj+Kn6lF8qh7F5+qR+vSXLt9L9/MtXjeBZ1+DDueTDv0j
+3Yw+8szNHKyZVzXvq6YP56FuNBf3wT7moB7vR/tirsiXe43m6OXq7Y+5et+f
+Ov9/dwPj/0zS
+      "]]]}},
+  AspectRatio->1,
+  Axes->True,
+  AxesLabel->{
+    FormBox["\"X\"", TraditionalForm], 
+    FormBox["\"Y\"", TraditionalForm], 
+    FormBox["\"Z\"", TraditionalForm]},
+  ImageSize->{350.1818675254074, 347.4373081313029},
+  ImageSizeRaw->Automatic,
+  ViewPoint->{-3.146756050414035, 1.1629197431954732`, -0.44220360702831196`},
+  
+  ViewVertical->{-0.29011640232897623`, 0.9022703961973738, 
+   0.3189680316983597}]], "Output",
+ CellChangeTimes->{
+  3.941250372925666*^9, {3.941250445646974*^9, 3.941250485829427*^9}, 
+   3.941251508566279*^9, {3.9412515671367617`*^9, 3.941251569787661*^9}, 
+   3.941252772872581*^9, 3.941252837354206*^9, 3.9412535255487347`*^9, 
+   3.94125355643015*^9, 3.941253597185793*^9},
+ CellLabel->
+  "Out[133]=",ExpressionUUID->"e35feafc-bdae-4c8d-b7ad-eb97be63472d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Define", " ", "the", " ", "growing", " ", "basis"}], "*)"}], 
+  RowBox[{
+   RowBox[{
+    RowBox[{"growingBasis", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"rOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"gOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"bOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"yOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
+     " ", "for", " ", "a", " ", "given", " ", "origin", " ", "and", " ", 
+     "basis"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"latticeColorK", "[", 
+      RowBox[{"origin_", ",", "basis_", ",", "k_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"vertices", "=", 
+         RowBox[{"{", "}"}]}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"Do", "[", 
+             RowBox[{
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"vertices", ",", 
+                RowBox[{"origin", "+", 
+                 RowBox[{"x", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+                 RowBox[{"y", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "+", 
+                 RowBox[{"z", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}]}]}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"z", ",", "0", ",", 
+                RowBox[{"k", "-", "x", "-", "y", "-", "1"}]}], "}"}]}], "]"}],
+             ",", 
+            RowBox[{"{", 
+             RowBox[{"y", ",", "0", ",", 
+              RowBox[{"k", "-", "x", "-", "1"}]}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", 
+            RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "vertices"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
+     " ", "for", " ", "multiple", " ", "origins"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"latticeK", "[", 
+      RowBox[{"origins_", ",", "basis_", ",", "k_"}], "]"}], ":=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"latticeColorK", "[", 
+        RowBox[{"origin", ",", "basis", ",", "k"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "faces", " ", "from", " ", 
+     "lattice", " ", "points"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"facesColorFromLattice", "[", "vertices_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"faces", "=", 
+          RowBox[{"{", "}"}]}], ",", "vertexI", ",", "vertexJ", ",", 
+         "vertexK", ",", "vertexIJ", ",", "vertexDIJ", ",", "vertexIJK"}], 
+        "}"}], ",", 
+       RowBox[{
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"Do", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"vertexI", "=", 
+                RowBox[{"vertices", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"1", ",", "i"}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexJ", "=", 
+                RowBox[{"vertices", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "j"}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexK", "=", 
+                RowBox[{"vertices", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"3", ",", "k"}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexIJ", "=", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"vertexI", "+", "vertexJ"}], ")"}], "/", "2"}]}], 
+               ";", "\[IndentingNewLine]", 
+               RowBox[{"vertexDIJ", "=", 
+                RowBox[{"(", 
+                 RowBox[{"vertexI", "-", "vertexJ"}], ")"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexIJK", "=", 
+                RowBox[{"vertexK", "-", "vertexIJ"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Norm", "[", "vertexIJK", "]"}], "<", "1"}], "&&", 
+                  
+                  RowBox[{
+                   RowBox[{"Abs", "[", 
+                    RowBox[{"Dot", "[", 
+                    RowBox[{"vertexIJK", ",", "vertexDIJ"}], "]"}], "]"}], 
+                   "<", "1*^-10"}], "&&", 
+                  RowBox[{
+                   RowBox[{"Abs", "[", 
+                    RowBox[{
+                    RowBox[{"Norm", "[", "vertexDIJ", "]"}], "-", "1"}], 
+                    "]"}], "<", "1*^-10"}]}], ",", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"faces", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"vertexI", ",", "vertexJ", ",", "vertexK"}], 
+                    "}"}]}], "]"}]}], "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"k", ",", 
+                RowBox[{"Length", "[", 
+                 RowBox[{"vertices", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", 
+              RowBox[{"Length", "[", 
+               RowBox[{"vertices", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", 
+          
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"vertices", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "faces"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"facesFromLattice", "[", "vertices_", "]"}], ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "4", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "4", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "4", "]"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"Generate", " ", "vertices"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"vertices", "=", 
+     RowBox[{"latticeK", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"rOrigin", ",", "gOrigin", ",", "bOrigin", ",", "yOrigin"}], 
+        "}"}], ",", "growingBasis", ",", "5"}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"colors", "=", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", "Green", ",", "Blue", ",", "Yellow"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Generate", " ", "faces"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"faces", "=", 
+     RowBox[{"facesFromLattice", "[", "vertices", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Plot", " ", "the", " ", "vertices", " ", "and", " ", "faces"}], 
+    "*)"}], "\n", 
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"colors", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"vertices", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "vertices", "]"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"colors", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"Opacity", "[", "0.9", "]"}], ",", 
+           RowBox[{"Polygon", "[", 
+            RowBox[{"faces", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "faces", "]"}]}], "}"}]}], "]"}]}], "}"}], 
+     ",", 
+     RowBox[{"Axes", "->", "True"}], ",", 
+     RowBox[{"AxesLabel", "->", 
+      RowBox[{"{", 
+       RowBox[{"\"\<X\>\"", ",", "\"\<Y\>\"", ",", "\"\<Z\>\""}], "}"}]}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.941254559942318*^9, 3.941254581419169*^9}, {
+  3.941254659129414*^9, 3.941254659495441*^9}, {3.941254758316922*^9, 
+  3.941254758983576*^9}, {3.941254829774787*^9, 3.9412548631508923`*^9}},
+ CellLabel->
+  "In[355]:=",ExpressionUUID->"620ecf43-49d0-4232-a013-1fa5b6a24a50"],
+
+Cell[BoxData[
+ Graphics3DBox[{{
+    {RGBColor[1, 0, 0], PointSize[Large], 
+     Point3DBox[{{0, 0, 0}, {1, 1, 0}, {2, 2, 0}, {3, 3, 0}, {4, 4, 0}, {1, 0,
+       1}, {2, 1, 1}, {3, 2, 1}, {4, 3, 1}, {2, 0, 2}, {3, 1, 2}, {4, 2, 2}, {
+      3, 0, 3}, {4, 1, 3}, {4, 0, 4}, {0, 1, 1}, {1, 2, 1}, {2, 3, 1}, {3, 4, 
+      1}, {1, 1, 2}, {2, 2, 2}, {3, 3, 2}, {2, 1, 3}, {3, 2, 3}, {3, 1, 4}, {
+      0, 2, 2}, {1, 3, 2}, {2, 4, 2}, {1, 2, 3}, {2, 3, 3}, {2, 2, 4}, {0, 3, 
+      3}, {1, 4, 3}, {1, 3, 4}, {0, 4, 4}}]}, 
+    {RGBColor[0, 1, 0], PointSize[Large], 
+     Point3DBox[{{1, 0, 0}, {2, 1, 0}, {3, 2, 0}, {4, 3, 0}, {5, 4, 0}, {2, 0,
+       1}, {3, 1, 1}, {4, 2, 1}, {5, 3, 1}, {3, 0, 2}, {4, 1, 2}, {5, 2, 2}, {
+      4, 0, 3}, {5, 1, 3}, {5, 0, 4}, {1, 1, 1}, {2, 2, 1}, {3, 3, 1}, {4, 4, 
+      1}, {2, 1, 2}, {3, 2, 2}, {4, 3, 2}, {3, 1, 3}, {4, 2, 3}, {4, 1, 4}, {
+      1, 2, 2}, {2, 3, 2}, {3, 4, 2}, {2, 2, 3}, {3, 3, 3}, {3, 2, 4}, {1, 3, 
+      3}, {2, 4, 3}, {2, 3, 4}, {1, 4, 4}}]}, 
+    {RGBColor[0, 0, 1], PointSize[Large], 
+     Point3DBox[
+      NCache[{{Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+        Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+        Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+        Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+        Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+        Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+        Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+        Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+        Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+        Rational[9, 2], Rational[1, 2], Rational[9, 2]}, {
+        Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+        Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+        Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+        Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+        Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+        Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+        Rational[7, 2], Rational[3, 2], Rational[9, 2]}, {
+        Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {
+        Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+        Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {
+        Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+        Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[9, 2]}, {
+        Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {
+        Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {
+        Rational[3, 2], Rational[7, 2], Rational[9, 2]}, {
+        Rational[1, 2], Rational[9, 2], Rational[9, 2]}}, CompressedData["
+1:eJyNksENgCAUQ3+UIyc3MA4iMziCiWdXdgyOeumBpw2SkIby09/ymfdzO4aI
+WJ49hta1fmMFik+lRfG5tCh+Ki1Sn2fpsr90eS/dDJ7+UqdOOszHPBn19Mec
+LjeRuZxf19/pOeS8eM9+rCPPebj/4ubp5uDe428O+un57r33+1/f7+5C5Q==
+
+       "]]]}, 
+    {RGBColor[1, 1, 0], PointSize[Large], 
+     Point3DBox[
+      NCache[{{Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {
+        Rational[7, 2], Rational[7, 2], Rational[-1, 2]}, {
+        Rational[9, 2], Rational[9, 2], Rational[-1, 2]}, {
+        Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+        Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+        Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+        Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {
+        Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+        Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+        Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {
+        Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+        Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {
+        Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {
+        Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+        Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+        Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+        Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+        Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+        Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+        Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+        Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {
+        Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+        Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+        Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+        Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {
+        Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+        Rational[1, 2], Rational[9, 2], Rational[7, 2]}}, CompressedData["
+1:eJyFktEJgDAMRIP62a9uIA7SzuAIgt+O6CqO0U8FOSUPQoVy5EzvLtF5O9Z9
+MLPlOaPpuQrwfLEVj+Kn6lF8qh7F5+qR+vSXLt9L9/MtXjeBZ1+DDueTDv0j
+3Yw+8szNHKyZVzXvq6YP56FuNBf3wT7moB7vR/tirsiXe43m6OXq7Y+5et+f
+Ov9/dwPj/0zS
+       "]]]}}, {
+    {RGBColor[1, 0, 0], Opacity[0.9], 
+     Polygon3DBox[
+      NCache[{{{Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {1, 0, 0}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 0, 0}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {2, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {2, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {3, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {3, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {3, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {3, 3, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {3, 3, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {3, 3, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[-1, 2]}, {4, 3, 0}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {4, 3, 0}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {3, 3, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {4, 3, 0}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {4, 4, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {3, 3, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {4, 4, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {3, 3, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {4, 4, 1}}, {{
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[9, 2], Rational[-1, 2]}, {5, 4, 0}}, {{
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {5, 4, 0}}, {{
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {4, 4, 1}}, {{
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {4, 4, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {2, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {3, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {3, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {3, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {3, 2, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {3, 2, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {3, 2, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {4, 2, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {3, 3, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {4, 2, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {3, 2, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {4, 2, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {4, 3, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {3, 3, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {3, 2, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {3, 3, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {4, 3, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {3, 2, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {4, 3, 2}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {5, 3, 1}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {4, 4, 1}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {5, 3, 1}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {4, 3, 2}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {4, 4, 1}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {4, 3, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {3, 0, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {3, 0, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {3, 1, 3}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {3, 1, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {4, 1, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {3, 2, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {4, 1, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {3, 1, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {4, 1, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {4, 2, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {3, 2, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {3, 1, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {3, 2, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {4, 2, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {3, 1, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {4, 2, 3}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {5, 2, 2}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {4, 3, 2}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {5, 2, 2}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {4, 2, 3}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {4, 3, 2}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {4, 2, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {4, 0, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {3, 1, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {4, 0, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {4, 1, 4}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {3, 1, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {4, 1, 4}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {5, 1, 3}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {4, 2, 3}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {5, 1, 3}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {4, 1, 4}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {4, 2, 3}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {4, 1, 4}}, {{
+         Rational[9, 2], Rational[1, 2], Rational[9, 2]}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {5, 0, 4}}, {{
+         Rational[9, 2], Rational[1, 2], Rational[9, 2]}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {4, 1, 4}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {2, 3, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {2, 3, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {2, 3, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {3, 3, 1}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {3, 3, 1}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {2, 3, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {3, 3, 1}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {3, 4, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {2, 3, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {3, 4, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {2, 3, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {3, 4, 2}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {4, 4, 1}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {4, 4, 1}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {3, 4, 2}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {3, 4, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {2, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {2, 2, 3}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {2, 2, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {3, 2, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {2, 3, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {3, 2, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {2, 2, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {3, 2, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {3, 3, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {2, 3, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {2, 2, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {2, 3, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {3, 3, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {2, 2, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {3, 3, 3}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {4, 3, 2}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {3, 4, 2}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {4, 3, 2}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {3, 3, 3}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {3, 4, 2}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {3, 3, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {3, 1, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {2, 2, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {3, 1, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {3, 2, 4}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {2, 2, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {3, 2, 4}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {4, 2, 3}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {3, 3, 3}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {4, 2, 3}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {3, 2, 4}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {3, 3, 3}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {3, 2, 4}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[9, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {4, 1, 4}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[9, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {3, 2, 4}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {1, 2, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {1, 3, 3}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {1, 3, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {2, 3, 2}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {2, 3, 2}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {1, 3, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {2, 3, 2}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {2, 4, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {1, 3, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {2, 4, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {1, 3, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {2, 4, 3}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {3, 4, 2}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {3, 4, 2}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {2, 4, 3}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {2, 4, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {2, 2, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {1, 3, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {2, 2, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {2, 3, 4}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {1, 3, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {2, 3, 4}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {3, 3, 3}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {2, 4, 3}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {3, 3, 3}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {2, 3, 4}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {2, 4, 3}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {2, 3, 4}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[9, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {3, 2, 4}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[9, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {2, 3, 4}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {1, 3, 3}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {1, 3, 3}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {1, 4, 4}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}, {1, 4, 4}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {2, 4, 3}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {2, 4, 3}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {1, 4, 4}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}, {1, 4, 4}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[9, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {2, 3, 4}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[9, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {1, 4, 4}}, {{
+         Rational[1, 2], Rational[9, 2], Rational[9, 2]}, {
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}, {1, 4, 4}}}, {{{0.5,
+          0.5, 0.5}, {0.5, 0.5, -0.5}, {1, 0, 0}}, {{0.5, 0.5, 0.5}, {1.5, 
+         0.5, 0.5}, {1, 0, 0}}, {{0.5, 0.5, 0.5}, {1.5, 0.5, 0.5}, {1, 1, 
+         1}}, {{0.5, 0.5, 0.5}, {0.5, 1.5, 0.5}, {1, 1, 1}}, {{1.5, 1.5, 
+         0.5}, {1.5, 1.5, -0.5}, {2, 1, 0}}, {{1.5, 1.5, 0.5}, {1.5, 0.5, 
+         0.5}, {2, 1, 0}}, {{1.5, 1.5, 0.5}, {1.5, 0.5, 0.5}, {1, 1, 1}}, {{
+         1.5, 1.5, 0.5}, {2.5, 1.5, 0.5}, {2, 1, 0}}, {{1.5, 1.5, 0.5}, {2.5, 
+         1.5, 0.5}, {2, 2, 1}}, {{1.5, 1.5, 0.5}, {0.5, 1.5, 0.5}, {1, 1, 
+         1}}, {{1.5, 1.5, 0.5}, {1.5, 2.5, 0.5}, {2, 2, 1}}, {{1.5, 1.5, 
+         0.5}, {1.5, 1.5, 1.5}, {1, 1, 1}}, {{1.5, 1.5, 0.5}, {1.5, 1.5, 
+         1.5}, {2, 2, 1}}, {{2.5, 2.5, 0.5}, {2.5, 2.5, -0.5}, {3, 2, 0}}, {{
+         2.5, 2.5, 0.5}, {2.5, 1.5, 0.5}, {3, 2, 0}}, {{2.5, 2.5, 0.5}, {2.5, 
+         1.5, 0.5}, {2, 2, 1}}, {{2.5, 2.5, 0.5}, {3.5, 2.5, 0.5}, {3, 2, 
+         0}}, {{2.5, 2.5, 0.5}, {3.5, 2.5, 0.5}, {3, 3, 1}}, {{2.5, 2.5, 
+         0.5}, {1.5, 2.5, 0.5}, {2, 2, 1}}, {{2.5, 2.5, 0.5}, {2.5, 3.5, 
+         0.5}, {3, 3, 1}}, {{2.5, 2.5, 0.5}, {2.5, 2.5, 1.5}, {2, 2, 1}}, {{
+         2.5, 2.5, 0.5}, {2.5, 2.5, 1.5}, {3, 3, 1}}, {{3.5, 3.5, 0.5}, {3.5, 
+         3.5, -0.5}, {4, 3, 0}}, {{3.5, 3.5, 0.5}, {3.5, 2.5, 0.5}, {4, 3, 
+         0}}, {{3.5, 3.5, 0.5}, {3.5, 2.5, 0.5}, {3, 3, 1}}, {{3.5, 3.5, 
+         0.5}, {4.5, 3.5, 0.5}, {4, 3, 0}}, {{3.5, 3.5, 0.5}, {4.5, 3.5, 
+         0.5}, {4, 4, 1}}, {{3.5, 3.5, 0.5}, {2.5, 3.5, 0.5}, {3, 3, 1}}, {{
+         3.5, 3.5, 0.5}, {3.5, 4.5, 0.5}, {4, 4, 1}}, {{3.5, 3.5, 0.5}, {3.5, 
+         3.5, 1.5}, {3, 3, 1}}, {{3.5, 3.5, 0.5}, {3.5, 3.5, 1.5}, {4, 4, 
+         1}}, {{4.5, 4.5, 0.5}, {4.5, 4.5, -0.5}, {5, 4, 0}}, {{4.5, 4.5, 
+         0.5}, {4.5, 3.5, 0.5}, {5, 4, 0}}, {{4.5, 4.5, 0.5}, {4.5, 3.5, 
+         0.5}, {4, 4, 1}}, {{4.5, 4.5, 0.5}, {3.5, 4.5, 0.5}, {4, 4, 1}}, {{
+         1.5, 0.5, 1.5}, {1.5, 0.5, 0.5}, {2, 0, 1}}, {{1.5, 0.5, 1.5}, {1.5, 
+         0.5, 0.5}, {1, 1, 1}}, {{1.5, 0.5, 1.5}, {2.5, 0.5, 1.5}, {2, 0, 
+         1}}, {{1.5, 0.5, 1.5}, {2.5, 0.5, 1.5}, {2, 1, 2}}, {{1.5, 0.5, 
+         1.5}, {1.5, 1.5, 1.5}, {1, 1, 1}}, {{1.5, 0.5, 1.5}, {1.5, 1.5, 
+         1.5}, {2, 1, 2}}, {{2.5, 1.5, 1.5}, {2.5, 1.5, 0.5}, {3, 1, 1}}, {{
+         2.5, 1.5, 1.5}, {2.5, 1.5, 0.5}, {2, 2, 1}}, {{2.5, 1.5, 1.5}, {2.5, 
+         0.5, 1.5}, {3, 1, 1}}, {{2.5, 1.5, 1.5}, {2.5, 0.5, 1.5}, {2, 1, 
+         2}}, {{2.5, 1.5, 1.5}, {3.5, 1.5, 1.5}, {3, 1, 1}}, {{2.5, 1.5, 
+         1.5}, {3.5, 1.5, 1.5}, {3, 2, 2}}, {{2.5, 1.5, 1.5}, {1.5, 1.5, 
+         1.5}, {2, 2, 1}}, {{2.5, 1.5, 1.5}, {1.5, 1.5, 1.5}, {2, 1, 2}}, {{
+         2.5, 1.5, 1.5}, {2.5, 2.5, 1.5}, {2, 2, 1}}, {{2.5, 1.5, 1.5}, {2.5, 
+         2.5, 1.5}, {3, 2, 2}}, {{2.5, 1.5, 1.5}, {2.5, 1.5, 2.5}, {2, 1, 
+         2}}, {{2.5, 1.5, 1.5}, {2.5, 1.5, 2.5}, {3, 2, 2}}, {{3.5, 2.5, 
+         1.5}, {3.5, 2.5, 0.5}, {4, 2, 1}}, {{3.5, 2.5, 1.5}, {3.5, 2.5, 
+         0.5}, {3, 3, 1}}, {{3.5, 2.5, 1.5}, {3.5, 1.5, 1.5}, {4, 2, 1}}, {{
+         3.5, 2.5, 1.5}, {3.5, 1.5, 1.5}, {3, 2, 2}}, {{3.5, 2.5, 1.5}, {4.5, 
+         2.5, 1.5}, {4, 2, 1}}, {{3.5, 2.5, 1.5}, {4.5, 2.5, 1.5}, {4, 3, 
+         2}}, {{3.5, 2.5, 1.5}, {2.5, 2.5, 1.5}, {3, 3, 1}}, {{3.5, 2.5, 
+         1.5}, {2.5, 2.5, 1.5}, {3, 2, 2}}, {{3.5, 2.5, 1.5}, {3.5, 3.5, 
+         1.5}, {3, 3, 1}}, {{3.5, 2.5, 1.5}, {3.5, 3.5, 1.5}, {4, 3, 2}}, {{
+         3.5, 2.5, 1.5}, {3.5, 2.5, 2.5}, {3, 2, 2}}, {{3.5, 2.5, 1.5}, {3.5, 
+         2.5, 2.5}, {4, 3, 2}}, {{4.5, 3.5, 1.5}, {4.5, 3.5, 0.5}, {5, 3, 
+         1}}, {{4.5, 3.5, 1.5}, {4.5, 3.5, 0.5}, {4, 4, 1}}, {{4.5, 3.5, 
+         1.5}, {4.5, 2.5, 1.5}, {5, 3, 1}}, {{4.5, 3.5, 1.5}, {4.5, 2.5, 
+         1.5}, {4, 3, 2}}, {{4.5, 3.5, 1.5}, {3.5, 3.5, 1.5}, {4, 4, 1}}, {{
+         4.5, 3.5, 1.5}, {3.5, 3.5, 1.5}, {4, 3, 2}}, {{2.5, 0.5, 2.5}, {2.5, 
+         0.5, 1.5}, {3, 0, 2}}, {{2.5, 0.5, 2.5}, {2.5, 0.5, 1.5}, {2, 1, 
+         2}}, {{2.5, 0.5, 2.5}, {3.5, 0.5, 2.5}, {3, 0, 2}}, {{2.5, 0.5, 
+         2.5}, {3.5, 0.5, 2.5}, {3, 1, 3}}, {{2.5, 0.5, 2.5}, {2.5, 1.5, 
+         2.5}, {2, 1, 2}}, {{2.5, 0.5, 2.5}, {2.5, 1.5, 2.5}, {3, 1, 3}}, {{
+         3.5, 1.5, 2.5}, {3.5, 1.5, 1.5}, {4, 1, 2}}, {{3.5, 1.5, 2.5}, {3.5, 
+         1.5, 1.5}, {3, 2, 2}}, {{3.5, 1.5, 2.5}, {3.5, 0.5, 2.5}, {4, 1, 
+         2}}, {{3.5, 1.5, 2.5}, {3.5, 0.5, 2.5}, {3, 1, 3}}, {{3.5, 1.5, 
+         2.5}, {4.5, 1.5, 2.5}, {4, 1, 2}}, {{3.5, 1.5, 2.5}, {4.5, 1.5, 
+         2.5}, {4, 2, 3}}, {{3.5, 1.5, 2.5}, {2.5, 1.5, 2.5}, {3, 2, 2}}, {{
+         3.5, 1.5, 2.5}, {2.5, 1.5, 2.5}, {3, 1, 3}}, {{3.5, 1.5, 2.5}, {3.5, 
+         2.5, 2.5}, {3, 2, 2}}, {{3.5, 1.5, 2.5}, {3.5, 2.5, 2.5}, {4, 2, 
+         3}}, {{3.5, 1.5, 2.5}, {3.5, 1.5, 3.5}, {3, 1, 3}}, {{3.5, 1.5, 
+         2.5}, {3.5, 1.5, 3.5}, {4, 2, 3}}, {{4.5, 2.5, 2.5}, {4.5, 2.5, 
+         1.5}, {5, 2, 2}}, {{4.5, 2.5, 2.5}, {4.5, 2.5, 1.5}, {4, 3, 2}}, {{
+         4.5, 2.5, 2.5}, {4.5, 1.5, 2.5}, {5, 2, 2}}, {{4.5, 2.5, 2.5}, {4.5, 
+         1.5, 2.5}, {4, 2, 3}}, {{4.5, 2.5, 2.5}, {3.5, 2.5, 2.5}, {4, 3, 
+         2}}, {{4.5, 2.5, 2.5}, {3.5, 2.5, 2.5}, {4, 2, 3}}, {{3.5, 0.5, 
+         3.5}, {3.5, 0.5, 2.5}, {4, 0, 3}}, {{3.5, 0.5, 3.5}, {3.5, 0.5, 
+         2.5}, {3, 1, 3}}, {{3.5, 0.5, 3.5}, {4.5, 0.5, 3.5}, {4, 0, 3}}, {{
+         3.5, 0.5, 3.5}, {4.5, 0.5, 3.5}, {4, 1, 4}}, {{3.5, 0.5, 3.5}, {3.5, 
+         1.5, 3.5}, {3, 1, 3}}, {{3.5, 0.5, 3.5}, {3.5, 1.5, 3.5}, {4, 1, 
+         4}}, {{4.5, 1.5, 3.5}, {4.5, 1.5, 2.5}, {5, 1, 3}}, {{4.5, 1.5, 
+         3.5}, {4.5, 1.5, 2.5}, {4, 2, 3}}, {{4.5, 1.5, 3.5}, {4.5, 0.5, 
+         3.5}, {5, 1, 3}}, {{4.5, 1.5, 3.5}, {4.5, 0.5, 3.5}, {4, 1, 4}}, {{
+         4.5, 1.5, 3.5}, {3.5, 1.5, 3.5}, {4, 2, 3}}, {{4.5, 1.5, 3.5}, {3.5, 
+         1.5, 3.5}, {4, 1, 4}}, {{4.5, 0.5, 4.5}, {4.5, 0.5, 3.5}, {5, 0, 
+         4}}, {{4.5, 0.5, 4.5}, {4.5, 0.5, 3.5}, {4, 1, 4}}, {{0.5, 1.5, 
+         1.5}, {0.5, 1.5, 0.5}, {1, 1, 1}}, {{0.5, 1.5, 1.5}, {1.5, 1.5, 
+         1.5}, {1, 1, 1}}, {{0.5, 1.5, 1.5}, {1.5, 1.5, 1.5}, {1, 2, 2}}, {{
+         0.5, 1.5, 1.5}, {0.5, 2.5, 1.5}, {1, 2, 2}}, {{1.5, 2.5, 1.5}, {1.5, 
+         2.5, 0.5}, {2, 2, 1}}, {{1.5, 2.5, 1.5}, {1.5, 1.5, 1.5}, {2, 2, 
+         1}}, {{1.5, 2.5, 1.5}, {1.5, 1.5, 1.5}, {1, 2, 2}}, {{1.5, 2.5, 
+         1.5}, {2.5, 2.5, 1.5}, {2, 2, 1}}, {{1.5, 2.5, 1.5}, {2.5, 2.5, 
+         1.5}, {2, 3, 2}}, {{1.5, 2.5, 1.5}, {0.5, 2.5, 1.5}, {1, 2, 2}}, {{
+         1.5, 2.5, 1.5}, {1.5, 3.5, 1.5}, {2, 3, 2}}, {{1.5, 2.5, 1.5}, {1.5, 
+         2.5, 2.5}, {1, 2, 2}}, {{1.5, 2.5, 1.5}, {1.5, 2.5, 2.5}, {2, 3, 
+         2}}, {{2.5, 3.5, 1.5}, {2.5, 3.5, 0.5}, {3, 3, 1}}, {{2.5, 3.5, 
+         1.5}, {2.5, 2.5, 1.5}, {3, 3, 1}}, {{2.5, 3.5, 1.5}, {2.5, 2.5, 
+         1.5}, {2, 3, 2}}, {{2.5, 3.5, 1.5}, {3.5, 3.5, 1.5}, {3, 3, 1}}, {{
+         2.5, 3.5, 1.5}, {3.5, 3.5, 1.5}, {3, 4, 2}}, {{2.5, 3.5, 1.5}, {1.5, 
+         3.5, 1.5}, {2, 3, 2}}, {{2.5, 3.5, 1.5}, {2.5, 4.5, 1.5}, {3, 4, 
+         2}}, {{2.5, 3.5, 1.5}, {2.5, 3.5, 2.5}, {2, 3, 2}}, {{2.5, 3.5, 
+         1.5}, {2.5, 3.5, 2.5}, {3, 4, 2}}, {{3.5, 4.5, 1.5}, {3.5, 4.5, 
+         0.5}, {4, 4, 1}}, {{3.5, 4.5, 1.5}, {3.5, 3.5, 1.5}, {4, 4, 1}}, {{
+         3.5, 4.5, 1.5}, {3.5, 3.5, 1.5}, {3, 4, 2}}, {{3.5, 4.5, 1.5}, {2.5, 
+         4.5, 1.5}, {3, 4, 2}}, {{1.5, 1.5, 2.5}, {1.5, 1.5, 1.5}, {2, 1, 
+         2}}, {{1.5, 1.5, 2.5}, {1.5, 1.5, 1.5}, {1, 2, 2}}, {{1.5, 1.5, 
+         2.5}, {2.5, 1.5, 2.5}, {2, 1, 2}}, {{1.5, 1.5, 2.5}, {2.5, 1.5, 
+         2.5}, {2, 2, 3}}, {{1.5, 1.5, 2.5}, {1.5, 2.5, 2.5}, {1, 2, 2}}, {{
+         1.5, 1.5, 2.5}, {1.5, 2.5, 2.5}, {2, 2, 3}}, {{2.5, 2.5, 2.5}, {2.5, 
+         2.5, 1.5}, {3, 2, 2}}, {{2.5, 2.5, 2.5}, {2.5, 2.5, 1.5}, {2, 3, 
+         2}}, {{2.5, 2.5, 2.5}, {2.5, 1.5, 2.5}, {3, 2, 2}}, {{2.5, 2.5, 
+         2.5}, {2.5, 1.5, 2.5}, {2, 2, 3}}, {{2.5, 2.5, 2.5}, {3.5, 2.5, 
+         2.5}, {3, 2, 2}}, {{2.5, 2.5, 2.5}, {3.5, 2.5, 2.5}, {3, 3, 3}}, {{
+         2.5, 2.5, 2.5}, {1.5, 2.5, 2.5}, {2, 3, 2}}, {{2.5, 2.5, 2.5}, {1.5, 
+         2.5, 2.5}, {2, 2, 3}}, {{2.5, 2.5, 2.5}, {2.5, 3.5, 2.5}, {2, 3, 
+         2}}, {{2.5, 2.5, 2.5}, {2.5, 3.5, 2.5}, {3, 3, 3}}, {{2.5, 2.5, 
+         2.5}, {2.5, 2.5, 3.5}, {2, 2, 3}}, {{2.5, 2.5, 2.5}, {2.5, 2.5, 
+         3.5}, {3, 3, 3}}, {{3.5, 3.5, 2.5}, {3.5, 3.5, 1.5}, {4, 3, 2}}, {{
+         3.5, 3.5, 2.5}, {3.5, 3.5, 1.5}, {3, 4, 2}}, {{3.5, 3.5, 2.5}, {3.5, 
+         2.5, 2.5}, {4, 3, 2}}, {{3.5, 3.5, 2.5}, {3.5, 2.5, 2.5}, {3, 3, 
+         3}}, {{3.5, 3.5, 2.5}, {2.5, 3.5, 2.5}, {3, 4, 2}}, {{3.5, 3.5, 
+         2.5}, {2.5, 3.5, 2.5}, {3, 3, 3}}, {{2.5, 1.5, 3.5}, {2.5, 1.5, 
+         2.5}, {3, 1, 3}}, {{2.5, 1.5, 3.5}, {2.5, 1.5, 2.5}, {2, 2, 3}}, {{
+         2.5, 1.5, 3.5}, {3.5, 1.5, 3.5}, {3, 1, 3}}, {{2.5, 1.5, 3.5}, {3.5, 
+         1.5, 3.5}, {3, 2, 4}}, {{2.5, 1.5, 3.5}, {2.5, 2.5, 3.5}, {2, 2, 
+         3}}, {{2.5, 1.5, 3.5}, {2.5, 2.5, 3.5}, {3, 2, 4}}, {{3.5, 2.5, 
+         3.5}, {3.5, 2.5, 2.5}, {4, 2, 3}}, {{3.5, 2.5, 3.5}, {3.5, 2.5, 
+         2.5}, {3, 3, 3}}, {{3.5, 2.5, 3.5}, {3.5, 1.5, 3.5}, {4, 2, 3}}, {{
+         3.5, 2.5, 3.5}, {3.5, 1.5, 3.5}, {3, 2, 4}}, {{3.5, 2.5, 3.5}, {2.5, 
+         2.5, 3.5}, {3, 3, 3}}, {{3.5, 2.5, 3.5}, {2.5, 2.5, 3.5}, {3, 2, 
+         4}}, {{3.5, 1.5, 4.5}, {3.5, 1.5, 3.5}, {4, 1, 4}}, {{3.5, 1.5, 
+         4.5}, {3.5, 1.5, 3.5}, {3, 2, 4}}, {{0.5, 2.5, 2.5}, {0.5, 2.5, 
+         1.5}, {1, 2, 2}}, {{0.5, 2.5, 2.5}, {1.5, 2.5, 2.5}, {1, 2, 2}}, {{
+         0.5, 2.5, 2.5}, {1.5, 2.5, 2.5}, {1, 3, 3}}, {{0.5, 2.5, 2.5}, {0.5, 
+         3.5, 2.5}, {1, 3, 3}}, {{1.5, 3.5, 2.5}, {1.5, 3.5, 1.5}, {2, 3, 
+         2}}, {{1.5, 3.5, 2.5}, {1.5, 2.5, 2.5}, {2, 3, 2}}, {{1.5, 3.5, 
+         2.5}, {1.5, 2.5, 2.5}, {1, 3, 3}}, {{1.5, 3.5, 2.5}, {2.5, 3.5, 
+         2.5}, {2, 3, 2}}, {{1.5, 3.5, 2.5}, {2.5, 3.5, 2.5}, {2, 4, 3}}, {{
+         1.5, 3.5, 2.5}, {0.5, 3.5, 2.5}, {1, 3, 3}}, {{1.5, 3.5, 2.5}, {1.5, 
+         4.5, 2.5}, {2, 4, 3}}, {{1.5, 3.5, 2.5}, {1.5, 3.5, 3.5}, {1, 3, 
+         3}}, {{1.5, 3.5, 2.5}, {1.5, 3.5, 3.5}, {2, 4, 3}}, {{2.5, 4.5, 
+         2.5}, {2.5, 4.5, 1.5}, {3, 4, 2}}, {{2.5, 4.5, 2.5}, {2.5, 3.5, 
+         2.5}, {3, 4, 2}}, {{2.5, 4.5, 2.5}, {2.5, 3.5, 2.5}, {2, 4, 3}}, {{
+         2.5, 4.5, 2.5}, {1.5, 4.5, 2.5}, {2, 4, 3}}, {{1.5, 2.5, 3.5}, {1.5, 
+         2.5, 2.5}, {2, 2, 3}}, {{1.5, 2.5, 3.5}, {1.5, 2.5, 2.5}, {1, 3, 
+         3}}, {{1.5, 2.5, 3.5}, {2.5, 2.5, 3.5}, {2, 2, 3}}, {{1.5, 2.5, 
+         3.5}, {2.5, 2.5, 3.5}, {2, 3, 4}}, {{1.5, 2.5, 3.5}, {1.5, 3.5, 
+         3.5}, {1, 3, 3}}, {{1.5, 2.5, 3.5}, {1.5, 3.5, 3.5}, {2, 3, 4}}, {{
+         2.5, 3.5, 3.5}, {2.5, 3.5, 2.5}, {3, 3, 3}}, {{2.5, 3.5, 3.5}, {2.5, 
+         3.5, 2.5}, {2, 4, 3}}, {{2.5, 3.5, 3.5}, {2.5, 2.5, 3.5}, {3, 3, 
+         3}}, {{2.5, 3.5, 3.5}, {2.5, 2.5, 3.5}, {2, 3, 4}}, {{2.5, 3.5, 
+         3.5}, {1.5, 3.5, 3.5}, {2, 4, 3}}, {{2.5, 3.5, 3.5}, {1.5, 3.5, 
+         3.5}, {2, 3, 4}}, {{2.5, 2.5, 4.5}, {2.5, 2.5, 3.5}, {3, 2, 4}}, {{
+         2.5, 2.5, 4.5}, {2.5, 2.5, 3.5}, {2, 3, 4}}, {{0.5, 3.5, 3.5}, {0.5, 
+         3.5, 2.5}, {1, 3, 3}}, {{0.5, 3.5, 3.5}, {1.5, 3.5, 3.5}, {1, 3, 
+         3}}, {{0.5, 3.5, 3.5}, {1.5, 3.5, 3.5}, {1, 4, 4}}, {{0.5, 3.5, 
+         3.5}, {0.5, 4.5, 3.5}, {1, 4, 4}}, {{1.5, 4.5, 3.5}, {1.5, 4.5, 
+         2.5}, {2, 4, 3}}, {{1.5, 4.5, 3.5}, {1.5, 3.5, 3.5}, {2, 4, 3}}, {{
+         1.5, 4.5, 3.5}, {1.5, 3.5, 3.5}, {1, 4, 4}}, {{1.5, 4.5, 3.5}, {0.5, 
+         4.5, 3.5}, {1, 4, 4}}, {{1.5, 3.5, 4.5}, {1.5, 3.5, 3.5}, {2, 3, 
+         4}}, {{1.5, 3.5, 4.5}, {1.5, 3.5, 3.5}, {1, 4, 4}}, {{0.5, 4.5, 
+         4.5}, {0.5, 4.5, 3.5}, {1, 4, 4}}}]]}, 
+    {RGBColor[0, 1, 0], Opacity[0.9], 
+     Polygon3DBox[
+      NCache[{{{Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {0, 0, 0}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {3, 3, 0}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[-1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {3, 3, 0}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[-1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {4, 4, 0}}, {{
+         Rational[9, 2], Rational[9, 2], Rational[-1, 2]}, {
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {4, 4, 0}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {1, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {3, 2, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {3, 2, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {3, 3, 0}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {3, 2, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {3, 3, 0}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {4, 3, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {3, 2, 1}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {4, 3, 1}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {4, 4, 0}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {4, 3, 1}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {4, 4, 0}}, {{
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {4, 3, 1}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 0, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {3, 1, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {2, 0, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {3, 1, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {3, 2, 1}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {3, 1, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {3, 2, 1}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {4, 2, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {3, 1, 2}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {4, 2, 2}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {4, 3, 1}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {4, 2, 2}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {4, 3, 1}}, {{
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {4, 2, 2}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {3, 1, 2}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {3, 0, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {3, 1, 2}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {4, 1, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {3, 0, 3}}, {{
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {4, 1, 3}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {4, 2, 2}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {4, 1, 3}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {4, 2, 2}}, {{
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {4, 1, 3}}, {{
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {4, 1, 3}}, {{
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {4, 0, 4}}, {{
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {4, 1, 3}}, {{
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[1, 2], Rational[9, 2]}, {4, 0, 4}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {0, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 2, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {0, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 3, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {2, 3, 1}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {3, 3, 0}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 3, 1}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {3, 3, 0}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {3, 4, 1}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {2, 3, 1}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {3, 4, 1}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {4, 4, 0}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {3, 4, 1}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}, {4, 4, 0}}, {{
+         Rational[7, 2], Rational[9, 2], Rational[1, 2]}, {
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {3, 4, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {1, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {2, 2, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {1, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {2, 2, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {3, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 3, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {3, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {3, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {3, 3, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {2, 3, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {2, 2, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {2, 3, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {3, 3, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {2, 2, 2}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {3, 3, 2}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {4, 3, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}, {3, 4, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {4, 3, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {3, 3, 2}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[9, 2], Rational[7, 2], Rational[3, 2]}, {4, 3, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {3, 4, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {3, 3, 2}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {3, 4, 1}}, {{
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {3, 3, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {3, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {3, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {2, 1, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {3, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {3, 2, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {2, 2, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {2, 1, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {2, 2, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {3, 2, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {2, 1, 3}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {3, 2, 3}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {4, 2, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}, {3, 3, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {4, 2, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {3, 2, 3}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[9, 2], Rational[5, 2], Rational[5, 2]}, {4, 2, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {3, 3, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {3, 2, 3}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {3, 3, 2}}, {{
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {3, 2, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {4, 1, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}, {3, 2, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {4, 1, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[1, 2], Rational[7, 2]}, {3, 1, 4}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}, {4, 1, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {3, 2, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {3, 1, 4}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {3, 2, 3}}, {{
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[3, 2], Rational[9, 2]}, {3, 1, 4}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {0, 2, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 3, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {0, 2, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {1, 3, 2}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {2, 3, 1}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 3, 2}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {2, 3, 1}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {2, 4, 2}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {1, 3, 2}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {2, 4, 2}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {3, 4, 1}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {2, 4, 2}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}, {3, 4, 1}}, {{
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {2, 4, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {2, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 3, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {2, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {1, 2, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {2, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {2, 3, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {1, 3, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {1, 2, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {1, 3, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {2, 3, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {1, 2, 3}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {2, 3, 3}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {3, 3, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}, {2, 4, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {3, 3, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {2, 3, 3}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}, {3, 3, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {2, 4, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {2, 3, 3}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {2, 4, 2}}, {{
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {2, 3, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {3, 2, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}, {2, 3, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {3, 2, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}, {2, 2, 4}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}, {3, 2, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {2, 3, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {2, 2, 4}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {2, 3, 3}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[9, 2]}, {2, 2, 4}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {1, 3, 2}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {0, 3, 3}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {1, 3, 2}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {1, 4, 3}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {0, 3, 3}}, {{
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {1, 4, 3}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {2, 4, 2}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {1, 4, 3}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}, {2, 4, 2}}, {{
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {1, 4, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {2, 3, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}, {1, 4, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {2, 3, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}, {1, 3, 4}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}, {2, 3, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {1, 4, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {1, 3, 4}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {1, 4, 3}}, {{
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[7, 2], Rational[9, 2]}, {1, 3, 4}}, {{
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {1, 4, 3}}, {{
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}, {0, 4, 4}}, {{
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}, {1, 4, 3}}, {{
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}, {
+         Rational[1, 2], Rational[9, 2], Rational[9, 2]}, {0, 4, 4}}}, {{{0.5,
+          0.5, -0.5}, {0.5, 0.5, 0.5}, {0, 0, 0}}, {{0.5, 0.5, -0.5}, {0.5, 
+         0.5, 0.5}, {1, 1, 0}}, {{1.5, 1.5, -0.5}, {1.5, 1.5, 0.5}, {1, 1, 
+         0}}, {{1.5, 1.5, -0.5}, {1.5, 1.5, 0.5}, {2, 2, 0}}, {{2.5, 
+         2.5, -0.5}, {2.5, 2.5, 0.5}, {2, 2, 0}}, {{2.5, 2.5, -0.5}, {2.5, 
+         2.5, 0.5}, {3, 3, 0}}, {{3.5, 3.5, -0.5}, {3.5, 3.5, 0.5}, {3, 3, 
+         0}}, {{3.5, 3.5, -0.5}, {3.5, 3.5, 0.5}, {4, 4, 0}}, {{4.5, 
+         4.5, -0.5}, {4.5, 4.5, 0.5}, {4, 4, 0}}, {{1.5, 0.5, 0.5}, {0.5, 0.5,
+          0.5}, {1, 1, 0}}, {{1.5, 0.5, 0.5}, {0.5, 0.5, 0.5}, {1, 0, 1}}, {{
+         1.5, 0.5, 0.5}, {1.5, 1.5, 0.5}, {1, 1, 0}}, {{1.5, 0.5, 0.5}, {1.5, 
+         1.5, 0.5}, {2, 1, 1}}, {{1.5, 0.5, 0.5}, {1.5, 0.5, 1.5}, {1, 0, 
+         1}}, {{1.5, 0.5, 0.5}, {1.5, 0.5, 1.5}, {2, 1, 1}}, {{2.5, 1.5, 
+         0.5}, {1.5, 1.5, 0.5}, {2, 2, 0}}, {{2.5, 1.5, 0.5}, {1.5, 1.5, 
+         0.5}, {2, 1, 1}}, {{2.5, 1.5, 0.5}, {2.5, 2.5, 0.5}, {2, 2, 0}}, {{
+         2.5, 1.5, 0.5}, {2.5, 2.5, 0.5}, {3, 2, 1}}, {{2.5, 1.5, 0.5}, {2.5, 
+         1.5, 1.5}, {2, 1, 1}}, {{2.5, 1.5, 0.5}, {2.5, 1.5, 1.5}, {3, 2, 
+         1}}, {{3.5, 2.5, 0.5}, {2.5, 2.5, 0.5}, {3, 3, 0}}, {{3.5, 2.5, 
+         0.5}, {2.5, 2.5, 0.5}, {3, 2, 1}}, {{3.5, 2.5, 0.5}, {3.5, 3.5, 
+         0.5}, {3, 3, 0}}, {{3.5, 2.5, 0.5}, {3.5, 3.5, 0.5}, {4, 3, 1}}, {{
+         3.5, 2.5, 0.5}, {3.5, 2.5, 1.5}, {3, 2, 1}}, {{3.5, 2.5, 0.5}, {3.5, 
+         2.5, 1.5}, {4, 3, 1}}, {{4.5, 3.5, 0.5}, {3.5, 3.5, 0.5}, {4, 4, 
+         0}}, {{4.5, 3.5, 0.5}, {3.5, 3.5, 0.5}, {4, 3, 1}}, {{4.5, 3.5, 
+         0.5}, {4.5, 4.5, 0.5}, {4, 4, 0}}, {{4.5, 3.5, 0.5}, {4.5, 3.5, 
+         1.5}, {4, 3, 1}}, {{2.5, 0.5, 1.5}, {1.5, 0.5, 1.5}, {2, 1, 1}}, {{
+         2.5, 0.5, 1.5}, {1.5, 0.5, 1.5}, {2, 0, 2}}, {{2.5, 0.5, 1.5}, {2.5, 
+         1.5, 1.5}, {2, 1, 1}}, {{2.5, 0.5, 1.5}, {2.5, 1.5, 1.5}, {3, 1, 
+         2}}, {{2.5, 0.5, 1.5}, {2.5, 0.5, 2.5}, {2, 0, 2}}, {{2.5, 0.5, 
+         1.5}, {2.5, 0.5, 2.5}, {3, 1, 2}}, {{3.5, 1.5, 1.5}, {2.5, 1.5, 
+         1.5}, {3, 2, 1}}, {{3.5, 1.5, 1.5}, {2.5, 1.5, 1.5}, {3, 1, 2}}, {{
+         3.5, 1.5, 1.5}, {3.5, 2.5, 1.5}, {3, 2, 1}}, {{3.5, 1.5, 1.5}, {3.5, 
+         2.5, 1.5}, {4, 2, 2}}, {{3.5, 1.5, 1.5}, {3.5, 1.5, 2.5}, {3, 1, 
+         2}}, {{3.5, 1.5, 1.5}, {3.5, 1.5, 2.5}, {4, 2, 2}}, {{4.5, 2.5, 
+         1.5}, {3.5, 2.5, 1.5}, {4, 3, 1}}, {{4.5, 2.5, 1.5}, {3.5, 2.5, 
+         1.5}, {4, 2, 2}}, {{4.5, 2.5, 1.5}, {4.5, 3.5, 1.5}, {4, 3, 1}}, {{
+         4.5, 2.5, 1.5}, {4.5, 2.5, 2.5}, {4, 2, 2}}, {{3.5, 0.5, 2.5}, {2.5, 
+         0.5, 2.5}, {3, 1, 2}}, {{3.5, 0.5, 2.5}, {2.5, 0.5, 2.5}, {3, 0, 
+         3}}, {{3.5, 0.5, 2.5}, {3.5, 1.5, 2.5}, {3, 1, 2}}, {{3.5, 0.5, 
+         2.5}, {3.5, 1.5, 2.5}, {4, 1, 3}}, {{3.5, 0.5, 2.5}, {3.5, 0.5, 
+         3.5}, {3, 0, 3}}, {{3.5, 0.5, 2.5}, {3.5, 0.5, 3.5}, {4, 1, 3}}, {{
+         4.5, 1.5, 2.5}, {3.5, 1.5, 2.5}, {4, 2, 2}}, {{4.5, 1.5, 2.5}, {3.5, 
+         1.5, 2.5}, {4, 1, 3}}, {{4.5, 1.5, 2.5}, {4.5, 2.5, 2.5}, {4, 2, 
+         2}}, {{4.5, 1.5, 2.5}, {4.5, 1.5, 3.5}, {4, 1, 3}}, {{4.5, 0.5, 
+         3.5}, {3.5, 0.5, 3.5}, {4, 1, 3}}, {{4.5, 0.5, 3.5}, {3.5, 0.5, 
+         3.5}, {4, 0, 4}}, {{4.5, 0.5, 3.5}, {4.5, 1.5, 3.5}, {4, 1, 3}}, {{
+         4.5, 0.5, 3.5}, {4.5, 0.5, 4.5}, {4, 0, 4}}, {{0.5, 1.5, 0.5}, {0.5, 
+         0.5, 0.5}, {1, 1, 0}}, {{0.5, 1.5, 0.5}, {0.5, 0.5, 0.5}, {0, 1, 
+         1}}, {{0.5, 1.5, 0.5}, {1.5, 1.5, 0.5}, {1, 1, 0}}, {{0.5, 1.5, 
+         0.5}, {1.5, 1.5, 0.5}, {1, 2, 1}}, {{0.5, 1.5, 0.5}, {0.5, 1.5, 
+         1.5}, {0, 1, 1}}, {{0.5, 1.5, 0.5}, {0.5, 1.5, 1.5}, {1, 2, 1}}, {{
+         1.5, 2.5, 0.5}, {1.5, 1.5, 0.5}, {2, 2, 0}}, {{1.5, 2.5, 0.5}, {1.5, 
+         1.5, 0.5}, {1, 2, 1}}, {{1.5, 2.5, 0.5}, {2.5, 2.5, 0.5}, {2, 2, 
+         0}}, {{1.5, 2.5, 0.5}, {2.5, 2.5, 0.5}, {2, 3, 1}}, {{1.5, 2.5, 
+         0.5}, {1.5, 2.5, 1.5}, {1, 2, 1}}, {{1.5, 2.5, 0.5}, {1.5, 2.5, 
+         1.5}, {2, 3, 1}}, {{2.5, 3.5, 0.5}, {2.5, 2.5, 0.5}, {3, 3, 0}}, {{
+         2.5, 3.5, 0.5}, {2.5, 2.5, 0.5}, {2, 3, 1}}, {{2.5, 3.5, 0.5}, {3.5, 
+         3.5, 0.5}, {3, 3, 0}}, {{2.5, 3.5, 0.5}, {3.5, 3.5, 0.5}, {3, 4, 
+         1}}, {{2.5, 3.5, 0.5}, {2.5, 3.5, 1.5}, {2, 3, 1}}, {{2.5, 3.5, 
+         0.5}, {2.5, 3.5, 1.5}, {3, 4, 1}}, {{3.5, 4.5, 0.5}, {3.5, 3.5, 
+         0.5}, {4, 4, 0}}, {{3.5, 4.5, 0.5}, {3.5, 3.5, 0.5}, {3, 4, 1}}, {{
+         3.5, 4.5, 0.5}, {4.5, 4.5, 0.5}, {4, 4, 0}}, {{3.5, 4.5, 0.5}, {3.5, 
+         4.5, 1.5}, {3, 4, 1}}, {{1.5, 1.5, 1.5}, {1.5, 1.5, 0.5}, {2, 1, 
+         1}}, {{1.5, 1.5, 1.5}, {1.5, 1.5, 0.5}, {1, 2, 1}}, {{1.5, 1.5, 
+         1.5}, {1.5, 0.5, 1.5}, {2, 1, 1}}, {{1.5, 1.5, 1.5}, {1.5, 0.5, 
+         1.5}, {1, 1, 2}}, {{1.5, 1.5, 1.5}, {2.5, 1.5, 1.5}, {2, 1, 1}}, {{
+         1.5, 1.5, 1.5}, {2.5, 1.5, 1.5}, {2, 2, 2}}, {{1.5, 1.5, 1.5}, {0.5, 
+         1.5, 1.5}, {1, 2, 1}}, {{1.5, 1.5, 1.5}, {0.5, 1.5, 1.5}, {1, 1, 
+         2}}, {{1.5, 1.5, 1.5}, {1.5, 2.5, 1.5}, {1, 2, 1}}, {{1.5, 1.5, 
+         1.5}, {1.5, 2.5, 1.5}, {2, 2, 2}}, {{1.5, 1.5, 1.5}, {1.5, 1.5, 
+         2.5}, {1, 1, 2}}, {{1.5, 1.5, 1.5}, {1.5, 1.5, 2.5}, {2, 2, 2}}, {{
+         2.5, 2.5, 1.5}, {2.5, 2.5, 0.5}, {3, 2, 1}}, {{2.5, 2.5, 1.5}, {2.5, 
+         2.5, 0.5}, {2, 3, 1}}, {{2.5, 2.5, 1.5}, {2.5, 1.5, 1.5}, {3, 2, 
+         1}}, {{2.5, 2.5, 1.5}, {2.5, 1.5, 1.5}, {2, 2, 2}}, {{2.5, 2.5, 
+         1.5}, {3.5, 2.5, 1.5}, {3, 2, 1}}, {{2.5, 2.5, 1.5}, {3.5, 2.5, 
+         1.5}, {3, 3, 2}}, {{2.5, 2.5, 1.5}, {1.5, 2.5, 1.5}, {2, 3, 1}}, {{
+         2.5, 2.5, 1.5}, {1.5, 2.5, 1.5}, {2, 2, 2}}, {{2.5, 2.5, 1.5}, {2.5, 
+         3.5, 1.5}, {2, 3, 1}}, {{2.5, 2.5, 1.5}, {2.5, 3.5, 1.5}, {3, 3, 
+         2}}, {{2.5, 2.5, 1.5}, {2.5, 2.5, 2.5}, {2, 2, 2}}, {{2.5, 2.5, 
+         1.5}, {2.5, 2.5, 2.5}, {3, 3, 2}}, {{3.5, 3.5, 1.5}, {3.5, 3.5, 
+         0.5}, {4, 3, 1}}, {{3.5, 3.5, 1.5}, {3.5, 3.5, 0.5}, {3, 4, 1}}, {{
+         3.5, 3.5, 1.5}, {3.5, 2.5, 1.5}, {4, 3, 1}}, {{3.5, 3.5, 1.5}, {3.5, 
+         2.5, 1.5}, {3, 3, 2}}, {{3.5, 3.5, 1.5}, {4.5, 3.5, 1.5}, {4, 3, 
+         1}}, {{3.5, 3.5, 1.5}, {2.5, 3.5, 1.5}, {3, 4, 1}}, {{3.5, 3.5, 
+         1.5}, {2.5, 3.5, 1.5}, {3, 3, 2}}, {{3.5, 3.5, 1.5}, {3.5, 4.5, 
+         1.5}, {3, 4, 1}}, {{3.5, 3.5, 1.5}, {3.5, 3.5, 2.5}, {3, 3, 2}}, {{
+         2.5, 1.5, 2.5}, {2.5, 1.5, 1.5}, {3, 1, 2}}, {{2.5, 1.5, 2.5}, {2.5, 
+         1.5, 1.5}, {2, 2, 2}}, {{2.5, 1.5, 2.5}, {2.5, 0.5, 2.5}, {3, 1, 
+         2}}, {{2.5, 1.5, 2.5}, {2.5, 0.5, 2.5}, {2, 1, 3}}, {{2.5, 1.5, 
+         2.5}, {3.5, 1.5, 2.5}, {3, 1, 2}}, {{2.5, 1.5, 2.5}, {3.5, 1.5, 
+         2.5}, {3, 2, 3}}, {{2.5, 1.5, 2.5}, {1.5, 1.5, 2.5}, {2, 2, 2}}, {{
+         2.5, 1.5, 2.5}, {1.5, 1.5, 2.5}, {2, 1, 3}}, {{2.5, 1.5, 2.5}, {2.5, 
+         2.5, 2.5}, {2, 2, 2}}, {{2.5, 1.5, 2.5}, {2.5, 2.5, 2.5}, {3, 2, 
+         3}}, {{2.5, 1.5, 2.5}, {2.5, 1.5, 3.5}, {2, 1, 3}}, {{2.5, 1.5, 
+         2.5}, {2.5, 1.5, 3.5}, {3, 2, 3}}, {{3.5, 2.5, 2.5}, {3.5, 2.5, 
+         1.5}, {4, 2, 2}}, {{3.5, 2.5, 2.5}, {3.5, 2.5, 1.5}, {3, 3, 2}}, {{
+         3.5, 2.5, 2.5}, {3.5, 1.5, 2.5}, {4, 2, 2}}, {{3.5, 2.5, 2.5}, {3.5, 
+         1.5, 2.5}, {3, 2, 3}}, {{3.5, 2.5, 2.5}, {4.5, 2.5, 2.5}, {4, 2, 
+         2}}, {{3.5, 2.5, 2.5}, {2.5, 2.5, 2.5}, {3, 3, 2}}, {{3.5, 2.5, 
+         2.5}, {2.5, 2.5, 2.5}, {3, 2, 3}}, {{3.5, 2.5, 2.5}, {3.5, 3.5, 
+         2.5}, {3, 3, 2}}, {{3.5, 2.5, 2.5}, {3.5, 2.5, 3.5}, {3, 2, 3}}, {{
+         3.5, 1.5, 3.5}, {3.5, 1.5, 2.5}, {4, 1, 3}}, {{3.5, 1.5, 3.5}, {3.5, 
+         1.5, 2.5}, {3, 2, 3}}, {{3.5, 1.5, 3.5}, {3.5, 0.5, 3.5}, {4, 1, 
+         3}}, {{3.5, 1.5, 3.5}, {3.5, 0.5, 3.5}, {3, 1, 4}}, {{3.5, 1.5, 
+         3.5}, {4.5, 1.5, 3.5}, {4, 1, 3}}, {{3.5, 1.5, 3.5}, {2.5, 1.5, 
+         3.5}, {3, 2, 3}}, {{3.5, 1.5, 3.5}, {2.5, 1.5, 3.5}, {3, 1, 4}}, {{
+         3.5, 1.5, 3.5}, {3.5, 2.5, 3.5}, {3, 2, 3}}, {{3.5, 1.5, 3.5}, {3.5, 
+         1.5, 4.5}, {3, 1, 4}}, {{0.5, 2.5, 1.5}, {0.5, 1.5, 1.5}, {1, 2, 
+         1}}, {{0.5, 2.5, 1.5}, {0.5, 1.5, 1.5}, {0, 2, 2}}, {{0.5, 2.5, 
+         1.5}, {1.5, 2.5, 1.5}, {1, 2, 1}}, {{0.5, 2.5, 1.5}, {1.5, 2.5, 
+         1.5}, {1, 3, 2}}, {{0.5, 2.5, 1.5}, {0.5, 2.5, 2.5}, {0, 2, 2}}, {{
+         0.5, 2.5, 1.5}, {0.5, 2.5, 2.5}, {1, 3, 2}}, {{1.5, 3.5, 1.5}, {1.5, 
+         2.5, 1.5}, {2, 3, 1}}, {{1.5, 3.5, 1.5}, {1.5, 2.5, 1.5}, {1, 3, 
+         2}}, {{1.5, 3.5, 1.5}, {2.5, 3.5, 1.5}, {2, 3, 1}}, {{1.5, 3.5, 
+         1.5}, {2.5, 3.5, 1.5}, {2, 4, 2}}, {{1.5, 3.5, 1.5}, {1.5, 3.5, 
+         2.5}, {1, 3, 2}}, {{1.5, 3.5, 1.5}, {1.5, 3.5, 2.5}, {2, 4, 2}}, {{
+         2.5, 4.5, 1.5}, {2.5, 3.5, 1.5}, {3, 4, 1}}, {{2.5, 4.5, 1.5}, {2.5, 
+         3.5, 1.5}, {2, 4, 2}}, {{2.5, 4.5, 1.5}, {3.5, 4.5, 1.5}, {3, 4, 
+         1}}, {{2.5, 4.5, 1.5}, {2.5, 4.5, 2.5}, {2, 4, 2}}, {{1.5, 2.5, 
+         2.5}, {1.5, 2.5, 1.5}, {2, 2, 2}}, {{1.5, 2.5, 2.5}, {1.5, 2.5, 
+         1.5}, {1, 3, 2}}, {{1.5, 2.5, 2.5}, {1.5, 1.5, 2.5}, {2, 2, 2}}, {{
+         1.5, 2.5, 2.5}, {1.5, 1.5, 2.5}, {1, 2, 3}}, {{1.5, 2.5, 2.5}, {2.5, 
+         2.5, 2.5}, {2, 2, 2}}, {{1.5, 2.5, 2.5}, {2.5, 2.5, 2.5}, {2, 3, 
+         3}}, {{1.5, 2.5, 2.5}, {0.5, 2.5, 2.5}, {1, 3, 2}}, {{1.5, 2.5, 
+         2.5}, {0.5, 2.5, 2.5}, {1, 2, 3}}, {{1.5, 2.5, 2.5}, {1.5, 3.5, 
+         2.5}, {1, 3, 2}}, {{1.5, 2.5, 2.5}, {1.5, 3.5, 2.5}, {2, 3, 3}}, {{
+         1.5, 2.5, 2.5}, {1.5, 2.5, 3.5}, {1, 2, 3}}, {{1.5, 2.5, 2.5}, {1.5, 
+         2.5, 3.5}, {2, 3, 3}}, {{2.5, 3.5, 2.5}, {2.5, 3.5, 1.5}, {3, 3, 
+         2}}, {{2.5, 3.5, 2.5}, {2.5, 3.5, 1.5}, {2, 4, 2}}, {{2.5, 3.5, 
+         2.5}, {2.5, 2.5, 2.5}, {3, 3, 2}}, {{2.5, 3.5, 2.5}, {2.5, 2.5, 
+         2.5}, {2, 3, 3}}, {{2.5, 3.5, 2.5}, {3.5, 3.5, 2.5}, {3, 3, 2}}, {{
+         2.5, 3.5, 2.5}, {1.5, 3.5, 2.5}, {2, 4, 2}}, {{2.5, 3.5, 2.5}, {1.5, 
+         3.5, 2.5}, {2, 3, 3}}, {{2.5, 3.5, 2.5}, {2.5, 4.5, 2.5}, {2, 4, 
+         2}}, {{2.5, 3.5, 2.5}, {2.5, 3.5, 3.5}, {2, 3, 3}}, {{2.5, 2.5, 
+         3.5}, {2.5, 2.5, 2.5}, {3, 2, 3}}, {{2.5, 2.5, 3.5}, {2.5, 2.5, 
+         2.5}, {2, 3, 3}}, {{2.5, 2.5, 3.5}, {2.5, 1.5, 3.5}, {3, 2, 3}}, {{
+         2.5, 2.5, 3.5}, {2.5, 1.5, 3.5}, {2, 2, 4}}, {{2.5, 2.5, 3.5}, {3.5, 
+         2.5, 3.5}, {3, 2, 3}}, {{2.5, 2.5, 3.5}, {1.5, 2.5, 3.5}, {2, 3, 
+         3}}, {{2.5, 2.5, 3.5}, {1.5, 2.5, 3.5}, {2, 2, 4}}, {{2.5, 2.5, 
+         3.5}, {2.5, 3.5, 3.5}, {2, 3, 3}}, {{2.5, 2.5, 3.5}, {2.5, 2.5, 
+         4.5}, {2, 2, 4}}, {{0.5, 3.5, 2.5}, {0.5, 2.5, 2.5}, {1, 3, 2}}, {{
+         0.5, 3.5, 2.5}, {0.5, 2.5, 2.5}, {0, 3, 3}}, {{0.5, 3.5, 2.5}, {1.5, 
+         3.5, 2.5}, {1, 3, 2}}, {{0.5, 3.5, 2.5}, {1.5, 3.5, 2.5}, {1, 4, 
+         3}}, {{0.5, 3.5, 2.5}, {0.5, 3.5, 3.5}, {0, 3, 3}}, {{0.5, 3.5, 
+         2.5}, {0.5, 3.5, 3.5}, {1, 4, 3}}, {{1.5, 4.5, 2.5}, {1.5, 3.5, 
+         2.5}, {2, 4, 2}}, {{1.5, 4.5, 2.5}, {1.5, 3.5, 2.5}, {1, 4, 3}}, {{
+         1.5, 4.5, 2.5}, {2.5, 4.5, 2.5}, {2, 4, 2}}, {{1.5, 4.5, 2.5}, {1.5, 
+         4.5, 3.5}, {1, 4, 3}}, {{1.5, 3.5, 3.5}, {1.5, 3.5, 2.5}, {2, 3, 
+         3}}, {{1.5, 3.5, 3.5}, {1.5, 3.5, 2.5}, {1, 4, 3}}, {{1.5, 3.5, 
+         3.5}, {1.5, 2.5, 3.5}, {2, 3, 3}}, {{1.5, 3.5, 3.5}, {1.5, 2.5, 
+         3.5}, {1, 3, 4}}, {{1.5, 3.5, 3.5}, {2.5, 3.5, 3.5}, {2, 3, 3}}, {{
+         1.5, 3.5, 3.5}, {0.5, 3.5, 3.5}, {1, 4, 3}}, {{1.5, 3.5, 3.5}, {0.5, 
+         3.5, 3.5}, {1, 3, 4}}, {{1.5, 3.5, 3.5}, {1.5, 4.5, 3.5}, {1, 4, 
+         3}}, {{1.5, 3.5, 3.5}, {1.5, 3.5, 4.5}, {1, 3, 4}}, {{0.5, 4.5, 
+         3.5}, {0.5, 3.5, 3.5}, {1, 4, 3}}, {{0.5, 4.5, 3.5}, {0.5, 3.5, 
+         3.5}, {0, 4, 4}}, {{0.5, 4.5, 3.5}, {1.5, 4.5, 3.5}, {1, 4, 3}}, {{
+         0.5, 4.5, 3.5}, {0.5, 4.5, 4.5}, {0, 4, 4}}}]]}, 
+    {RGBColor[0, 0, 1], Opacity[0.9], 
+     Polygon3DBox[
+      NCache[{{{0, 0, 0}, {1, 0, 0}, {
+         Rational[1, 2], Rational[1, 2], Rational[-1, 2]}}, {{1, 1, 0}, {1, 0,
+          0}, {Rational[1, 2], Rational[1, 2], Rational[-1, 2]}}, {{1, 1, 
+         0}, {1, 0, 0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 1, 0}, {2, 1, 0}, {
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}}, {{1, 1, 0}, {2, 1,
+          0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 0}, {
+         1, 1, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 
+         0}, {1, 1, 1}, {Rational[1, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         2, 2, 0}, {2, 1, 0}, {
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}}, {{2, 2, 0}, {2, 1,
+          0}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {
+         3, 2, 0}, {Rational[5, 2], Rational[5, 2], Rational[-1, 2]}}, {{2, 2,
+          0}, {3, 2, 0}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         2, 2, 0}, {2, 2, 1}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {2, 2, 
+         1}, {Rational[3, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 3, 0}, {
+         3, 2, 0}, {Rational[5, 2], Rational[5, 2], Rational[-1, 2]}}, {{3, 3,
+          0}, {3, 2, 0}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{
+         3, 3, 0}, {4, 3, 0}, {
+         Rational[7, 2], Rational[7, 2], Rational[-1, 2]}}, {{3, 3, 0}, {4, 3,
+          0}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 3, 0}, {
+         3, 3, 1}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 3, 
+         0}, {3, 3, 1}, {Rational[5, 2], Rational[7, 2], Rational[1, 2]}}, {{
+         4, 4, 0}, {4, 3, 0}, {
+         Rational[7, 2], Rational[7, 2], Rational[-1, 2]}}, {{4, 4, 0}, {4, 3,
+          0}, {Rational[9, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 4, 0}, {
+         5, 4, 0}, {Rational[9, 2], Rational[9, 2], Rational[-1, 2]}}, {{4, 4,
+          0}, {5, 4, 0}, {Rational[9, 2], Rational[7, 2], Rational[1, 2]}}, {{
+         4, 4, 0}, {4, 4, 1}, {
+         Rational[9, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 4, 0}, {4, 4, 
+         1}, {Rational[7, 2], Rational[9, 2], Rational[1, 2]}}, {{1, 0, 1}, {
+         1, 0, 0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 0, 
+         1}, {2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 0, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{2, 1, 1}, {2, 1, 
+         0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         2, 1, 0}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 
+         1}, {2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         2, 1, 1}, {2, 0, 1}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {3, 1, 
+         1}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         3, 1, 1}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 
+         1}, {1, 1, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         2, 1, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 1, 1}, {2, 2, 
+         1}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 1, 
+         1}, {2, 1, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{
+         2, 1, 1}, {2, 1, 2}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 2, 1}, {3, 2, 
+         0}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{3, 2, 1}, {
+         3, 2, 0}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 2, 
+         1}, {3, 1, 1}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         3, 2, 1}, {3, 1, 1}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 2, 1}, {4, 2, 
+         1}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 2, 1}, {
+         4, 2, 1}, {Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 2, 
+         1}, {2, 2, 1}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         3, 2, 1}, {2, 2, 1}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 2, 1}, {3, 3, 
+         1}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 2, 1}, {
+         3, 3, 1}, {Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 2, 
+         1}, {3, 2, 2}, {Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         3, 2, 1}, {3, 2, 2}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 3, 1}, {4, 3, 
+         0}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{4, 3, 1}, {
+         4, 3, 0}, {Rational[9, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 3, 
+         1}, {4, 2, 1}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{
+         4, 3, 1}, {4, 2, 1}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 3, 1}, {5, 3, 
+         1}, {Rational[9, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 3, 1}, {
+         5, 3, 1}, {Rational[9, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 3, 
+         1}, {3, 3, 1}, {Rational[7, 2], Rational[5, 2], Rational[1, 2]}}, {{
+         4, 3, 1}, {3, 3, 1}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{4, 3, 1}, {4, 4, 
+         1}, {Rational[9, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 3, 1}, {
+         4, 4, 1}, {Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{4, 3, 
+         1}, {4, 3, 2}, {Rational[9, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         4, 3, 1}, {4, 3, 2}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{2, 0, 2}, {2, 0, 
+         1}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 2}, {
+         3, 0, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 
+         2}, {2, 1, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{
+         3, 1, 2}, {3, 1, 1}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{3, 1, 2}, {3, 1, 
+         1}, {Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 1, 2}, {
+         3, 0, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{3, 1, 
+         2}, {3, 0, 2}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{
+         3, 1, 2}, {4, 1, 2}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 1, 2}, {4, 1, 
+         2}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 1, 2}, {
+         2, 1, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{3, 1, 
+         2}, {2, 1, 2}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         3, 1, 2}, {3, 2, 2}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 1, 2}, {3, 2, 
+         2}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{3, 1, 2}, {
+         3, 1, 3}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 1, 
+         2}, {3, 1, 3}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         4, 2, 2}, {4, 2, 1}, {
+         Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{4, 2, 2}, {4, 2, 
+         1}, {Rational[9, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 2, 2}, {
+         4, 1, 2}, {Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{4, 2, 
+         2}, {4, 1, 2}, {Rational[9, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         4, 2, 2}, {5, 2, 2}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 2, 2}, {5, 2, 
+         2}, {Rational[9, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 2, 2}, {
+         3, 2, 2}, {Rational[7, 2], Rational[3, 2], Rational[3, 2]}}, {{4, 2, 
+         2}, {3, 2, 2}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         4, 2, 2}, {4, 3, 2}, {
+         Rational[9, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 2, 2}, {4, 3, 
+         2}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{4, 2, 2}, {
+         4, 2, 3}, {Rational[9, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 2, 
+         2}, {4, 2, 3}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         3, 0, 3}, {3, 0, 2}, {
+         Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 0, 3}, {4, 0, 
+         3}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 0, 3}, {
+         3, 1, 3}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{4, 1, 
+         3}, {4, 1, 2}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{
+         4, 1, 3}, {4, 1, 2}, {
+         Rational[9, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 1, 3}, {4, 0, 
+         3}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{4, 1, 3}, {
+         4, 0, 3}, {Rational[9, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 1, 
+         3}, {5, 1, 3}, {Rational[9, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         4, 1, 3}, {5, 1, 3}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 1, 3}, {3, 1, 
+         3}, {Rational[7, 2], Rational[1, 2], Rational[5, 2]}}, {{4, 1, 3}, {
+         3, 1, 3}, {Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{4, 1, 
+         3}, {4, 2, 3}, {Rational[9, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         4, 1, 3}, {4, 2, 3}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{4, 1, 3}, {4, 1, 
+         4}, {Rational[9, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 1, 3}, {
+         4, 1, 4}, {Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{4, 0, 
+         4}, {4, 0, 3}, {Rational[9, 2], Rational[1, 2], Rational[7, 2]}}, {{
+         4, 0, 4}, {5, 0, 4}, {
+         Rational[9, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 0, 4}, {4, 1, 
+         4}, {Rational[9, 2], Rational[1, 2], Rational[7, 2]}}, {{0, 1, 1}, {
+         1, 1, 1}, {Rational[1, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 2, 
+         1}, {1, 1, 1}, {Rational[1, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         1, 2, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 1}, {2, 2, 
+         1}, {Rational[3, 2], Rational[5, 2], Rational[1, 2]}}, {{1, 2, 1}, {
+         2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 
+         1}, {1, 2, 2}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         1, 2, 1}, {1, 2, 2}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 3, 1}, {2, 2, 
+         1}, {Rational[3, 2], Rational[5, 2], Rational[1, 2]}}, {{2, 3, 1}, {
+         2, 2, 1}, {Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 3, 
+         1}, {3, 3, 1}, {Rational[5, 2], Rational[7, 2], Rational[1, 2]}}, {{
+         2, 3, 1}, {3, 3, 1}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 3, 1}, {2, 3, 
+         2}, {Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 3, 1}, {
+         2, 3, 2}, {Rational[3, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 4, 
+         1}, {3, 3, 1}, {Rational[5, 2], Rational[7, 2], Rational[1, 2]}}, {{
+         3, 4, 1}, {3, 3, 1}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 4, 1}, {4, 4, 
+         1}, {Rational[7, 2], Rational[9, 2], Rational[1, 2]}}, {{3, 4, 1}, {
+         4, 4, 1}, {Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 4, 
+         1}, {3, 4, 2}, {Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{
+         3, 4, 1}, {3, 4, 2}, {
+         Rational[5, 2], Rational[9, 2], Rational[3, 2]}}, {{1, 1, 2}, {1, 1, 
+         1}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 1, 2}, {
+         2, 1, 2}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 1, 
+         2}, {1, 2, 2}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         2, 2, 2}, {2, 2, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 2, 2}, {2, 2, 
+         1}, {Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 2, 2}, {
+         2, 1, 2}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 2, 
+         2}, {2, 1, 2}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         2, 2, 2}, {3, 2, 2}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 2, 2}, {3, 2, 
+         2}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 2, 2}, {
+         1, 2, 2}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 2, 
+         2}, {1, 2, 2}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         2, 2, 2}, {2, 3, 2}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 2, 2}, {2, 3, 
+         2}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 2, 2}, {
+         2, 2, 3}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 2, 
+         2}, {2, 2, 3}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         3, 3, 2}, {3, 3, 1}, {
+         Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 3, 2}, {3, 3, 
+         1}, {Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 3, 2}, {
+         3, 2, 2}, {Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 3, 
+         2}, {3, 2, 2}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         3, 3, 2}, {4, 3, 2}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 3, 2}, {4, 3, 
+         2}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 3, 2}, {
+         2, 3, 2}, {Rational[5, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 3, 
+         2}, {2, 3, 2}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{
+         3, 3, 2}, {3, 4, 2}, {
+         Rational[7, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 3, 2}, {3, 4, 
+         2}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{3, 3, 2}, {
+         3, 3, 3}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 3, 
+         2}, {3, 3, 3}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{
+         2, 1, 3}, {2, 1, 2}, {
+         Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 1, 3}, {3, 1, 
+         3}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 1, 3}, {
+         2, 2, 3}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{3, 2, 
+         3}, {3, 2, 2}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         3, 2, 3}, {3, 2, 2}, {
+         Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 2, 3}, {3, 1, 
+         3}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{3, 2, 3}, {
+         3, 1, 3}, {Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 2, 
+         3}, {4, 2, 3}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         3, 2, 3}, {4, 2, 3}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 2, 3}, {2, 2, 
+         3}, {Rational[5, 2], Rational[3, 2], Rational[5, 2]}}, {{3, 2, 3}, {
+         2, 2, 3}, {Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{3, 2, 
+         3}, {3, 3, 3}, {Rational[7, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         3, 2, 3}, {3, 3, 3}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{3, 2, 3}, {3, 2, 
+         4}, {Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 2, 3}, {
+         3, 2, 4}, {Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{3, 1, 
+         4}, {3, 1, 3}, {Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{
+         3, 1, 4}, {4, 1, 4}, {
+         Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 1, 4}, {3, 2, 
+         4}, {Rational[7, 2], Rational[3, 2], Rational[7, 2]}}, {{0, 2, 2}, {
+         1, 2, 2}, {Rational[1, 2], Rational[5, 2], Rational[3, 2]}}, {{1, 3, 
+         2}, {1, 2, 2}, {Rational[1, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         1, 3, 2}, {1, 2, 2}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{1, 3, 2}, {2, 3, 
+         2}, {Rational[3, 2], Rational[7, 2], Rational[3, 2]}}, {{1, 3, 2}, {
+         2, 3, 2}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{1, 3, 
+         2}, {1, 3, 3}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         1, 3, 2}, {1, 3, 3}, {
+         Rational[1, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 4, 2}, {2, 3, 
+         2}, {Rational[3, 2], Rational[7, 2], Rational[3, 2]}}, {{2, 4, 2}, {
+         2, 3, 2}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 4, 
+         2}, {3, 4, 2}, {Rational[5, 2], Rational[9, 2], Rational[3, 2]}}, {{
+         2, 4, 2}, {3, 4, 2}, {
+         Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 4, 2}, {2, 4, 
+         3}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 4, 2}, {
+         2, 4, 3}, {Rational[3, 2], Rational[9, 2], Rational[5, 2]}}, {{1, 2, 
+         3}, {1, 2, 2}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         1, 2, 3}, {2, 2, 3}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{1, 2, 3}, {1, 3, 
+         3}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 3, 3}, {
+         2, 3, 2}, {Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 3, 
+         3}, {2, 3, 2}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{
+         2, 3, 3}, {2, 2, 3}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 3, 3}, {2, 2, 
+         3}, {Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 3, 3}, {
+         3, 3, 3}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 3, 
+         3}, {3, 3, 3}, {Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{
+         2, 3, 3}, {1, 3, 3}, {
+         Rational[3, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 3, 3}, {1, 3, 
+         3}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{2, 3, 3}, {
+         2, 4, 3}, {Rational[5, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 3, 
+         3}, {2, 4, 3}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{
+         2, 3, 3}, {2, 3, 4}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 3, 3}, {2, 3, 
+         4}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{2, 2, 4}, {
+         2, 2, 3}, {Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 2, 
+         4}, {3, 2, 4}, {Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{
+         2, 2, 4}, {2, 3, 4}, {
+         Rational[5, 2], Rational[5, 2], Rational[7, 2]}}, {{0, 3, 3}, {1, 3, 
+         3}, {Rational[1, 2], Rational[7, 2], Rational[5, 2]}}, {{1, 4, 3}, {
+         1, 3, 3}, {Rational[1, 2], Rational[7, 2], Rational[5, 2]}}, {{1, 4, 
+         3}, {1, 3, 3}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{
+         1, 4, 3}, {2, 4, 3}, {
+         Rational[3, 2], Rational[9, 2], Rational[5, 2]}}, {{1, 4, 3}, {2, 4, 
+         3}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 4, 3}, {
+         1, 4, 4}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 4, 
+         3}, {1, 4, 4}, {Rational[1, 2], Rational[9, 2], Rational[7, 2]}}, {{
+         1, 3, 4}, {1, 3, 3}, {
+         Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 3, 4}, {2, 3, 
+         4}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 3, 4}, {
+         1, 4, 4}, {Rational[3, 2], Rational[7, 2], Rational[7, 2]}}, {{0, 4, 
+         4}, {1, 4, 4}, {
+         Rational[1, 2], Rational[9, 2], Rational[7, 2]}}}, {{{0, 0, 0}, {1, 
+         0, 0}, {0.5, 0.5, -0.5}}, {{1, 1, 0}, {1, 0, 0}, {0.5, 
+         0.5, -0.5}}, {{1, 1, 0}, {1, 0, 0}, {1.5, 0.5, 0.5}}, {{1, 1, 0}, {2,
+          1, 0}, {1.5, 1.5, -0.5}}, {{1, 1, 0}, {2, 1, 0}, {1.5, 0.5, 
+         0.5}}, {{1, 1, 0}, {1, 1, 1}, {1.5, 0.5, 0.5}}, {{1, 1, 0}, {1, 1, 
+         1}, {0.5, 1.5, 0.5}}, {{2, 2, 0}, {2, 1, 0}, {1.5, 1.5, -0.5}}, {{2, 
+         2, 0}, {2, 1, 0}, {2.5, 1.5, 0.5}}, {{2, 2, 0}, {3, 2, 0}, {2.5, 
+         2.5, -0.5}}, {{2, 2, 0}, {3, 2, 0}, {2.5, 1.5, 0.5}}, {{2, 2, 0}, {2,
+          2, 1}, {2.5, 1.5, 0.5}}, {{2, 2, 0}, {2, 2, 1}, {1.5, 2.5, 0.5}}, {{
+         3, 3, 0}, {3, 2, 0}, {2.5, 2.5, -0.5}}, {{3, 3, 0}, {3, 2, 0}, {3.5, 
+         2.5, 0.5}}, {{3, 3, 0}, {4, 3, 0}, {3.5, 3.5, -0.5}}, {{3, 3, 0}, {4,
+          3, 0}, {3.5, 2.5, 0.5}}, {{3, 3, 0}, {3, 3, 1}, {3.5, 2.5, 0.5}}, {{
+         3, 3, 0}, {3, 3, 1}, {2.5, 3.5, 0.5}}, {{4, 4, 0}, {4, 3, 0}, {3.5, 
+         3.5, -0.5}}, {{4, 4, 0}, {4, 3, 0}, {4.5, 3.5, 0.5}}, {{4, 4, 0}, {5,
+          4, 0}, {4.5, 4.5, -0.5}}, {{4, 4, 0}, {5, 4, 0}, {4.5, 3.5, 
+         0.5}}, {{4, 4, 0}, {4, 4, 1}, {4.5, 3.5, 0.5}}, {{4, 4, 0}, {4, 4, 
+         1}, {3.5, 4.5, 0.5}}, {{1, 0, 1}, {1, 0, 0}, {1.5, 0.5, 0.5}}, {{1, 
+         0, 1}, {2, 0, 1}, {1.5, 0.5, 0.5}}, {{1, 0, 1}, {1, 1, 1}, {1.5, 0.5,
+          0.5}}, {{2, 1, 1}, {2, 1, 0}, {1.5, 0.5, 0.5}}, {{2, 1, 1}, {2, 1, 
+         0}, {2.5, 1.5, 0.5}}, {{2, 1, 1}, {2, 0, 1}, {1.5, 0.5, 0.5}}, {{2, 
+         1, 1}, {2, 0, 1}, {2.5, 0.5, 1.5}}, {{2, 1, 1}, {3, 1, 1}, {2.5, 1.5,
+          0.5}}, {{2, 1, 1}, {3, 1, 1}, {2.5, 0.5, 1.5}}, {{2, 1, 1}, {1, 1, 
+         1}, {1.5, 0.5, 0.5}}, {{2, 1, 1}, {1, 1, 1}, {1.5, 1.5, 1.5}}, {{2, 
+         1, 1}, {2, 2, 1}, {2.5, 1.5, 0.5}}, {{2, 1, 1}, {2, 2, 1}, {1.5, 1.5,
+          1.5}}, {{2, 1, 1}, {2, 1, 2}, {2.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 1, 
+         2}, {1.5, 1.5, 1.5}}, {{3, 2, 1}, {3, 2, 0}, {2.5, 1.5, 0.5}}, {{3, 
+         2, 1}, {3, 2, 0}, {3.5, 2.5, 0.5}}, {{3, 2, 1}, {3, 1, 1}, {2.5, 1.5,
+          0.5}}, {{3, 2, 1}, {3, 1, 1}, {3.5, 1.5, 1.5}}, {{3, 2, 1}, {4, 2, 
+         1}, {3.5, 2.5, 0.5}}, {{3, 2, 1}, {4, 2, 1}, {3.5, 1.5, 1.5}}, {{3, 
+         2, 1}, {2, 2, 1}, {2.5, 1.5, 0.5}}, {{3, 2, 1}, {2, 2, 1}, {2.5, 2.5,
+          1.5}}, {{3, 2, 1}, {3, 3, 1}, {3.5, 2.5, 0.5}}, {{3, 2, 1}, {3, 3, 
+         1}, {2.5, 2.5, 1.5}}, {{3, 2, 1}, {3, 2, 2}, {3.5, 1.5, 1.5}}, {{3, 
+         2, 1}, {3, 2, 2}, {2.5, 2.5, 1.5}}, {{4, 3, 1}, {4, 3, 0}, {3.5, 2.5,
+          0.5}}, {{4, 3, 1}, {4, 3, 0}, {4.5, 3.5, 0.5}}, {{4, 3, 1}, {4, 2, 
+         1}, {3.5, 2.5, 0.5}}, {{4, 3, 1}, {4, 2, 1}, {4.5, 2.5, 1.5}}, {{4, 
+         3, 1}, {5, 3, 1}, {4.5, 3.5, 0.5}}, {{4, 3, 1}, {5, 3, 1}, {4.5, 2.5,
+          1.5}}, {{4, 3, 1}, {3, 3, 1}, {3.5, 2.5, 0.5}}, {{4, 3, 1}, {3, 3, 
+         1}, {3.5, 3.5, 1.5}}, {{4, 3, 1}, {4, 4, 1}, {4.5, 3.5, 0.5}}, {{4, 
+         3, 1}, {4, 4, 1}, {3.5, 3.5, 1.5}}, {{4, 3, 1}, {4, 3, 2}, {4.5, 2.5,
+          1.5}}, {{4, 3, 1}, {4, 3, 2}, {3.5, 3.5, 1.5}}, {{2, 0, 2}, {2, 0, 
+         1}, {2.5, 0.5, 1.5}}, {{2, 0, 2}, {3, 0, 2}, {2.5, 0.5, 1.5}}, {{2, 
+         0, 2}, {2, 1, 2}, {2.5, 0.5, 1.5}}, {{3, 1, 2}, {3, 1, 1}, {2.5, 0.5,
+          1.5}}, {{3, 1, 2}, {3, 1, 1}, {3.5, 1.5, 1.5}}, {{3, 1, 2}, {3, 0, 
+         2}, {2.5, 0.5, 1.5}}, {{3, 1, 2}, {3, 0, 2}, {3.5, 0.5, 2.5}}, {{3, 
+         1, 2}, {4, 1, 2}, {3.5, 1.5, 1.5}}, {{3, 1, 2}, {4, 1, 2}, {3.5, 0.5,
+          2.5}}, {{3, 1, 2}, {2, 1, 2}, {2.5, 0.5, 1.5}}, {{3, 1, 2}, {2, 1, 
+         2}, {2.5, 1.5, 2.5}}, {{3, 1, 2}, {3, 2, 2}, {3.5, 1.5, 1.5}}, {{3, 
+         1, 2}, {3, 2, 2}, {2.5, 1.5, 2.5}}, {{3, 1, 2}, {3, 1, 3}, {3.5, 0.5,
+          2.5}}, {{3, 1, 2}, {3, 1, 3}, {2.5, 1.5, 2.5}}, {{4, 2, 2}, {4, 2, 
+         1}, {3.5, 1.5, 1.5}}, {{4, 2, 2}, {4, 2, 1}, {4.5, 2.5, 1.5}}, {{4, 
+         2, 2}, {4, 1, 2}, {3.5, 1.5, 1.5}}, {{4, 2, 2}, {4, 1, 2}, {4.5, 1.5,
+          2.5}}, {{4, 2, 2}, {5, 2, 2}, {4.5, 2.5, 1.5}}, {{4, 2, 2}, {5, 2, 
+         2}, {4.5, 1.5, 2.5}}, {{4, 2, 2}, {3, 2, 2}, {3.5, 1.5, 1.5}}, {{4, 
+         2, 2}, {3, 2, 2}, {3.5, 2.5, 2.5}}, {{4, 2, 2}, {4, 3, 2}, {4.5, 2.5,
+          1.5}}, {{4, 2, 2}, {4, 3, 2}, {3.5, 2.5, 2.5}}, {{4, 2, 2}, {4, 2, 
+         3}, {4.5, 1.5, 2.5}}, {{4, 2, 2}, {4, 2, 3}, {3.5, 2.5, 2.5}}, {{3, 
+         0, 3}, {3, 0, 2}, {3.5, 0.5, 2.5}}, {{3, 0, 3}, {4, 0, 3}, {3.5, 0.5,
+          2.5}}, {{3, 0, 3}, {3, 1, 3}, {3.5, 0.5, 2.5}}, {{4, 1, 3}, {4, 1, 
+         2}, {3.5, 0.5, 2.5}}, {{4, 1, 3}, {4, 1, 2}, {4.5, 1.5, 2.5}}, {{4, 
+         1, 3}, {4, 0, 3}, {3.5, 0.5, 2.5}}, {{4, 1, 3}, {4, 0, 3}, {4.5, 0.5,
+          3.5}}, {{4, 1, 3}, {5, 1, 3}, {4.5, 1.5, 2.5}}, {{4, 1, 3}, {5, 1, 
+         3}, {4.5, 0.5, 3.5}}, {{4, 1, 3}, {3, 1, 3}, {3.5, 0.5, 2.5}}, {{4, 
+         1, 3}, {3, 1, 3}, {3.5, 1.5, 3.5}}, {{4, 1, 3}, {4, 2, 3}, {4.5, 1.5,
+          2.5}}, {{4, 1, 3}, {4, 2, 3}, {3.5, 1.5, 3.5}}, {{4, 1, 3}, {4, 1, 
+         4}, {4.5, 0.5, 3.5}}, {{4, 1, 3}, {4, 1, 4}, {3.5, 1.5, 3.5}}, {{4, 
+         0, 4}, {4, 0, 3}, {4.5, 0.5, 3.5}}, {{4, 0, 4}, {5, 0, 4}, {4.5, 0.5,
+          3.5}}, {{4, 0, 4}, {4, 1, 4}, {4.5, 0.5, 3.5}}, {{0, 1, 1}, {1, 1, 
+         1}, {0.5, 1.5, 0.5}}, {{1, 2, 1}, {1, 1, 1}, {0.5, 1.5, 0.5}}, {{1, 
+         2, 1}, {1, 1, 1}, {1.5, 1.5, 1.5}}, {{1, 2, 1}, {2, 2, 1}, {1.5, 2.5,
+          0.5}}, {{1, 2, 1}, {2, 2, 1}, {1.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 2, 
+         2}, {1.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 2, 2}, {0.5, 2.5, 1.5}}, {{2, 
+         3, 1}, {2, 2, 1}, {1.5, 2.5, 0.5}}, {{2, 3, 1}, {2, 2, 1}, {2.5, 2.5,
+          1.5}}, {{2, 3, 1}, {3, 3, 1}, {2.5, 3.5, 0.5}}, {{2, 3, 1}, {3, 3, 
+         1}, {2.5, 2.5, 1.5}}, {{2, 3, 1}, {2, 3, 2}, {2.5, 2.5, 1.5}}, {{2, 
+         3, 1}, {2, 3, 2}, {1.5, 3.5, 1.5}}, {{3, 4, 1}, {3, 3, 1}, {2.5, 3.5,
+          0.5}}, {{3, 4, 1}, {3, 3, 1}, {3.5, 3.5, 1.5}}, {{3, 4, 1}, {4, 4, 
+         1}, {3.5, 4.5, 0.5}}, {{3, 4, 1}, {4, 4, 1}, {3.5, 3.5, 1.5}}, {{3, 
+         4, 1}, {3, 4, 2}, {3.5, 3.5, 1.5}}, {{3, 4, 1}, {3, 4, 2}, {2.5, 4.5,
+          1.5}}, {{1, 1, 2}, {1, 1, 1}, {1.5, 1.5, 1.5}}, {{1, 1, 2}, {2, 1, 
+         2}, {1.5, 1.5, 1.5}}, {{1, 1, 2}, {1, 2, 2}, {1.5, 1.5, 1.5}}, {{2, 
+         2, 2}, {2, 2, 1}, {1.5, 1.5, 1.5}}, {{2, 2, 2}, {2, 2, 1}, {2.5, 2.5,
+          1.5}}, {{2, 2, 2}, {2, 1, 2}, {1.5, 1.5, 1.5}}, {{2, 2, 2}, {2, 1, 
+         2}, {2.5, 1.5, 2.5}}, {{2, 2, 2}, {3, 2, 2}, {2.5, 2.5, 1.5}}, {{2, 
+         2, 2}, {3, 2, 2}, {2.5, 1.5, 2.5}}, {{2, 2, 2}, {1, 2, 2}, {1.5, 1.5,
+          1.5}}, {{2, 2, 2}, {1, 2, 2}, {1.5, 2.5, 2.5}}, {{2, 2, 2}, {2, 3, 
+         2}, {2.5, 2.5, 1.5}}, {{2, 2, 2}, {2, 3, 2}, {1.5, 2.5, 2.5}}, {{2, 
+         2, 2}, {2, 2, 3}, {2.5, 1.5, 2.5}}, {{2, 2, 2}, {2, 2, 3}, {1.5, 2.5,
+          2.5}}, {{3, 3, 2}, {3, 3, 1}, {2.5, 2.5, 1.5}}, {{3, 3, 2}, {3, 3, 
+         1}, {3.5, 3.5, 1.5}}, {{3, 3, 2}, {3, 2, 2}, {2.5, 2.5, 1.5}}, {{3, 
+         3, 2}, {3, 2, 2}, {3.5, 2.5, 2.5}}, {{3, 3, 2}, {4, 3, 2}, {3.5, 3.5,
+          1.5}}, {{3, 3, 2}, {4, 3, 2}, {3.5, 2.5, 2.5}}, {{3, 3, 2}, {2, 3, 
+         2}, {2.5, 2.5, 1.5}}, {{3, 3, 2}, {2, 3, 2}, {2.5, 3.5, 2.5}}, {{3, 
+         3, 2}, {3, 4, 2}, {3.5, 3.5, 1.5}}, {{3, 3, 2}, {3, 4, 2}, {2.5, 3.5,
+          2.5}}, {{3, 3, 2}, {3, 3, 3}, {3.5, 2.5, 2.5}}, {{3, 3, 2}, {3, 3, 
+         3}, {2.5, 3.5, 2.5}}, {{2, 1, 3}, {2, 1, 2}, {2.5, 1.5, 2.5}}, {{2, 
+         1, 3}, {3, 1, 3}, {2.5, 1.5, 2.5}}, {{2, 1, 3}, {2, 2, 3}, {2.5, 1.5,
+          2.5}}, {{3, 2, 3}, {3, 2, 2}, {2.5, 1.5, 2.5}}, {{3, 2, 3}, {3, 2, 
+         2}, {3.5, 2.5, 2.5}}, {{3, 2, 3}, {3, 1, 3}, {2.5, 1.5, 2.5}}, {{3, 
+         2, 3}, {3, 1, 3}, {3.5, 1.5, 3.5}}, {{3, 2, 3}, {4, 2, 3}, {3.5, 2.5,
+          2.5}}, {{3, 2, 3}, {4, 2, 3}, {3.5, 1.5, 3.5}}, {{3, 2, 3}, {2, 2, 
+         3}, {2.5, 1.5, 2.5}}, {{3, 2, 3}, {2, 2, 3}, {2.5, 2.5, 3.5}}, {{3, 
+         2, 3}, {3, 3, 3}, {3.5, 2.5, 2.5}}, {{3, 2, 3}, {3, 3, 3}, {2.5, 2.5,
+          3.5}}, {{3, 2, 3}, {3, 2, 4}, {3.5, 1.5, 3.5}}, {{3, 2, 3}, {3, 2, 
+         4}, {2.5, 2.5, 3.5}}, {{3, 1, 4}, {3, 1, 3}, {3.5, 1.5, 3.5}}, {{3, 
+         1, 4}, {4, 1, 4}, {3.5, 1.5, 3.5}}, {{3, 1, 4}, {3, 2, 4}, {3.5, 1.5,
+          3.5}}, {{0, 2, 2}, {1, 2, 2}, {0.5, 2.5, 1.5}}, {{1, 3, 2}, {1, 2, 
+         2}, {0.5, 2.5, 1.5}}, {{1, 3, 2}, {1, 2, 2}, {1.5, 2.5, 2.5}}, {{1, 
+         3, 2}, {2, 3, 2}, {1.5, 3.5, 1.5}}, {{1, 3, 2}, {2, 3, 2}, {1.5, 2.5,
+          2.5}}, {{1, 3, 2}, {1, 3, 3}, {1.5, 2.5, 2.5}}, {{1, 3, 2}, {1, 3, 
+         3}, {0.5, 3.5, 2.5}}, {{2, 4, 2}, {2, 3, 2}, {1.5, 3.5, 1.5}}, {{2, 
+         4, 2}, {2, 3, 2}, {2.5, 3.5, 2.5}}, {{2, 4, 2}, {3, 4, 2}, {2.5, 4.5,
+          1.5}}, {{2, 4, 2}, {3, 4, 2}, {2.5, 3.5, 2.5}}, {{2, 4, 2}, {2, 4, 
+         3}, {2.5, 3.5, 2.5}}, {{2, 4, 2}, {2, 4, 3}, {1.5, 4.5, 2.5}}, {{1, 
+         2, 3}, {1, 2, 2}, {1.5, 2.5, 2.5}}, {{1, 2, 3}, {2, 2, 3}, {1.5, 2.5,
+          2.5}}, {{1, 2, 3}, {1, 3, 3}, {1.5, 2.5, 2.5}}, {{2, 3, 3}, {2, 3, 
+         2}, {1.5, 2.5, 2.5}}, {{2, 3, 3}, {2, 3, 2}, {2.5, 3.5, 2.5}}, {{2, 
+         3, 3}, {2, 2, 3}, {1.5, 2.5, 2.5}}, {{2, 3, 3}, {2, 2, 3}, {2.5, 2.5,
+          3.5}}, {{2, 3, 3}, {3, 3, 3}, {2.5, 3.5, 2.5}}, {{2, 3, 3}, {3, 3, 
+         3}, {2.5, 2.5, 3.5}}, {{2, 3, 3}, {1, 3, 3}, {1.5, 2.5, 2.5}}, {{2, 
+         3, 3}, {1, 3, 3}, {1.5, 3.5, 3.5}}, {{2, 3, 3}, {2, 4, 3}, {2.5, 3.5,
+          2.5}}, {{2, 3, 3}, {2, 4, 3}, {1.5, 3.5, 3.5}}, {{2, 3, 3}, {2, 3, 
+         4}, {2.5, 2.5, 3.5}}, {{2, 3, 3}, {2, 3, 4}, {1.5, 3.5, 3.5}}, {{2, 
+         2, 4}, {2, 2, 3}, {2.5, 2.5, 3.5}}, {{2, 2, 4}, {3, 2, 4}, {2.5, 2.5,
+          3.5}}, {{2, 2, 4}, {2, 3, 4}, {2.5, 2.5, 3.5}}, {{0, 3, 3}, {1, 3, 
+         3}, {0.5, 3.5, 2.5}}, {{1, 4, 3}, {1, 3, 3}, {0.5, 3.5, 2.5}}, {{1, 
+         4, 3}, {1, 3, 3}, {1.5, 3.5, 3.5}}, {{1, 4, 3}, {2, 4, 3}, {1.5, 4.5,
+          2.5}}, {{1, 4, 3}, {2, 4, 3}, {1.5, 3.5, 3.5}}, {{1, 4, 3}, {1, 4, 
+         4}, {1.5, 3.5, 3.5}}, {{1, 4, 3}, {1, 4, 4}, {0.5, 4.5, 3.5}}, {{1, 
+         3, 4}, {1, 3, 3}, {1.5, 3.5, 3.5}}, {{1, 3, 4}, {2, 3, 4}, {1.5, 3.5,
+          3.5}}, {{1, 3, 4}, {1, 4, 4}, {1.5, 3.5, 3.5}}, {{0, 4, 4}, {1, 4, 
+         4}, {0.5, 4.5, 3.5}}}]]}, 
+    {RGBColor[1, 1, 0], Opacity[0.9], 
+     Polygon3DBox[
+      NCache[{{{0, 0, 0}, {1, 0, 0}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 0}, {1, 0, 
+         0}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 0}, {
+         2, 1, 0}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 1, 
+         0}, {1, 1, 1}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 1, 0}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {2, 1, 
+         0}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {
+         3, 2, 0}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{2, 2, 
+         0}, {2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         2, 2, 0}, {2, 2, 1}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 3, 0}, {3, 2, 
+         0}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 3, 0}, {
+         4, 3, 0}, {Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{3, 3, 
+         0}, {3, 3, 1}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{
+         3, 3, 0}, {3, 3, 1}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 4, 0}, {4, 3, 
+         0}, {Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 4, 0}, {
+         5, 4, 0}, {Rational[9, 2], Rational[9, 2], Rational[1, 2]}}, {{4, 4, 
+         0}, {4, 4, 1}, {Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{
+         4, 4, 0}, {4, 4, 1}, {
+         Rational[9, 2], Rational[9, 2], Rational[1, 2]}}, {{1, 0, 1}, {1, 0, 
+         0}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 0, 1}, {
+         2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{1, 0, 
+         1}, {1, 1, 1}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 0, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {2, 1, 
+         0}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 
+         1}, {3, 1, 1}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         2, 1, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {1, 1, 
+         1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {
+         2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 
+         1}, {2, 2, 1}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         2, 1, 1}, {2, 1, 2}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {2, 1, 
+         2}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 2, 1}, {
+         3, 2, 0}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 2, 
+         1}, {3, 1, 1}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         3, 2, 1}, {4, 2, 1}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 2, 1}, {2, 2, 
+         1}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{3, 2, 1}, {
+         2, 2, 1}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 2, 
+         1}, {3, 3, 1}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{
+         3, 2, 1}, {3, 3, 1}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 2, 1}, {3, 2, 
+         2}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 2, 1}, {
+         3, 2, 2}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 3, 
+         1}, {4, 3, 0}, {Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{
+         4, 3, 1}, {4, 2, 1}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 3, 1}, {5, 3, 
+         1}, {Rational[9, 2], Rational[7, 2], Rational[3, 2]}}, {{4, 3, 1}, {
+         3, 3, 1}, {Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 3, 
+         1}, {3, 3, 1}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         4, 3, 1}, {4, 4, 1}, {
+         Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{4, 3, 1}, {4, 4, 
+         1}, {Rational[9, 2], Rational[7, 2], Rational[3, 2]}}, {{4, 3, 1}, {
+         4, 3, 2}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 3, 
+         1}, {4, 3, 2}, {Rational[9, 2], Rational[7, 2], Rational[3, 2]}}, {{
+         2, 0, 2}, {2, 0, 1}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 2}, {3, 0, 
+         2}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{2, 0, 2}, {
+         2, 1, 2}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 
+         2}, {2, 1, 2}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{
+         3, 1, 2}, {3, 1, 1}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 1, 2}, {3, 0, 
+         2}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 1, 2}, {
+         4, 1, 2}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{3, 1, 
+         2}, {2, 1, 2}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         3, 1, 2}, {2, 1, 2}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 1, 2}, {3, 2, 
+         2}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{3, 1, 2}, {
+         3, 2, 2}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{3, 1, 
+         2}, {3, 1, 3}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{
+         3, 1, 2}, {3, 1, 3}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 2, 2}, {4, 2, 
+         1}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 2, 2}, {
+         4, 1, 2}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 2, 
+         2}, {5, 2, 2}, {Rational[9, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         4, 2, 2}, {3, 2, 2}, {
+         Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 2, 2}, {3, 2, 
+         2}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 2, 2}, {
+         4, 3, 2}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{4, 2, 
+         2}, {4, 3, 2}, {Rational[9, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         4, 2, 2}, {4, 2, 3}, {
+         Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 2, 2}, {4, 2, 
+         3}, {Rational[9, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 0, 3}, {
+         3, 0, 2}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 0, 
+         3}, {4, 0, 3}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{
+         3, 0, 3}, {3, 1, 3}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{3, 0, 3}, {3, 1, 
+         3}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 1, 3}, {
+         4, 1, 2}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 1, 
+         3}, {4, 0, 3}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{
+         4, 1, 3}, {5, 1, 3}, {
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}}, {{4, 1, 3}, {3, 1, 
+         3}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{4, 1, 3}, {
+         3, 1, 3}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 1, 
+         3}, {4, 2, 3}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         4, 1, 3}, {4, 2, 3}, {
+         Rational[9, 2], Rational[3, 2], Rational[7, 2]}}, {{4, 1, 3}, {4, 1, 
+         4}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 1, 3}, {
+         4, 1, 4}, {Rational[9, 2], Rational[3, 2], Rational[7, 2]}}, {{4, 0, 
+         4}, {4, 0, 3}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{
+         4, 0, 4}, {5, 0, 4}, {
+         Rational[9, 2], Rational[1, 2], Rational[9, 2]}}, {{4, 0, 4}, {4, 1, 
+         4}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{4, 0, 4}, {
+         4, 1, 4}, {Rational[9, 2], Rational[1, 2], Rational[9, 2]}}, {{0, 1, 
+         1}, {1, 1, 1}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         0, 1, 1}, {1, 1, 1}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 1}, {1, 1, 
+         1}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 2, 1}, {
+         1, 1, 1}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 
+         1}, {2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         1, 2, 1}, {2, 2, 1}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{1, 2, 1}, {1, 2, 
+         2}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 1}, {
+         1, 2, 2}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 3, 
+         1}, {2, 2, 1}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{
+         2, 3, 1}, {2, 2, 1}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 3, 1}, {3, 3, 
+         1}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{2, 3, 1}, {
+         3, 3, 1}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{2, 3, 
+         1}, {2, 3, 2}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         2, 3, 1}, {2, 3, 2}, {
+         Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 4, 1}, {3, 3, 
+         1}, {Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{3, 4, 1}, {
+         3, 3, 1}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 4, 
+         1}, {4, 4, 1}, {Rational[7, 2], Rational[7, 2], Rational[1, 2]}}, {{
+         3, 4, 1}, {4, 4, 1}, {
+         Rational[7, 2], Rational[9, 2], Rational[3, 2]}}, {{3, 4, 1}, {3, 4, 
+         2}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 4, 1}, {
+         3, 4, 2}, {Rational[7, 2], Rational[9, 2], Rational[3, 2]}}, {{1, 1, 
+         2}, {1, 1, 1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{
+         1, 1, 2}, {1, 1, 1}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 1, 2}, {2, 1, 
+         2}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{1, 1, 2}, {
+         2, 1, 2}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{1, 1, 
+         2}, {1, 2, 2}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         1, 1, 2}, {1, 2, 2}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 2, 2}, {2, 2, 
+         1}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 2, 2}, {
+         2, 2, 1}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 2, 
+         2}, {2, 1, 2}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         2, 2, 2}, {2, 1, 2}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 2, 2}, {3, 2, 
+         2}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 2, 2}, {
+         3, 2, 2}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 2, 
+         2}, {1, 2, 2}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         2, 2, 2}, {1, 2, 2}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 2, 2}, {2, 3, 
+         2}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{2, 2, 2}, {
+         2, 3, 2}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 2, 
+         2}, {2, 2, 3}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         2, 2, 2}, {2, 2, 3}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 3, 2}, {3, 3, 
+         1}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 3, 2}, {
+         3, 3, 1}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 3, 
+         2}, {3, 2, 2}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         3, 3, 2}, {3, 2, 2}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 3, 2}, {4, 3, 
+         2}, {Rational[7, 2], Rational[5, 2], Rational[3, 2]}}, {{3, 3, 2}, {
+         4, 3, 2}, {Rational[7, 2], Rational[7, 2], Rational[5, 2]}}, {{3, 3, 
+         2}, {2, 3, 2}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{
+         3, 3, 2}, {2, 3, 2}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 3, 2}, {3, 4, 
+         2}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{3, 3, 2}, {
+         3, 4, 2}, {Rational[7, 2], Rational[7, 2], Rational[5, 2]}}, {{3, 3, 
+         2}, {3, 3, 3}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         3, 3, 2}, {3, 3, 3}, {
+         Rational[7, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 1, 3}, {2, 1, 
+         2}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{2, 1, 3}, {
+         2, 1, 2}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 1, 
+         3}, {3, 1, 3}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{
+         2, 1, 3}, {3, 1, 3}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{2, 1, 3}, {2, 2, 
+         3}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{2, 1, 3}, {
+         2, 2, 3}, {Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 2, 
+         3}, {3, 2, 2}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         3, 2, 3}, {3, 2, 2}, {
+         Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 2, 3}, {3, 1, 
+         3}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{3, 2, 3}, {
+         3, 1, 3}, {Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 2, 
+         3}, {4, 2, 3}, {Rational[7, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         3, 2, 3}, {4, 2, 3}, {
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}}, {{3, 2, 3}, {2, 2, 
+         3}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{3, 2, 3}, {
+         2, 2, 3}, {Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 2, 
+         3}, {3, 3, 3}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         3, 2, 3}, {3, 3, 3}, {
+         Rational[7, 2], Rational[5, 2], Rational[7, 2]}}, {{3, 2, 3}, {3, 2, 
+         4}, {Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 2, 3}, {
+         3, 2, 4}, {Rational[7, 2], Rational[5, 2], Rational[7, 2]}}, {{3, 1, 
+         4}, {3, 1, 3}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{
+         3, 1, 4}, {3, 1, 3}, {
+         Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{3, 1, 4}, {4, 1, 
+         4}, {Rational[7, 2], Rational[1, 2], Rational[7, 2]}}, {{3, 1, 4}, {
+         4, 1, 4}, {Rational[7, 2], Rational[3, 2], Rational[9, 2]}}, {{3, 1, 
+         4}, {3, 2, 4}, {Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{
+         3, 1, 4}, {3, 2, 4}, {
+         Rational[7, 2], Rational[3, 2], Rational[9, 2]}}, {{0, 2, 2}, {1, 2, 
+         2}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{0, 2, 2}, {
+         1, 2, 2}, {Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{1, 3, 
+         2}, {1, 2, 2}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         1, 3, 2}, {1, 2, 2}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{1, 3, 2}, {2, 3, 
+         2}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{1, 3, 2}, {
+         2, 3, 2}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{1, 3, 
+         2}, {1, 3, 3}, {Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         1, 3, 2}, {1, 3, 3}, {
+         Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 4, 2}, {2, 3, 
+         2}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{2, 4, 2}, {
+         2, 3, 2}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 4, 
+         2}, {3, 4, 2}, {Rational[5, 2], Rational[7, 2], Rational[3, 2]}}, {{
+         2, 4, 2}, {3, 4, 2}, {
+         Rational[5, 2], Rational[9, 2], Rational[5, 2]}}, {{2, 4, 2}, {2, 4, 
+         3}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 4, 2}, {
+         2, 4, 3}, {Rational[5, 2], Rational[9, 2], Rational[5, 2]}}, {{1, 2, 
+         3}, {1, 2, 2}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         1, 2, 3}, {1, 2, 2}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{1, 2, 3}, {2, 2, 
+         3}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{1, 2, 3}, {
+         2, 2, 3}, {Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{1, 2, 
+         3}, {1, 3, 3}, {Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         1, 2, 3}, {1, 3, 3}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 3, 3}, {2, 3, 
+         2}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 3, 3}, {
+         2, 3, 2}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 3, 
+         3}, {2, 2, 3}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         2, 3, 3}, {2, 2, 3}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 3, 3}, {3, 3, 
+         3}, {Rational[5, 2], Rational[5, 2], Rational[5, 2]}}, {{2, 3, 3}, {
+         3, 3, 3}, {Rational[5, 2], Rational[7, 2], Rational[7, 2]}}, {{2, 3, 
+         3}, {1, 3, 3}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{
+         2, 3, 3}, {1, 3, 3}, {
+         Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 3, 3}, {2, 4, 
+         3}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{2, 3, 3}, {
+         2, 4, 3}, {Rational[5, 2], Rational[7, 2], Rational[7, 2]}}, {{2, 3, 
+         3}, {2, 3, 4}, {Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{
+         2, 3, 3}, {2, 3, 4}, {
+         Rational[5, 2], Rational[7, 2], Rational[7, 2]}}, {{2, 2, 4}, {2, 2, 
+         3}, {Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{2, 2, 4}, {
+         2, 2, 3}, {Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 2, 
+         4}, {3, 2, 4}, {Rational[5, 2], Rational[3, 2], Rational[7, 2]}}, {{
+         2, 2, 4}, {3, 2, 4}, {
+         Rational[5, 2], Rational[5, 2], Rational[9, 2]}}, {{2, 2, 4}, {2, 3, 
+         4}, {Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{2, 2, 4}, {
+         2, 3, 4}, {Rational[5, 2], Rational[5, 2], Rational[9, 2]}}, {{0, 3, 
+         3}, {1, 3, 3}, {Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{
+         0, 3, 3}, {1, 3, 3}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 4, 3}, {1, 3, 
+         3}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{1, 4, 3}, {
+         1, 3, 3}, {Rational[1, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 4, 
+         3}, {2, 4, 3}, {Rational[3, 2], Rational[7, 2], Rational[5, 2]}}, {{
+         1, 4, 3}, {2, 4, 3}, {
+         Rational[3, 2], Rational[9, 2], Rational[7, 2]}}, {{1, 4, 3}, {1, 4, 
+         4}, {Rational[1, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 4, 3}, {
+         1, 4, 4}, {Rational[3, 2], Rational[9, 2], Rational[7, 2]}}, {{1, 3, 
+         4}, {1, 3, 3}, {Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{
+         1, 3, 4}, {1, 3, 3}, {
+         Rational[1, 2], Rational[7, 2], Rational[7, 2]}}, {{1, 3, 4}, {2, 3, 
+         4}, {Rational[3, 2], Rational[5, 2], Rational[7, 2]}}, {{1, 3, 4}, {
+         2, 3, 4}, {Rational[3, 2], Rational[7, 2], Rational[9, 2]}}, {{1, 3, 
+         4}, {1, 4, 4}, {Rational[1, 2], Rational[7, 2], Rational[7, 2]}}, {{
+         1, 3, 4}, {1, 4, 4}, {
+         Rational[3, 2], Rational[7, 2], Rational[9, 2]}}, {{0, 4, 4}, {1, 4, 
+         4}, {Rational[1, 2], Rational[7, 2], Rational[7, 2]}}, {{0, 4, 4}, {
+         1, 4, 4}, {Rational[1, 2], Rational[9, 2], Rational[9, 2]}}}, {{{0, 
+         0, 0}, {1, 0, 0}, {0.5, 0.5, 0.5}}, {{1, 1, 0}, {1, 0, 0}, {0.5, 0.5,
+          0.5}}, {{1, 1, 0}, {2, 1, 0}, {1.5, 1.5, 0.5}}, {{1, 1, 0}, {1, 1, 
+         1}, {0.5, 0.5, 0.5}}, {{1, 1, 0}, {1, 1, 1}, {1.5, 1.5, 0.5}}, {{2, 
+         2, 0}, {2, 1, 0}, {1.5, 1.5, 0.5}}, {{2, 2, 0}, {3, 2, 0}, {2.5, 2.5,
+          0.5}}, {{2, 2, 0}, {2, 2, 1}, {1.5, 1.5, 0.5}}, {{2, 2, 0}, {2, 2, 
+         1}, {2.5, 2.5, 0.5}}, {{3, 3, 0}, {3, 2, 0}, {2.5, 2.5, 0.5}}, {{3, 
+         3, 0}, {4, 3, 0}, {3.5, 3.5, 0.5}}, {{3, 3, 0}, {3, 3, 1}, {2.5, 2.5,
+          0.5}}, {{3, 3, 0}, {3, 3, 1}, {3.5, 3.5, 0.5}}, {{4, 4, 0}, {4, 3, 
+         0}, {3.5, 3.5, 0.5}}, {{4, 4, 0}, {5, 4, 0}, {4.5, 4.5, 0.5}}, {{4, 
+         4, 0}, {4, 4, 1}, {3.5, 3.5, 0.5}}, {{4, 4, 0}, {4, 4, 1}, {4.5, 4.5,
+          0.5}}, {{1, 0, 1}, {1, 0, 0}, {0.5, 0.5, 0.5}}, {{1, 0, 1}, {2, 0, 
+         1}, {1.5, 0.5, 1.5}}, {{1, 0, 1}, {1, 1, 1}, {0.5, 0.5, 0.5}}, {{1, 
+         0, 1}, {1, 1, 1}, {1.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 1, 0}, {1.5, 1.5,
+          0.5}}, {{2, 1, 1}, {2, 0, 1}, {1.5, 0.5, 1.5}}, {{2, 1, 1}, {3, 1, 
+         1}, {2.5, 1.5, 1.5}}, {{2, 1, 1}, {1, 1, 1}, {1.5, 1.5, 0.5}}, {{2, 
+         1, 1}, {1, 1, 1}, {1.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 2, 1}, {1.5, 1.5,
+          0.5}}, {{2, 1, 1}, {2, 2, 1}, {2.5, 1.5, 1.5}}, {{2, 1, 1}, {2, 1, 
+         2}, {1.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 1, 2}, {2.5, 1.5, 1.5}}, {{3, 
+         2, 1}, {3, 2, 0}, {2.5, 2.5, 0.5}}, {{3, 2, 1}, {3, 1, 1}, {2.5, 1.5,
+          1.5}}, {{3, 2, 1}, {4, 2, 1}, {3.5, 2.5, 1.5}}, {{3, 2, 1}, {2, 2, 
+         1}, {2.5, 2.5, 0.5}}, {{3, 2, 1}, {2, 2, 1}, {2.5, 1.5, 1.5}}, {{3, 
+         2, 1}, {3, 3, 1}, {2.5, 2.5, 0.5}}, {{3, 2, 1}, {3, 3, 1}, {3.5, 2.5,
+          1.5}}, {{3, 2, 1}, {3, 2, 2}, {2.5, 1.5, 1.5}}, {{3, 2, 1}, {3, 2, 
+         2}, {3.5, 2.5, 1.5}}, {{4, 3, 1}, {4, 3, 0}, {3.5, 3.5, 0.5}}, {{4, 
+         3, 1}, {4, 2, 1}, {3.5, 2.5, 1.5}}, {{4, 3, 1}, {5, 3, 1}, {4.5, 3.5,
+          1.5}}, {{4, 3, 1}, {3, 3, 1}, {3.5, 3.5, 0.5}}, {{4, 3, 1}, {3, 3, 
+         1}, {3.5, 2.5, 1.5}}, {{4, 3, 1}, {4, 4, 1}, {3.5, 3.5, 0.5}}, {{4, 
+         3, 1}, {4, 4, 1}, {4.5, 3.5, 1.5}}, {{4, 3, 1}, {4, 3, 2}, {3.5, 2.5,
+          1.5}}, {{4, 3, 1}, {4, 3, 2}, {4.5, 3.5, 1.5}}, {{2, 0, 2}, {2, 0, 
+         1}, {1.5, 0.5, 1.5}}, {{2, 0, 2}, {3, 0, 2}, {2.5, 0.5, 2.5}}, {{2, 
+         0, 2}, {2, 1, 2}, {1.5, 0.5, 1.5}}, {{2, 0, 2}, {2, 1, 2}, {2.5, 0.5,
+          2.5}}, {{3, 1, 2}, {3, 1, 1}, {2.5, 1.5, 1.5}}, {{3, 1, 2}, {3, 0, 
+         2}, {2.5, 0.5, 2.5}}, {{3, 1, 2}, {4, 1, 2}, {3.5, 1.5, 2.5}}, {{3, 
+         1, 2}, {2, 1, 2}, {2.5, 1.5, 1.5}}, {{3, 1, 2}, {2, 1, 2}, {2.5, 0.5,
+          2.5}}, {{3, 1, 2}, {3, 2, 2}, {2.5, 1.5, 1.5}}, {{3, 1, 2}, {3, 2, 
+         2}, {3.5, 1.5, 2.5}}, {{3, 1, 2}, {3, 1, 3}, {2.5, 0.5, 2.5}}, {{3, 
+         1, 2}, {3, 1, 3}, {3.5, 1.5, 2.5}}, {{4, 2, 2}, {4, 2, 1}, {3.5, 2.5,
+          1.5}}, {{4, 2, 2}, {4, 1, 2}, {3.5, 1.5, 2.5}}, {{4, 2, 2}, {5, 2, 
+         2}, {4.5, 2.5, 2.5}}, {{4, 2, 2}, {3, 2, 2}, {3.5, 2.5, 1.5}}, {{4, 
+         2, 2}, {3, 2, 2}, {3.5, 1.5, 2.5}}, {{4, 2, 2}, {4, 3, 2}, {3.5, 2.5,
+          1.5}}, {{4, 2, 2}, {4, 3, 2}, {4.5, 2.5, 2.5}}, {{4, 2, 2}, {4, 2, 
+         3}, {3.5, 1.5, 2.5}}, {{4, 2, 2}, {4, 2, 3}, {4.5, 2.5, 2.5}}, {{3, 
+         0, 3}, {3, 0, 2}, {2.5, 0.5, 2.5}}, {{3, 0, 3}, {4, 0, 3}, {3.5, 0.5,
+          3.5}}, {{3, 0, 3}, {3, 1, 3}, {2.5, 0.5, 2.5}}, {{3, 0, 3}, {3, 1, 
+         3}, {3.5, 0.5, 3.5}}, {{4, 1, 3}, {4, 1, 2}, {3.5, 1.5, 2.5}}, {{4, 
+         1, 3}, {4, 0, 3}, {3.5, 0.5, 3.5}}, {{4, 1, 3}, {5, 1, 3}, {4.5, 1.5,
+          3.5}}, {{4, 1, 3}, {3, 1, 3}, {3.5, 1.5, 2.5}}, {{4, 1, 3}, {3, 1, 
+         3}, {3.5, 0.5, 3.5}}, {{4, 1, 3}, {4, 2, 3}, {3.5, 1.5, 2.5}}, {{4, 
+         1, 3}, {4, 2, 3}, {4.5, 1.5, 3.5}}, {{4, 1, 3}, {4, 1, 4}, {3.5, 0.5,
+          3.5}}, {{4, 1, 3}, {4, 1, 4}, {4.5, 1.5, 3.5}}, {{4, 0, 4}, {4, 0, 
+         3}, {3.5, 0.5, 3.5}}, {{4, 0, 4}, {5, 0, 4}, {4.5, 0.5, 4.5}}, {{4, 
+         0, 4}, {4, 1, 4}, {3.5, 0.5, 3.5}}, {{4, 0, 4}, {4, 1, 4}, {4.5, 0.5,
+          4.5}}, {{0, 1, 1}, {1, 1, 1}, {0.5, 0.5, 0.5}}, {{0, 1, 1}, {1, 1, 
+         1}, {0.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 1, 1}, {1.5, 1.5, 0.5}}, {{1, 
+         2, 1}, {1, 1, 1}, {0.5, 1.5, 1.5}}, {{1, 2, 1}, {2, 2, 1}, {1.5, 1.5,
+          0.5}}, {{1, 2, 1}, {2, 2, 1}, {1.5, 2.5, 1.5}}, {{1, 2, 1}, {1, 2, 
+         2}, {0.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 2, 2}, {1.5, 2.5, 1.5}}, {{2, 
+         3, 1}, {2, 2, 1}, {2.5, 2.5, 0.5}}, {{2, 3, 1}, {2, 2, 1}, {1.5, 2.5,
+          1.5}}, {{2, 3, 1}, {3, 3, 1}, {2.5, 2.5, 0.5}}, {{2, 3, 1}, {3, 3, 
+         1}, {2.5, 3.5, 1.5}}, {{2, 3, 1}, {2, 3, 2}, {1.5, 2.5, 1.5}}, {{2, 
+         3, 1}, {2, 3, 2}, {2.5, 3.5, 1.5}}, {{3, 4, 1}, {3, 3, 1}, {3.5, 3.5,
+          0.5}}, {{3, 4, 1}, {3, 3, 1}, {2.5, 3.5, 1.5}}, {{3, 4, 1}, {4, 4, 
+         1}, {3.5, 3.5, 0.5}}, {{3, 4, 1}, {4, 4, 1}, {3.5, 4.5, 1.5}}, {{3, 
+         4, 1}, {3, 4, 2}, {2.5, 3.5, 1.5}}, {{3, 4, 1}, {3, 4, 2}, {3.5, 4.5,
+          1.5}}, {{1, 1, 2}, {1, 1, 1}, {1.5, 0.5, 1.5}}, {{1, 1, 2}, {1, 1, 
+         1}, {0.5, 1.5, 1.5}}, {{1, 1, 2}, {2, 1, 2}, {1.5, 0.5, 1.5}}, {{1, 
+         1, 2}, {2, 1, 2}, {1.5, 1.5, 2.5}}, {{1, 1, 2}, {1, 2, 2}, {0.5, 1.5,
+          1.5}}, {{1, 1, 2}, {1, 2, 2}, {1.5, 1.5, 2.5}}, {{2, 2, 2}, {2, 2, 
+         1}, {2.5, 1.5, 1.5}}, {{2, 2, 2}, {2, 2, 1}, {1.5, 2.5, 1.5}}, {{2, 
+         2, 2}, {2, 1, 2}, {2.5, 1.5, 1.5}}, {{2, 2, 2}, {2, 1, 2}, {1.5, 1.5,
+          2.5}}, {{2, 2, 2}, {3, 2, 2}, {2.5, 1.5, 1.5}}, {{2, 2, 2}, {3, 2, 
+         2}, {2.5, 2.5, 2.5}}, {{2, 2, 2}, {1, 2, 2}, {1.5, 2.5, 1.5}}, {{2, 
+         2, 2}, {1, 2, 2}, {1.5, 1.5, 2.5}}, {{2, 2, 2}, {2, 3, 2}, {1.5, 2.5,
+          1.5}}, {{2, 2, 2}, {2, 3, 2}, {2.5, 2.5, 2.5}}, {{2, 2, 2}, {2, 2, 
+         3}, {1.5, 1.5, 2.5}}, {{2, 2, 2}, {2, 2, 3}, {2.5, 2.5, 2.5}}, {{3, 
+         3, 2}, {3, 3, 1}, {3.5, 2.5, 1.5}}, {{3, 3, 2}, {3, 3, 1}, {2.5, 3.5,
+          1.5}}, {{3, 3, 2}, {3, 2, 2}, {3.5, 2.5, 1.5}}, {{3, 3, 2}, {3, 2, 
+         2}, {2.5, 2.5, 2.5}}, {{3, 3, 2}, {4, 3, 2}, {3.5, 2.5, 1.5}}, {{3, 
+         3, 2}, {4, 3, 2}, {3.5, 3.5, 2.5}}, {{3, 3, 2}, {2, 3, 2}, {2.5, 3.5,
+          1.5}}, {{3, 3, 2}, {2, 3, 2}, {2.5, 2.5, 2.5}}, {{3, 3, 2}, {3, 4, 
+         2}, {2.5, 3.5, 1.5}}, {{3, 3, 2}, {3, 4, 2}, {3.5, 3.5, 2.5}}, {{3, 
+         3, 2}, {3, 3, 3}, {2.5, 2.5, 2.5}}, {{3, 3, 2}, {3, 3, 3}, {3.5, 3.5,
+          2.5}}, {{2, 1, 3}, {2, 1, 2}, {2.5, 0.5, 2.5}}, {{2, 1, 3}, {2, 1, 
+         2}, {1.5, 1.5, 2.5}}, {{2, 1, 3}, {3, 1, 3}, {2.5, 0.5, 2.5}}, {{2, 
+         1, 3}, {3, 1, 3}, {2.5, 1.5, 3.5}}, {{2, 1, 3}, {2, 2, 3}, {1.5, 1.5,
+          2.5}}, {{2, 1, 3}, {2, 2, 3}, {2.5, 1.5, 3.5}}, {{3, 2, 3}, {3, 2, 
+         2}, {3.5, 1.5, 2.5}}, {{3, 2, 3}, {3, 2, 2}, {2.5, 2.5, 2.5}}, {{3, 
+         2, 3}, {3, 1, 3}, {3.5, 1.5, 2.5}}, {{3, 2, 3}, {3, 1, 3}, {2.5, 1.5,
+          3.5}}, {{3, 2, 3}, {4, 2, 3}, {3.5, 1.5, 2.5}}, {{3, 2, 3}, {4, 2, 
+         3}, {3.5, 2.5, 3.5}}, {{3, 2, 3}, {2, 2, 3}, {2.5, 2.5, 2.5}}, {{3, 
+         2, 3}, {2, 2, 3}, {2.5, 1.5, 3.5}}, {{3, 2, 3}, {3, 3, 3}, {2.5, 2.5,
+          2.5}}, {{3, 2, 3}, {3, 3, 3}, {3.5, 2.5, 3.5}}, {{3, 2, 3}, {3, 2, 
+         4}, {2.5, 1.5, 3.5}}, {{3, 2, 3}, {3, 2, 4}, {3.5, 2.5, 3.5}}, {{3, 
+         1, 4}, {3, 1, 3}, {3.5, 0.5, 3.5}}, {{3, 1, 4}, {3, 1, 3}, {2.5, 1.5,
+          3.5}}, {{3, 1, 4}, {4, 1, 4}, {3.5, 0.5, 3.5}}, {{3, 1, 4}, {4, 1, 
+         4}, {3.5, 1.5, 4.5}}, {{3, 1, 4}, {3, 2, 4}, {2.5, 1.5, 3.5}}, {{3, 
+         1, 4}, {3, 2, 4}, {3.5, 1.5, 4.5}}, {{0, 2, 2}, {1, 2, 2}, {0.5, 1.5,
+          1.5}}, {{0, 2, 2}, {1, 2, 2}, {0.5, 2.5, 2.5}}, {{1, 3, 2}, {1, 2, 
+         2}, {1.5, 2.5, 1.5}}, {{1, 3, 2}, {1, 2, 2}, {0.5, 2.5, 2.5}}, {{1, 
+         3, 2}, {2, 3, 2}, {1.5, 2.5, 1.5}}, {{1, 3, 2}, {2, 3, 2}, {1.5, 3.5,
+          2.5}}, {{1, 3, 2}, {1, 3, 3}, {0.5, 2.5, 2.5}}, {{1, 3, 2}, {1, 3, 
+         3}, {1.5, 3.5, 2.5}}, {{2, 4, 2}, {2, 3, 2}, {2.5, 3.5, 1.5}}, {{2, 
+         4, 2}, {2, 3, 2}, {1.5, 3.5, 2.5}}, {{2, 4, 2}, {3, 4, 2}, {2.5, 3.5,
+          1.5}}, {{2, 4, 2}, {3, 4, 2}, {2.5, 4.5, 2.5}}, {{2, 4, 2}, {2, 4, 
+         3}, {1.5, 3.5, 2.5}}, {{2, 4, 2}, {2, 4, 3}, {2.5, 4.5, 2.5}}, {{1, 
+         2, 3}, {1, 2, 2}, {1.5, 1.5, 2.5}}, {{1, 2, 3}, {1, 2, 2}, {0.5, 2.5,
+          2.5}}, {{1, 2, 3}, {2, 2, 3}, {1.5, 1.5, 2.5}}, {{1, 2, 3}, {2, 2, 
+         3}, {1.5, 2.5, 3.5}}, {{1, 2, 3}, {1, 3, 3}, {0.5, 2.5, 2.5}}, {{1, 
+         2, 3}, {1, 3, 3}, {1.5, 2.5, 3.5}}, {{2, 3, 3}, {2, 3, 2}, {2.5, 2.5,
+          2.5}}, {{2, 3, 3}, {2, 3, 2}, {1.5, 3.5, 2.5}}, {{2, 3, 3}, {2, 2, 
+         3}, {2.5, 2.5, 2.5}}, {{2, 3, 3}, {2, 2, 3}, {1.5, 2.5, 3.5}}, {{2, 
+         3, 3}, {3, 3, 3}, {2.5, 2.5, 2.5}}, {{2, 3, 3}, {3, 3, 3}, {2.5, 3.5,
+          3.5}}, {{2, 3, 3}, {1, 3, 3}, {1.5, 3.5, 2.5}}, {{2, 3, 3}, {1, 3, 
+         3}, {1.5, 2.5, 3.5}}, {{2, 3, 3}, {2, 4, 3}, {1.5, 3.5, 2.5}}, {{2, 
+         3, 3}, {2, 4, 3}, {2.5, 3.5, 3.5}}, {{2, 3, 3}, {2, 3, 4}, {1.5, 2.5,
+          3.5}}, {{2, 3, 3}, {2, 3, 4}, {2.5, 3.5, 3.5}}, {{2, 2, 4}, {2, 2, 
+         3}, {2.5, 1.5, 3.5}}, {{2, 2, 4}, {2, 2, 3}, {1.5, 2.5, 3.5}}, {{2, 
+         2, 4}, {3, 2, 4}, {2.5, 1.5, 3.5}}, {{2, 2, 4}, {3, 2, 4}, {2.5, 2.5,
+          4.5}}, {{2, 2, 4}, {2, 3, 4}, {1.5, 2.5, 3.5}}, {{2, 2, 4}, {2, 3, 
+         4}, {2.5, 2.5, 4.5}}, {{0, 3, 3}, {1, 3, 3}, {0.5, 2.5, 2.5}}, {{0, 
+         3, 3}, {1, 3, 3}, {0.5, 3.5, 3.5}}, {{1, 4, 3}, {1, 3, 3}, {1.5, 3.5,
+          2.5}}, {{1, 4, 3}, {1, 3, 3}, {0.5, 3.5, 3.5}}, {{1, 4, 3}, {2, 4, 
+         3}, {1.5, 3.5, 2.5}}, {{1, 4, 3}, {2, 4, 3}, {1.5, 4.5, 3.5}}, {{1, 
+         4, 3}, {1, 4, 4}, {0.5, 3.5, 3.5}}, {{1, 4, 3}, {1, 4, 4}, {1.5, 4.5,
+          3.5}}, {{1, 3, 4}, {1, 3, 3}, {1.5, 2.5, 3.5}}, {{1, 3, 4}, {1, 3, 
+         3}, {0.5, 3.5, 3.5}}, {{1, 3, 4}, {2, 3, 4}, {1.5, 2.5, 3.5}}, {{1, 
+         3, 4}, {2, 3, 4}, {1.5, 3.5, 4.5}}, {{1, 3, 4}, {1, 4, 4}, {0.5, 3.5,
+          3.5}}, {{1, 3, 4}, {1, 4, 4}, {1.5, 3.5, 4.5}}, {{0, 4, 4}, {1, 4, 
+         4}, {0.5, 3.5, 3.5}}, {{0, 4, 4}, {1, 4, 4}, {0.5, 4.5, 4.5}}}]]}}},
+  Axes->True,
+  AxesLabel->{
+    FormBox["\"X\"", TraditionalForm], 
+    FormBox["\"Y\"", TraditionalForm], 
+    FormBox["\"Z\"", TraditionalForm]},
+  ImageSize->{376.1760049360502, 352.4405363811094},
+  ImageSizeRaw->Automatic,
+  ViewPoint->{-2.403573312094374, 1.907101591629751, -1.4268142319836041`},
+  ViewVertical->{-0.49598134537986277`, -0.253578841142103, \
+-0.8304819542652382}]], "Output",
+ CellChangeTimes->{{3.941254560816202*^9, 3.941254572934979*^9}, {
+   3.941254646989193*^9, 3.941254661949937*^9}, 3.941254761409877*^9, {
+   3.941254833106882*^9, 3.941254865900153*^9}},
+ CellLabel->
+  "Out[367]=",ExpressionUUID->"1c3db19b-5ea2-4855-bf22-3f945e12895c"]
+}, Open  ]]
+},
+WindowSize->{808, 863},
+WindowMargins->{{427, Automatic}, {Automatic, 10}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"6f7ce249-b1bc-4c24-a96c-9baffb3d92f3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 5444, 146, 556, "Input",ExpressionUUID->"86a360cf-f174-4c7c-8532-398bf87ac3c9"],
+Cell[6027, 170, 6418, 118, 387, "Output",ExpressionUUID->"e35feafc-bdae-4c8d-b7ad-eb97be63472d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12482, 293, 11184, 295, 1039, "Input",ExpressionUUID->"620ecf43-49d0-4232-a013-1fa5b6a24a50"],
+Cell[23669, 590, 144621, 2088, 392, "Output",ExpressionUUID->"1c3db19b-5ea2-4855-bf22-3f945e12895c"]
+}, Open  ]]
+}
+]
+*)
+
