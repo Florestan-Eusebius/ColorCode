@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     54537,       1241]
-NotebookOptionsPosition[     52892,       1203]
-NotebookOutlinePosition[     53326,       1220]
-CellTagsIndexPosition[     53283,       1217]
+NotebookDataLength[    121366,       2544]
+NotebookOptionsPosition[    119355,       2499]
+NotebookOutlinePosition[    119790,       2516]
+CellTagsIndexPosition[    119747,       2513]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -54,7 +54,7 @@ Cell[BoxData[
   "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
-    RowBox[{"l", " ", "=", " ", "2"}], ";"}], "\[IndentingNewLine]", "\n", 
+    RowBox[{"l", " ", "=", " ", "2"}], ";"}], "\n", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Define", " ", "the", " ", "basis"}], "*)"}], 
    "\[IndentingNewLine]", 
@@ -90,13 +90,12 @@ Cell[BoxData[
        RowBox[{"1", "/", "2"}], ",", 
        RowBox[{"1", "/", "2"}], ",", 
        RowBox[{
-        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], "\n", "\n", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
      " ", "for", " ", "a", " ", "given", " ", "origin", " ", "and", " ", 
-     "basis"}], "*)"}], "\n", 
+     "basis"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"latticeColorK", "[", 
@@ -135,8 +134,8 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{"x", ",", "0", ",", 
             RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}], ";", 
-        "\[IndentingNewLine]", "vertices"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        "\[IndentingNewLine]", "vertices"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
@@ -151,8 +150,8 @@ Cell[BoxData[
        RowBox[{"latticeColorK", "[", 
         RowBox[{"origin", ",", "basis", ",", "k"}], "]"}], ",", 
        RowBox[{"{", 
-        RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Generate", " ", "vertices"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -166,10 +165,9 @@ Cell[BoxData[
     RowBox[{"colors", "=", 
      RowBox[{"{", 
       RowBox[{"Red", ",", "Green", ",", "Blue", ",", "Orange"}], "}"}]}], 
-    ";"}], "\n", "\[IndentingNewLine]", 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", 
-    RowBox[{"Plot", " ", "the", " ", "vertices"}], "*)"}], 
-   "\[IndentingNewLine]", 
+    RowBox[{"Plot", " ", "the", " ", "vertices"}], "*)"}], "\n", 
    RowBox[{"Graphics3D", "[", 
     RowBox[{
      RowBox[{"Flatten", "[", 
@@ -303,8 +301,8 @@ Cell[BoxData[
        RowBox[{"1", "/", "2"}], ",", 
        RowBox[{"1", "/", "2"}], ",", 
        RowBox[{
-        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], "\n", 
-   "\[IndentingNewLine]", 
+        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
@@ -365,11 +363,11 @@ Cell[BoxData[
         RowBox[{"origin", ",", "basis", ",", "k"}], "]"}], ",", 
        RowBox[{"{", 
         RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\n", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "generate", " ", "faces", " ", "from", " ", 
-     "lattice", " ", "points"}], "*)"}], "\n", 
+     "lattice", " ", "points"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"facesColorFromLattice", "[", "vertices_", "]"}], ":=", 
@@ -454,8 +452,8 @@ Cell[BoxData[
             RowBox[{"Length", "[", 
              RowBox[{"vertices", "[", 
               RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ";", 
-        "\[IndentingNewLine]", "faces"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        "\[IndentingNewLine]", "faces"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"facesFromLattice", "[", "vertices_", "]"}], ":=", 
@@ -497,9 +495,9 @@ Cell[BoxData[
            RowBox[{"[", "2", "]"}], "]"}], ",", 
           RowBox[{"vertices", "[", 
            RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}], "}"}]}], ";"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\n", 
    RowBox[{"(*", 
-    RowBox[{"Generate", " ", "vertices"}], "*)"}], "\n", 
+    RowBox[{"Generate", " ", "vertices"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"vertices", "=", 
      RowBox[{"latticeK", "[", 
@@ -511,13 +509,13 @@ Cell[BoxData[
     RowBox[{"colors", "=", 
      RowBox[{"{", 
       RowBox[{"Red", ",", "Green", ",", "Blue", ",", "Yellow"}], "}"}]}], 
-    ";"}], "\[IndentingNewLine]", "\n", 
+    ";"}], "\n", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Generate", " ", "faces"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"faces", "=", 
-     RowBox[{"facesFromLattice", "[", "vertices", "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+     RowBox[{"facesFromLattice", "[", "vertices", "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Plot", " ", "the", " ", "vertices", " ", "and", " ", "faces"}], 
     "*)"}], "\[IndentingNewLine]", 
@@ -777,8 +775,8 @@ Cell[BoxData[
        RowBox[{"1", "/", "2"}], ",", 
        RowBox[{"1", "/", "2"}], ",", 
        RowBox[{
-        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
@@ -822,8 +820,8 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{"x", ",", "0", ",", 
             RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}], ";", 
-        "\[IndentingNewLine]", "vertices"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        "\[IndentingNewLine]", "vertices"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
@@ -838,8 +836,8 @@ Cell[BoxData[
        RowBox[{"latticeColorK", "[", 
         RowBox[{"origin", ",", "basis", ",", "k"}], "]"}], ",", 
        RowBox[{"{", 
-        RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "Function", " ", "to", " ", "generate", " ", "faces", " ", "from", " ", 
@@ -928,8 +926,8 @@ Cell[BoxData[
             RowBox[{"Length", "[", 
              RowBox[{"vertices", "[", 
               RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ";", 
-        "\[IndentingNewLine]", "faces"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+        "\[IndentingNewLine]", "faces"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"facesFromLattice", "[", "vertices_", "]"}], ":=", 
@@ -971,7 +969,7 @@ Cell[BoxData[
            RowBox[{"[", "2", "]"}], "]"}], ",", 
           RowBox[{"vertices", "[", 
            RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}], "}"}]}], ";"}], 
-   "\[IndentingNewLine]", "\n", 
+   "\n", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Generate", " ", "vertices"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -985,16 +983,16 @@ Cell[BoxData[
     RowBox[{"colors", "=", 
      RowBox[{"{", 
       RowBox[{"Red", ",", "Green", ",", "Blue", ",", "Yellow"}], "}"}]}], 
-    ";"}], "\[IndentingNewLine]", "\n", 
+    ";"}], "\n", "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"Generate", " ", "faces"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"faces", "=", 
      RowBox[{"facesFromLattice", "[", "vertices", "]"}]}], ";"}], 
-   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\n", 
    RowBox[{"(*", 
     RowBox[{"Plot", " ", "the", " ", "vertices", " ", "and", " ", "faces"}], 
-    "*)"}], "\n", 
+    "*)"}], "\[IndentingNewLine]", 
    RowBox[{"Graphics3D", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -1184,11 +1182,11 @@ Cell[BoxData[
     FormBox["\"X\"", TraditionalForm], 
     FormBox["\"Y\"", TraditionalForm], 
     FormBox["\"Z\"", TraditionalForm]},
-  ImageSize->{316.6062202986269, 329.92875022771216`},
+  ImageSize->{341.7924204975106, 396.17557531463956`},
   ImageSizeRaw->Automatic,
-  ViewPoint->{-1.2722457739662163`, -2.910365034296872, 1.1666902149959477`},
-  ViewVertical->{-0.9427694582113871, -0.32678577647521007`, \
--0.0663084078929774}]], "Output",
+  ViewPoint->{-1.8252736519777293`, -1.9822120977419222`, 2.0467562861663504`},
+  ViewVertical->{-0.9984266536345293, -0.054709604963161046`, \
+-0.012291315508544023`}]], "Output",
  CellChangeTimes->{
   3.94149477230241*^9, {3.941494821733007*^9, 3.9414948564997377`*^9}, 
    3.941527706907638*^9, {3.941527745303594*^9, 3.941527759173087*^9}, {
@@ -1199,12 +1197,1310 @@ Cell[BoxData[
  CellLabel->
   "Out[156]=",ExpressionUUID->"1e57ef2e-c6b3-493b-bb2c-d45d0bfc48da"]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Add the outer tetrahedron", "Section",
+ CellChangeTimes->{{3.950764839378531*^9, 
+  3.950764854545299*^9}},ExpressionUUID->"794ad1c4-5e2f-4a94-a481-\
+09447f1d637b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Set", " ", "the", " ", "layer", " ", "index", " ", "l"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"l", " ", "=", " ", "3"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Define", " ", "the", " ", "basis"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Basis", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"rOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"gOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"bOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"yOrigin", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "2"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"origins", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"rOrigin", ",", "gOrigin", ",", "bOrigin", ",", "yOrigin"}], 
+      "}"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
+     " ", "for", " ", "a", " ", "given", " ", "origin", " ", "and", " ", 
+     "basis"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"latticeColorK", "[", 
+      RowBox[{"origin_", ",", "basis_", ",", "k_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"vertices", "=", 
+         RowBox[{"{", "}"}]}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"Do", "[", 
+             RowBox[{
+              RowBox[{"AppendTo", "[", 
+               RowBox[{"vertices", ",", 
+                RowBox[{"origin", "+", 
+                 RowBox[{"x", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+                 RowBox[{"y", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}], "+", 
+                 RowBox[{"z", " ", 
+                  RowBox[{"basis", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}]}]}]}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"z", ",", "0", ",", 
+                RowBox[{"k", "-", "x", "-", "y", "-", "1"}]}], "}"}]}], "]"}],
+             ",", 
+            RowBox[{"{", 
+             RowBox[{"y", ",", "0", ",", 
+              RowBox[{"k", "-", "x", "-", "1"}]}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", "0", ",", 
+            RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "vertices"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "lattice", " ", "points", 
+     " ", "for", " ", "multiple", " ", "origins"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"latticeK", "[", 
+      RowBox[{"origins_", ",", "basis_", ",", "k_"}], "]"}], ":=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"latticeColorK", "[", 
+        RowBox[{"origin", ",", "basis", ",", "k"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"origin", ",", "origins"}], "}"}]}], "]"}]}], ";"}], "\n", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Function", " ", "to", " ", "generate", " ", "faces", " ", "from", " ", 
+     "lattice", " ", "points"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"facesColorFromLattice", "[", "vertices_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"faces", "=", 
+          RowBox[{"{", "}"}]}], ",", "vertexI", ",", "vertexJ", ",", 
+         "vertexK", ",", "vertexIJ", ",", "vertexDIJ", ",", "vertexIJK"}], 
+        "}"}], ",", 
+       RowBox[{
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"Do", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"vertexI", "=", 
+                RowBox[{"vertices", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"1", ",", "i"}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexJ", "=", 
+                RowBox[{"vertices", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"2", ",", "j"}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexK", "=", 
+                RowBox[{"vertices", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"3", ",", "k"}], "]"}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexIJ", "=", 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{"vertexI", "+", "vertexJ"}], ")"}], "/", "2"}]}], 
+               ";", "\[IndentingNewLine]", 
+               RowBox[{"vertexDIJ", "=", 
+                RowBox[{"(", 
+                 RowBox[{"vertexI", "-", "vertexJ"}], ")"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vertexIJK", "=", 
+                RowBox[{"vertexK", "-", "vertexIJ"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Norm", "[", "vertexIJK", "]"}], "<", "1"}], "&&", 
+                  
+                  RowBox[{
+                   RowBox[{"Abs", "[", 
+                    RowBox[{"Dot", "[", 
+                    RowBox[{"vertexIJK", ",", "vertexDIJ"}], "]"}], "]"}], 
+                   "<", "1*^-10"}], "&&", 
+                  RowBox[{
+                   RowBox[{"Abs", "[", 
+                    RowBox[{
+                    RowBox[{"Norm", "[", "vertexDIJ", "]"}], "-", "1"}], 
+                    "]"}], "<", "1*^-10"}]}], ",", 
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"faces", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"vertexI", ",", "vertexJ", ",", "vertexK"}], 
+                    "}"}]}], "]"}]}], "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"k", ",", 
+                RowBox[{"Length", "[", 
+                 RowBox[{"vertices", "[", 
+                  RowBox[{"[", "3", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", 
+              RowBox[{"Length", "[", 
+               RowBox[{"vertices", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", 
+          
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{"Length", "[", 
+             RowBox[{"vertices", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "faces"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"facesFromLattice", "[", "vertices_", "]"}], ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "4", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "4", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "4", "]"}], "]"}]}], "}"}], "]"}], ",", 
+       RowBox[{"facesColorFromLattice", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"vertices", "[", 
+           RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Generate", " ", "vertices"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"vertices", "=", 
+     RowBox[{"latticeK", "[", 
+      RowBox[{"origins", ",", "Basis", ",", "l"}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"colors", "=", 
+     RowBox[{"{", 
+      RowBox[{"Red", ",", "Green", ",", "Blue", ",", "Yellow"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"Generate", " ", "faces"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"faces", "=", 
+     RowBox[{"facesFromLattice", "[", "vertices", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Vertices", " ", "of", " ", "outer", " ", "tetrahedron"}], "*)"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"scaling", " ", "=", " ", "1.0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rOuter", " ", "=", " ", 
+     RowBox[{"scaling", " ", "*", " ", "l", " ", "*", " ", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2", ",", "2"}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"gOuter", " ", "=", " ", 
+      RowBox[{"gOrigin", " ", "+", " ", 
+       RowBox[{"l", "*", " ", 
+        RowBox[{"Basis", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], " ", "+", " ", 
+       RowBox[{"scaling", " ", "*", " ", "l", " ", "*", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "+", 
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "-", 
+          RowBox[{"3", 
+           RowBox[{"Basis", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}]}], ")"}]}]}]}], ";", "\n", 
+     RowBox[{"bOuter", " ", "=", " ", 
+      RowBox[{"bOrigin", " ", "+", " ", 
+       RowBox[{"l", "*", " ", 
+        RowBox[{"Basis", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], " ", "+", " ", 
+       RowBox[{"scaling", " ", "*", " ", "l", " ", "*", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "+", 
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "-", 
+          RowBox[{"3", 
+           RowBox[{"Basis", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}]}], ")"}]}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"yOuter", " ", "=", " ", 
+      RowBox[{"yOrigin", " ", "+", " ", 
+       RowBox[{"l", "*", " ", 
+        RowBox[{"Basis", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], " ", "+", " ", 
+       RowBox[{"scaling", " ", "*", " ", "l", " ", "*", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "+", 
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "-", 
+          RowBox[{"3", 
+           RowBox[{"Basis", "[", 
+            RowBox[{"[", "3", "]"}], "]"}]}]}], ")"}]}]}]}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gOuter", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"l", "-", "1"}], ")"}], "*", " ", 
+       RowBox[{"Basis", "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], " ", "+", " ", 
+      RowBox[{"scaling", " ", "*", " ", "l", " ", "*", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Basis", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "+", 
+         RowBox[{"Basis", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "-", 
+         RowBox[{"3", 
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}]}], ")"}]}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"bOuter", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"l", "-", "1"}], ")"}], "*", " ", 
+       RowBox[{"Basis", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], " ", "+", " ", 
+      RowBox[{"scaling", " ", "*", " ", "l", " ", "*", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Basis", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "+", 
+         RowBox[{"Basis", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"3", 
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}]}], ")"}]}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yOuter", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"l", "-", "1"}], ")"}], "*", " ", 
+       RowBox[{"Basis", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], " ", "+", " ", 
+      RowBox[{"scaling", " ", "*", " ", "l", " ", "*", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Basis", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "+", 
+         RowBox[{"Basis", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "-", 
+         RowBox[{"3", 
+          RowBox[{"Basis", "[", 
+           RowBox[{"[", "3", "]"}], "]"}]}]}], ")"}]}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"OuterVert", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "rOuter", ",", " ", "gOuter", ",", " ", "bOuter", ",", " ", "yOuter"}], 
+      "}"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Faces", " ", "of", " ", "outer", " ", "tetrahedron"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rSurface", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"gOuter", ",", " ", "bOuter", ",", " ", "yOuter"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gSurface", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"bOuter", ",", " ", "yOuter", ",", " ", "rOuter"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bSurface", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"yOuter", ",", " ", "rOuter", ",", " ", "gOuter"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ySurface", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"rOuter", ",", " ", "gOuter", ",", " ", "bOuter"}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"OuterSurface", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"rSurface", ",", "gSurface"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Links", " ", "of", " ", "the", " ", "outer", " ", "tetrahedron"}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"OuterLink", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"rOuter", ",", " ", "gOuter"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"rOuter", ",", "bOuter"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"rOuter", ",", "yOuter"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"gOuter", ",", "bOuter"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"gOuter", ",", "yOuter"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"bOuter", ",", "yOuter"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Links", " ", "connecting", " ", "inner", " ", "and", " ", "outer", " ", 
+     "lattice"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"cLinksFromDirection", "[", 
+      RowBox[{"vouter_", ",", "direction_", ",", "origin_", ",", "k_"}], 
+      "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"links", "=", 
+          RowBox[{"{", "}"}]}], ",", "vertex"}], "}"}], ",", 
+       RowBox[{
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"Do", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"vertex", " ", "=", " ", 
+                RowBox[{
+                 RowBox[{"origin", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "+", " ", 
+                 RowBox[{"x", "*", 
+                  RowBox[{"direction", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+                 RowBox[{"y", "*", 
+                  RowBox[{"direction", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}]}]}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"links", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"vouter", ",", " ", "vertex"}], "}"}]}], "]"}]}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{"y", ",", "0", ",", 
+                RowBox[{"k", "-", "1", "-", "x"}]}], "}"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"x", ",", "0", ",", 
+              RowBox[{"k", "-", "1"}]}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{"Length", "[", "origin", "]"}]}], "}"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", "links"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"clinksFromLayer", "[", 
+     RowBox[{
+     "outervert_", ",", " ", "basis_", ",", "origin_", ",", " ", "k_"}], 
+     "]"}], ":=", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"cLinksFromDirection", "[", 
+       RowBox[{
+        RowBox[{"outervert", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"basis", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "-", 
+           RowBox[{"basis", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+          RowBox[{
+           RowBox[{"basis", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "-", 
+           RowBox[{"basis", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"origin", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"l", "-", "1"}], ")"}], "*", 
+            RowBox[{"basis", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}]}], ",", 
+          RowBox[{
+           RowBox[{"origin", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"l", "-", "1"}], ")"}], "*", 
+            RowBox[{"basis", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}]}], ",", 
+          RowBox[{
+           RowBox[{"origin", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"l", "-", "1"}], ")"}], "*", 
+            RowBox[{"basis", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}]}]}], "}"}], ",", "l"}], "]"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"cLinksFromDirection", "[", 
+       RowBox[{
+        RowBox[{"outervert", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"basis", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"basis", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", "l"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cLinksFromDirection", "[", 
+       RowBox[{
+        RowBox[{"outervert", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"basis", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", 
+          RowBox[{"basis", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", "l"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cLinksFromDirection", "[", 
+       RowBox[{
+        RowBox[{"outervert", "[", 
+         RowBox[{"[", "4", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"basis", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"basis", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"origin", "[", 
+           RowBox[{"[", "3", "]"}], "]"}]}], "}"}], ",", "l"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"clinks", " ", "=", " ", 
+     RowBox[{"clinksFromLayer", "[", 
+      RowBox[{"OuterVert", ",", " ", "Basis", ",", "origins", ",", "l"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Plot", " ", "the", " ", "vertices", " ", "and", " ", "faces"}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"colors", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"vertices", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "vertices", "]"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"colors", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"Opacity", "[", "1", "]"}], ",", 
+           RowBox[{"Polygon", "[", 
+            RowBox[{"faces", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "faces", "]"}]}], "}"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"colors", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"Opacity", "[", "1", "]"}], ",", 
+           RowBox[{"Polygon", "[", 
+            RowBox[{"OuterSurface", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "OuterSurface", "]"}]}], "}"}]}], "]"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"colors", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+           RowBox[{"Point", "[", 
+            RowBox[{"OuterVert", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "OuterVert", "]"}]}], "}"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Black", ",", 
+           RowBox[{"Line", "[", 
+            RowBox[{"OuterLink", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "OuterLink", "]"}]}], "}"}]}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"Black", ",", 
+           RowBox[{"Line", "[", 
+            RowBox[{"clinks", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "clinks", "]"}]}], "}"}]}], "]"}]}], "}"}], 
+     ",", 
+     RowBox[{"Axes", "->", "False"}], ",", " ", 
+     RowBox[{"Boxed", "->", "False"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.9507649132911158`*^9, 3.950764939281481*^9}, {
+   3.950765039852982*^9, 3.9507650399818153`*^9}, {3.950765228165306*^9, 
+   3.950765304816547*^9}, 3.95076534191897*^9, {3.9507655455511837`*^9, 
+   3.9507655941181707`*^9}, {3.950765627423656*^9, 3.95076568837192*^9}, {
+   3.95076574174018*^9, 3.95076575012132*^9}, {3.9507657888569603`*^9, 
+   3.950765828094055*^9}, {3.9507658681760902`*^9, 3.950765924133319*^9}, {
+   3.950765955304543*^9, 3.950765957916926*^9}, {3.950766118043407*^9, 
+   3.950766143916514*^9}, {3.950766287046275*^9, 3.9507664993301353`*^9}, {
+   3.95076653340311*^9, 3.950766547888068*^9}, {3.950766621188233*^9, 
+   3.950766640869083*^9}, {3.950766685149968*^9, 3.950766698023775*^9}, {
+   3.950766742256876*^9, 3.950766743434923*^9}, {3.950766774943412*^9, 
+   3.9507667986555643`*^9}, {3.9507668294699907`*^9, 3.950766887836602*^9}, {
+   3.950766947249728*^9, 3.950766970279068*^9}, {3.950767064624906*^9, 
+   3.950767463614005*^9}, {3.950767509529418*^9, 3.950767509804591*^9}, {
+   3.9507675822443123`*^9, 3.950767614752454*^9}, {3.950767670526957*^9, 
+   3.950767691430984*^9}, {3.9507677398436193`*^9, 3.950767763921938*^9}, {
+   3.950767795365836*^9, 3.95076788702413*^9}, {3.950767929041415*^9, 
+   3.950768021106062*^9}, {3.950768060047451*^9, 3.950768086734386*^9}, {
+   3.950768117220867*^9, 3.950768172836895*^9}, {3.950768222477084*^9, 
+   3.950768645690817*^9}, {3.9507686808308783`*^9, 3.9507686866322823`*^9}, {
+   3.950768800385024*^9, 3.95076887460072*^9}, {3.950768926864963*^9, 
+   3.950768957738262*^9}, {3.9507690156436043`*^9, 3.950769321939324*^9}, {
+   3.950769355711125*^9, 3.950769384634879*^9}, {3.9507694278664713`*^9, 
+   3.9507694663102427`*^9}, {3.950769525632936*^9, 3.9507695280086308`*^9}, {
+   3.950769668749721*^9, 3.950769724924683*^9}, {3.950769776680133*^9, 
+   3.950769776807877*^9}, {3.9507698378941593`*^9, 3.95076983806493*^9}, {
+   3.950769869591753*^9, 3.950769883251091*^9}, {3.950770157483316*^9, 
+   3.950770165967751*^9}, {3.950832702465453*^9, 3.950832737273322*^9}, {
+   3.950832933687192*^9, 3.9508329343975277`*^9}},
+ CellLabel->
+  "In[1369]:=",ExpressionUUID->"e8847733-b574-4ce3-ae69-75828d859306"],
+
+Cell[BoxData[
+ Graphics3DBox[{{
+    {RGBColor[1, 0, 0], PointSize[Large], 
+     Point3DBox[{{0, 0, 0}, {1, 1, 0}, {2, 2, 0}, {1, 0, 1}, {2, 1, 1}, {2, 0,
+       2}, {0, 1, 1}, {1, 2, 1}, {1, 1, 2}, {0, 2, 2}}]}, 
+    {RGBColor[0, 1, 0], PointSize[Large], 
+     Point3DBox[{{1, 0, 0}, {2, 1, 0}, {3, 2, 0}, {2, 0, 1}, {3, 1, 1}, {3, 0,
+       2}, {1, 1, 1}, {2, 2, 1}, {2, 1, 2}, {1, 2, 2}}]}, 
+    {RGBColor[0, 0, 1], PointSize[Large], 
+     Point3DBox[
+      NCache[{{Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+        Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+        Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+        Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+        Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{0.5, 0.5, 0.5}, {
+       1.5, 1.5, 0.5}, {2.5, 2.5, 0.5}, {1.5, 0.5, 1.5}, {2.5, 1.5, 1.5}, {
+       2.5, 0.5, 2.5}, {0.5, 1.5, 1.5}, {1.5, 2.5, 1.5}, {1.5, 1.5, 2.5}, {
+       0.5, 2.5, 2.5}}]]}, 
+    {RGBColor[1, 1, 0], PointSize[Large], 
+     Point3DBox[
+      NCache[{{Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {
+        Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {
+        Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+        Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+        Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+        Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+        Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+        Rational[1, 2], Rational[5, 2], Rational[3, 2]}}, {{0.5, 0.5, -0.5}, {
+       1.5, 1.5, -0.5}, {2.5, 2.5, -0.5}, {1.5, 0.5, 0.5}, {2.5, 1.5, 0.5}, {
+       2.5, 0.5, 1.5}, {0.5, 1.5, 0.5}, {1.5, 2.5, 0.5}, {1.5, 1.5, 1.5}, {
+       0.5, 2.5, 1.5}}]]}}, {
+    {RGBColor[1, 0, 0], Opacity[1], 
+     Polygon3DBox[
+      NCache[{{{Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {1, 0, 0}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 0, 0}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {2, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {2, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {3, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {3, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {2, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {3, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {3, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {3, 0, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 2}}}, {{{0.5,
+          0.5, 0.5}, {0.5, 0.5, -0.5}, {1, 0, 0}}, {{0.5, 0.5, 0.5}, {1.5, 
+         0.5, 0.5}, {1, 0, 0}}, {{0.5, 0.5, 0.5}, {1.5, 0.5, 0.5}, {1, 1, 
+         1}}, {{0.5, 0.5, 0.5}, {0.5, 1.5, 0.5}, {1, 1, 1}}, {{1.5, 1.5, 
+         0.5}, {1.5, 1.5, -0.5}, {2, 1, 0}}, {{1.5, 1.5, 0.5}, {1.5, 0.5, 
+         0.5}, {2, 1, 0}}, {{1.5, 1.5, 0.5}, {1.5, 0.5, 0.5}, {1, 1, 1}}, {{
+         1.5, 1.5, 0.5}, {2.5, 1.5, 0.5}, {2, 1, 0}}, {{1.5, 1.5, 0.5}, {2.5, 
+         1.5, 0.5}, {2, 2, 1}}, {{1.5, 1.5, 0.5}, {0.5, 1.5, 0.5}, {1, 1, 
+         1}}, {{1.5, 1.5, 0.5}, {1.5, 2.5, 0.5}, {2, 2, 1}}, {{1.5, 1.5, 
+         0.5}, {1.5, 1.5, 1.5}, {1, 1, 1}}, {{1.5, 1.5, 0.5}, {1.5, 1.5, 
+         1.5}, {2, 2, 1}}, {{2.5, 2.5, 0.5}, {2.5, 2.5, -0.5}, {3, 2, 0}}, {{
+         2.5, 2.5, 0.5}, {2.5, 1.5, 0.5}, {3, 2, 0}}, {{2.5, 2.5, 0.5}, {2.5, 
+         1.5, 0.5}, {2, 2, 1}}, {{2.5, 2.5, 0.5}, {1.5, 2.5, 0.5}, {2, 2, 
+         1}}, {{1.5, 0.5, 1.5}, {1.5, 0.5, 0.5}, {2, 0, 1}}, {{1.5, 0.5, 
+         1.5}, {1.5, 0.5, 0.5}, {1, 1, 1}}, {{1.5, 0.5, 1.5}, {2.5, 0.5, 
+         1.5}, {2, 0, 1}}, {{1.5, 0.5, 1.5}, {2.5, 0.5, 1.5}, {2, 1, 2}}, {{
+         1.5, 0.5, 1.5}, {1.5, 1.5, 1.5}, {1, 1, 1}}, {{1.5, 0.5, 1.5}, {1.5, 
+         1.5, 1.5}, {2, 1, 2}}, {{2.5, 1.5, 1.5}, {2.5, 1.5, 0.5}, {3, 1, 
+         1}}, {{2.5, 1.5, 1.5}, {2.5, 1.5, 0.5}, {2, 2, 1}}, {{2.5, 1.5, 
+         1.5}, {2.5, 0.5, 1.5}, {3, 1, 1}}, {{2.5, 1.5, 1.5}, {2.5, 0.5, 
+         1.5}, {2, 1, 2}}, {{2.5, 1.5, 1.5}, {1.5, 1.5, 1.5}, {2, 2, 1}}, {{
+         2.5, 1.5, 1.5}, {1.5, 1.5, 1.5}, {2, 1, 2}}, {{2.5, 0.5, 2.5}, {2.5, 
+         0.5, 1.5}, {3, 0, 2}}, {{2.5, 0.5, 2.5}, {2.5, 0.5, 1.5}, {2, 1, 
+         2}}, {{0.5, 1.5, 1.5}, {0.5, 1.5, 0.5}, {1, 1, 1}}, {{0.5, 1.5, 
+         1.5}, {1.5, 1.5, 1.5}, {1, 1, 1}}, {{0.5, 1.5, 1.5}, {1.5, 1.5, 
+         1.5}, {1, 2, 2}}, {{0.5, 1.5, 1.5}, {0.5, 2.5, 1.5}, {1, 2, 2}}, {{
+         1.5, 2.5, 1.5}, {1.5, 2.5, 0.5}, {2, 2, 1}}, {{1.5, 2.5, 1.5}, {1.5, 
+         1.5, 1.5}, {2, 2, 1}}, {{1.5, 2.5, 1.5}, {1.5, 1.5, 1.5}, {1, 2, 
+         2}}, {{1.5, 2.5, 1.5}, {0.5, 2.5, 1.5}, {1, 2, 2}}, {{1.5, 1.5, 
+         2.5}, {1.5, 1.5, 1.5}, {2, 1, 2}}, {{1.5, 1.5, 2.5}, {1.5, 1.5, 
+         1.5}, {1, 2, 2}}, {{0.5, 2.5, 2.5}, {0.5, 2.5, 1.5}, {1, 2, 
+         2}}}]]}, 
+    {RGBColor[0, 1, 0], Opacity[1], 
+     Polygon3DBox[
+      NCache[{{{Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {0, 0, 0}}, {{
+         Rational[1, 2], Rational[1, 2], Rational[-1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {1, 0, 1}}, {{
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 0, 2}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}, {2, 0, 2}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}, {0, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 1, 0}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 2, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {0, 1, 1}}, {{
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}, {2, 2, 0}}, {{
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}, {1, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}, {2, 1, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 1, 2}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}, {1, 1, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}, {0, 2, 2}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}, {1, 2, 1}}, {{
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}, {0, 2, 2}}}, {{{0.5,
+          0.5, -0.5}, {0.5, 0.5, 0.5}, {0, 0, 0}}, {{0.5, 0.5, -0.5}, {0.5, 
+         0.5, 0.5}, {1, 1, 0}}, {{1.5, 1.5, -0.5}, {1.5, 1.5, 0.5}, {1, 1, 
+         0}}, {{1.5, 1.5, -0.5}, {1.5, 1.5, 0.5}, {2, 2, 0}}, {{2.5, 
+         2.5, -0.5}, {2.5, 2.5, 0.5}, {2, 2, 0}}, {{1.5, 0.5, 0.5}, {0.5, 0.5,
+          0.5}, {1, 1, 0}}, {{1.5, 0.5, 0.5}, {0.5, 0.5, 0.5}, {1, 0, 1}}, {{
+         1.5, 0.5, 0.5}, {1.5, 1.5, 0.5}, {1, 1, 0}}, {{1.5, 0.5, 0.5}, {1.5, 
+         1.5, 0.5}, {2, 1, 1}}, {{1.5, 0.5, 0.5}, {1.5, 0.5, 1.5}, {1, 0, 
+         1}}, {{1.5, 0.5, 0.5}, {1.5, 0.5, 1.5}, {2, 1, 1}}, {{2.5, 1.5, 
+         0.5}, {1.5, 1.5, 0.5}, {2, 2, 0}}, {{2.5, 1.5, 0.5}, {1.5, 1.5, 
+         0.5}, {2, 1, 1}}, {{2.5, 1.5, 0.5}, {2.5, 2.5, 0.5}, {2, 2, 0}}, {{
+         2.5, 1.5, 0.5}, {2.5, 1.5, 1.5}, {2, 1, 1}}, {{2.5, 0.5, 1.5}, {1.5, 
+         0.5, 1.5}, {2, 1, 1}}, {{2.5, 0.5, 1.5}, {1.5, 0.5, 1.5}, {2, 0, 
+         2}}, {{2.5, 0.5, 1.5}, {2.5, 1.5, 1.5}, {2, 1, 1}}, {{2.5, 0.5, 
+         1.5}, {2.5, 0.5, 2.5}, {2, 0, 2}}, {{0.5, 1.5, 0.5}, {0.5, 0.5, 
+         0.5}, {1, 1, 0}}, {{0.5, 1.5, 0.5}, {0.5, 0.5, 0.5}, {0, 1, 1}}, {{
+         0.5, 1.5, 0.5}, {1.5, 1.5, 0.5}, {1, 1, 0}}, {{0.5, 1.5, 0.5}, {1.5, 
+         1.5, 0.5}, {1, 2, 1}}, {{0.5, 1.5, 0.5}, {0.5, 1.5, 1.5}, {0, 1, 
+         1}}, {{0.5, 1.5, 0.5}, {0.5, 1.5, 1.5}, {1, 2, 1}}, {{1.5, 2.5, 
+         0.5}, {1.5, 1.5, 0.5}, {2, 2, 0}}, {{1.5, 2.5, 0.5}, {1.5, 1.5, 
+         0.5}, {1, 2, 1}}, {{1.5, 2.5, 0.5}, {2.5, 2.5, 0.5}, {2, 2, 0}}, {{
+         1.5, 2.5, 0.5}, {1.5, 2.5, 1.5}, {1, 2, 1}}, {{1.5, 1.5, 1.5}, {1.5, 
+         1.5, 0.5}, {2, 1, 1}}, {{1.5, 1.5, 1.5}, {1.5, 1.5, 0.5}, {1, 2, 
+         1}}, {{1.5, 1.5, 1.5}, {1.5, 0.5, 1.5}, {2, 1, 1}}, {{1.5, 1.5, 
+         1.5}, {1.5, 0.5, 1.5}, {1, 1, 2}}, {{1.5, 1.5, 1.5}, {2.5, 1.5, 
+         1.5}, {2, 1, 1}}, {{1.5, 1.5, 1.5}, {0.5, 1.5, 1.5}, {1, 2, 1}}, {{
+         1.5, 1.5, 1.5}, {0.5, 1.5, 1.5}, {1, 1, 2}}, {{1.5, 1.5, 1.5}, {1.5, 
+         2.5, 1.5}, {1, 2, 1}}, {{1.5, 1.5, 1.5}, {1.5, 1.5, 2.5}, {1, 1, 
+         2}}, {{0.5, 2.5, 1.5}, {0.5, 1.5, 1.5}, {1, 2, 1}}, {{0.5, 2.5, 
+         1.5}, {0.5, 1.5, 1.5}, {0, 2, 2}}, {{0.5, 2.5, 1.5}, {1.5, 2.5, 
+         1.5}, {1, 2, 1}}, {{0.5, 2.5, 1.5}, {0.5, 2.5, 2.5}, {0, 2, 
+         2}}}]]}, 
+    {RGBColor[0, 0, 1], Opacity[1], 
+     Polygon3DBox[
+      NCache[{{{0, 0, 0}, {1, 0, 0}, {
+         Rational[1, 2], Rational[1, 2], Rational[-1, 2]}}, {{1, 1, 0}, {1, 0,
+          0}, {Rational[1, 2], Rational[1, 2], Rational[-1, 2]}}, {{1, 1, 
+         0}, {1, 0, 0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 1, 0}, {2, 1, 0}, {
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}}, {{1, 1, 0}, {2, 1,
+          0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 0}, {
+         1, 1, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 
+         0}, {1, 1, 1}, {Rational[1, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         2, 2, 0}, {2, 1, 0}, {
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}}, {{2, 2, 0}, {2, 1,
+          0}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {
+         3, 2, 0}, {Rational[5, 2], Rational[5, 2], Rational[-1, 2]}}, {{2, 2,
+          0}, {3, 2, 0}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         2, 2, 0}, {2, 2, 1}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {2, 2, 
+         1}, {Rational[3, 2], Rational[5, 2], Rational[1, 2]}}, {{1, 0, 1}, {
+         1, 0, 0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 0, 
+         1}, {2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 0, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{2, 1, 1}, {2, 1, 
+         0}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         2, 1, 0}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 
+         1}, {2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         2, 1, 1}, {2, 0, 1}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {3, 1, 
+         1}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         3, 1, 1}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 
+         1}, {1, 1, 1}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         2, 1, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 1, 1}, {2, 2, 
+         1}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 1, 
+         1}, {2, 1, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{
+         2, 1, 1}, {2, 1, 2}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 0, 2}, {2, 0, 
+         1}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 2}, {
+         3, 0, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 
+         2}, {2, 1, 2}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{
+         0, 1, 1}, {1, 1, 1}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 2, 1}, {1, 1, 
+         1}, {Rational[1, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 2, 1}, {
+         1, 1, 1}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 
+         1}, {2, 2, 1}, {Rational[3, 2], Rational[5, 2], Rational[1, 2]}}, {{
+         1, 2, 1}, {2, 2, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 1}, {1, 2, 
+         2}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 1}, {
+         1, 2, 2}, {Rational[1, 2], Rational[5, 2], Rational[3, 2]}}, {{1, 1, 
+         2}, {1, 1, 1}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         1, 1, 2}, {2, 1, 2}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 1, 2}, {1, 2, 
+         2}, {Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{0, 2, 2}, {
+         1, 2, 2}, {Rational[1, 2], Rational[5, 2], Rational[3, 2]}}}, {{{0, 
+         0, 0}, {1, 0, 0}, {0.5, 0.5, -0.5}}, {{1, 1, 0}, {1, 0, 0}, {0.5, 
+         0.5, -0.5}}, {{1, 1, 0}, {1, 0, 0}, {1.5, 0.5, 0.5}}, {{1, 1, 0}, {2,
+          1, 0}, {1.5, 1.5, -0.5}}, {{1, 1, 0}, {2, 1, 0}, {1.5, 0.5, 
+         0.5}}, {{1, 1, 0}, {1, 1, 1}, {1.5, 0.5, 0.5}}, {{1, 1, 0}, {1, 1, 
+         1}, {0.5, 1.5, 0.5}}, {{2, 2, 0}, {2, 1, 0}, {1.5, 1.5, -0.5}}, {{2, 
+         2, 0}, {2, 1, 0}, {2.5, 1.5, 0.5}}, {{2, 2, 0}, {3, 2, 0}, {2.5, 
+         2.5, -0.5}}, {{2, 2, 0}, {3, 2, 0}, {2.5, 1.5, 0.5}}, {{2, 2, 0}, {2,
+          2, 1}, {2.5, 1.5, 0.5}}, {{2, 2, 0}, {2, 2, 1}, {1.5, 2.5, 0.5}}, {{
+         1, 0, 1}, {1, 0, 0}, {1.5, 0.5, 0.5}}, {{1, 0, 1}, {2, 0, 1}, {1.5, 
+         0.5, 0.5}}, {{1, 0, 1}, {1, 1, 1}, {1.5, 0.5, 0.5}}, {{2, 1, 1}, {2, 
+         1, 0}, {1.5, 0.5, 0.5}}, {{2, 1, 1}, {2, 1, 0}, {2.5, 1.5, 0.5}}, {{
+         2, 1, 1}, {2, 0, 1}, {1.5, 0.5, 0.5}}, {{2, 1, 1}, {2, 0, 1}, {2.5, 
+         0.5, 1.5}}, {{2, 1, 1}, {3, 1, 1}, {2.5, 1.5, 0.5}}, {{2, 1, 1}, {3, 
+         1, 1}, {2.5, 0.5, 1.5}}, {{2, 1, 1}, {1, 1, 1}, {1.5, 0.5, 0.5}}, {{
+         2, 1, 1}, {1, 1, 1}, {1.5, 1.5, 1.5}}, {{2, 1, 1}, {2, 2, 1}, {2.5, 
+         1.5, 0.5}}, {{2, 1, 1}, {2, 2, 1}, {1.5, 1.5, 1.5}}, {{2, 1, 1}, {2, 
+         1, 2}, {2.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 1, 2}, {1.5, 1.5, 1.5}}, {{
+         2, 0, 2}, {2, 0, 1}, {2.5, 0.5, 1.5}}, {{2, 0, 2}, {3, 0, 2}, {2.5, 
+         0.5, 1.5}}, {{2, 0, 2}, {2, 1, 2}, {2.5, 0.5, 1.5}}, {{0, 1, 1}, {1, 
+         1, 1}, {0.5, 1.5, 0.5}}, {{1, 2, 1}, {1, 1, 1}, {0.5, 1.5, 0.5}}, {{
+         1, 2, 1}, {1, 1, 1}, {1.5, 1.5, 1.5}}, {{1, 2, 1}, {2, 2, 1}, {1.5, 
+         2.5, 0.5}}, {{1, 2, 1}, {2, 2, 1}, {1.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 
+         2, 2}, {1.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 2, 2}, {0.5, 2.5, 1.5}}, {{
+         1, 1, 2}, {1, 1, 1}, {1.5, 1.5, 1.5}}, {{1, 1, 2}, {2, 1, 2}, {1.5, 
+         1.5, 1.5}}, {{1, 1, 2}, {1, 2, 2}, {1.5, 1.5, 1.5}}, {{0, 2, 2}, {1, 
+         2, 2}, {0.5, 2.5, 1.5}}}]]}, 
+    {RGBColor[1, 1, 0], Opacity[1], 
+     Polygon3DBox[
+      NCache[{{{0, 0, 0}, {1, 0, 0}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 0}, {1, 0, 
+         0}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 1, 0}, {
+         2, 1, 0}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 1, 
+         0}, {1, 1, 1}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 1, 0}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {2, 1, 
+         0}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 2, 0}, {
+         3, 2, 0}, {Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{2, 2, 
+         0}, {2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         2, 2, 0}, {2, 2, 1}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{1, 0, 1}, {1, 0, 
+         0}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{1, 0, 1}, {
+         2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{1, 0, 
+         1}, {1, 1, 1}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         1, 0, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {2, 1, 
+         0}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {
+         2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 
+         1}, {3, 1, 1}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         2, 1, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 1}, {1, 1, 
+         1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {
+         2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{2, 1, 
+         1}, {2, 2, 1}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         2, 1, 1}, {2, 1, 2}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 1, 1}, {2, 1, 
+         2}, {Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{2, 0, 2}, {
+         2, 0, 1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 
+         2}, {3, 0, 2}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{
+         2, 0, 2}, {2, 1, 2}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{2, 0, 2}, {2, 1, 
+         2}, {Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{0, 1, 1}, {
+         1, 1, 1}, {Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{0, 1, 
+         1}, {1, 1, 1}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         1, 2, 1}, {1, 1, 1}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 2, 1}, {1, 1, 
+         1}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 1}, {
+         2, 2, 1}, {Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{1, 2, 
+         1}, {2, 2, 1}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{
+         1, 2, 1}, {1, 2, 2}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 2, 1}, {1, 2, 
+         2}, {Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{1, 1, 2}, {
+         1, 1, 1}, {Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{1, 1, 
+         2}, {1, 1, 1}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{
+         1, 1, 2}, {2, 1, 2}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{1, 1, 2}, {2, 1, 
+         2}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{1, 1, 2}, {
+         1, 2, 2}, {Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{1, 1, 
+         2}, {1, 2, 2}, {Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{
+         0, 2, 2}, {1, 2, 2}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{0, 2, 2}, {1, 2, 
+         2}, {Rational[1, 2], Rational[5, 2], Rational[5, 2]}}}, {{{0, 0, 
+         0}, {1, 0, 0}, {0.5, 0.5, 0.5}}, {{1, 1, 0}, {1, 0, 0}, {0.5, 0.5, 
+         0.5}}, {{1, 1, 0}, {2, 1, 0}, {1.5, 1.5, 0.5}}, {{1, 1, 0}, {1, 1, 
+         1}, {0.5, 0.5, 0.5}}, {{1, 1, 0}, {1, 1, 1}, {1.5, 1.5, 0.5}}, {{2, 
+         2, 0}, {2, 1, 0}, {1.5, 1.5, 0.5}}, {{2, 2, 0}, {3, 2, 0}, {2.5, 2.5,
+          0.5}}, {{2, 2, 0}, {2, 2, 1}, {1.5, 1.5, 0.5}}, {{2, 2, 0}, {2, 2, 
+         1}, {2.5, 2.5, 0.5}}, {{1, 0, 1}, {1, 0, 0}, {0.5, 0.5, 0.5}}, {{1, 
+         0, 1}, {2, 0, 1}, {1.5, 0.5, 1.5}}, {{1, 0, 1}, {1, 1, 1}, {0.5, 0.5,
+          0.5}}, {{1, 0, 1}, {1, 1, 1}, {1.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 1, 
+         0}, {1.5, 1.5, 0.5}}, {{2, 1, 1}, {2, 0, 1}, {1.5, 0.5, 1.5}}, {{2, 
+         1, 1}, {3, 1, 1}, {2.5, 1.5, 1.5}}, {{2, 1, 1}, {1, 1, 1}, {1.5, 1.5,
+          0.5}}, {{2, 1, 1}, {1, 1, 1}, {1.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 2, 
+         1}, {1.5, 1.5, 0.5}}, {{2, 1, 1}, {2, 2, 1}, {2.5, 1.5, 1.5}}, {{2, 
+         1, 1}, {2, 1, 2}, {1.5, 0.5, 1.5}}, {{2, 1, 1}, {2, 1, 2}, {2.5, 1.5,
+          1.5}}, {{2, 0, 2}, {2, 0, 1}, {1.5, 0.5, 1.5}}, {{2, 0, 2}, {3, 0, 
+         2}, {2.5, 0.5, 2.5}}, {{2, 0, 2}, {2, 1, 2}, {1.5, 0.5, 1.5}}, {{2, 
+         0, 2}, {2, 1, 2}, {2.5, 0.5, 2.5}}, {{0, 1, 1}, {1, 1, 1}, {0.5, 0.5,
+          0.5}}, {{0, 1, 1}, {1, 1, 1}, {0.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 1, 
+         1}, {1.5, 1.5, 0.5}}, {{1, 2, 1}, {1, 1, 1}, {0.5, 1.5, 1.5}}, {{1, 
+         2, 1}, {2, 2, 1}, {1.5, 1.5, 0.5}}, {{1, 2, 1}, {2, 2, 1}, {1.5, 2.5,
+          1.5}}, {{1, 2, 1}, {1, 2, 2}, {0.5, 1.5, 1.5}}, {{1, 2, 1}, {1, 2, 
+         2}, {1.5, 2.5, 1.5}}, {{1, 1, 2}, {1, 1, 1}, {1.5, 0.5, 1.5}}, {{1, 
+         1, 2}, {1, 1, 1}, {0.5, 1.5, 1.5}}, {{1, 1, 2}, {2, 1, 2}, {1.5, 0.5,
+          1.5}}, {{1, 1, 2}, {2, 1, 2}, {1.5, 1.5, 2.5}}, {{1, 1, 2}, {1, 2, 
+         2}, {0.5, 1.5, 1.5}}, {{1, 1, 2}, {1, 2, 2}, {1.5, 1.5, 2.5}}, {{0, 
+         2, 2}, {1, 2, 2}, {0.5, 1.5, 1.5}}, {{0, 2, 2}, {1, 2, 2}, {0.5, 2.5,
+          2.5}}}]]}}, {
+    {RGBColor[1, 0, 0], Opacity[1], 
+     Polygon3DBox[{{-4., 6., -4.}, {6., -4., -4.}, {-4., -4., 6.}}]}, 
+    {RGBColor[0, 1, 0], Opacity[1], 
+     Polygon3DBox[{{6., -4., -4.}, {-4., -4., 6.}, {6., 6., 6.}}]}}, {
+    {RGBColor[1, 0, 0], PointSize[Large], Point3DBox[{6., 6., 6.}]}, 
+    {RGBColor[0, 1, 0], PointSize[Large], Point3DBox[{-4., 6., -4.}]}, 
+    {RGBColor[0, 0, 1], PointSize[Large], Point3DBox[{6., -4., -4.}]}, 
+    {RGBColor[1, 1, 0], PointSize[Large], Point3DBox[{-4., -4., 6.}]}}, {
+    {GrayLevel[0], Line3DBox[{{6., 6., 6.}, {-4., 6., -4.}}]}, 
+    {GrayLevel[0], Line3DBox[{{6., 6., 6.}, {6., -4., -4.}}]}, 
+    {GrayLevel[0], Line3DBox[{{6., 6., 6.}, {-4., -4., 6.}}]}, 
+    {GrayLevel[0], Line3DBox[{{-4., 6., -4.}, {6., -4., -4.}}]}, 
+    {GrayLevel[0], Line3DBox[{{-4., 6., -4.}, {-4., -4., 6.}}]}, 
+    {GrayLevel[0], Line3DBox[{{6., -4., -4.}, {-4., -4., 6.}}]}}, {
+    {GrayLevel[0], 
+     Line3DBox[
+      NCache[{{{6., 6., 6.}, {3, 0, 2}}, {{6., 6., 6.}, {2, 1, 2}}, {{6., 6., 
+         6.}, {1, 2, 2}}, {{6., 6., 6.}, {3, 1, 1}}, {{6., 6., 6.}, {2, 2, 
+         1}}, {{6., 6., 6.}, {3, 2, 0}}, {{6., 6., 6.}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}}, {{6., 6., 6.}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{6., 6., 6.}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{6., 6., 6.}, {
+         Rational[5, 2], Rational[3, 2], Rational[3, 2]}}, {{6., 6., 6.}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{6., 6., 6.}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{6., 6., 6.}, {
+         Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{6., 6., 6.}, {
+         Rational[3, 2], Rational[3, 2], Rational[3, 2]}}, {{6., 6., 6.}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}}, {{6., 6., 6.}, {
+         Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{6., 6., 6.}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}}, {{6., 6., 6.}, {
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}}}, {{{6., 6., 6.}, {
+         3, 0, 2}}, {{6., 6., 6.}, {2, 1, 2}}, {{6., 6., 6.}, {1, 2, 2}}, {{
+         6., 6., 6.}, {3, 1, 1}}, {{6., 6., 6.}, {2, 2, 1}}, {{6., 6., 6.}, {
+         3, 2, 0}}, {{6., 6., 6.}, {2.5, 0.5, 2.5}}, {{6., 6., 6.}, {1.5, 1.5,
+         2.5}}, {{6., 6., 6.}, {0.5, 2.5, 2.5}}, {{6., 6., 6.}, {2.5, 1.5, 
+        1.5}}, {{6., 6., 6.}, {1.5, 2.5, 1.5}}, {{6., 6., 6.}, {2.5, 2.5, 
+        0.5}}, {{6., 6., 6.}, {2.5, 0.5, 1.5}}, {{6., 6., 6.}, {1.5, 1.5, 
+        1.5}}, {{6., 6., 6.}, {0.5, 2.5, 1.5}}, {{6., 6., 6.}, {2.5, 1.5, 
+        0.5}}, {{6., 6., 6.}, {1.5, 2.5, 0.5}}, {{6., 6., 6.}, {2.5, 
+        2.5, -0.5}}}]]}, 
+    {GrayLevel[0], 
+     Line3DBox[
+      NCache[{{{-4., 6., -4.}, {0, 0, 0}}, {{-4., 6., -4.}, {0, 1, 1}}, {{-4.,
+          6., -4.}, {0, 2, 2}}, {{-4., 6., -4.}, {1, 1, 0}}, {{-4., 
+         6., -4.}, {1, 2, 1}}, {{-4., 6., -4.}, {2, 2, 0}}, {{-4., 6., -4.}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{-4., 6., -4.}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{-4., 6., -4.}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{-4., 6., -4.}, {
+         Rational[3, 2], Rational[3, 2], Rational[1, 2]}}, {{-4., 6., -4.}, {
+         Rational[3, 2], Rational[5, 2], Rational[3, 2]}}, {{-4., 6., -4.}, {
+         Rational[5, 2], Rational[5, 2], Rational[1, 2]}}, {{-4., 6., -4.}, {
+         Rational[1, 2], Rational[1, 2], Rational[-1, 2]}}, {{-4., 6., -4.}, {
+         Rational[1, 2], Rational[3, 2], Rational[1, 2]}}, {{-4., 6., -4.}, {
+         Rational[1, 2], Rational[5, 2], Rational[3, 2]}}, {{-4., 6., -4.}, {
+         Rational[3, 2], Rational[3, 2], Rational[-1, 2]}}, {{-4., 6., -4.}, {
+         Rational[3, 2], Rational[5, 2], Rational[1, 2]}}, {{-4., 6., -4.}, {
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}}}, {{{-4., 
+         6., -4.}, {0, 0, 0}}, {{-4., 6., -4.}, {0, 1, 1}}, {{-4., 6., -4.}, {
+         0, 2, 2}}, {{-4., 6., -4.}, {1, 1, 0}}, {{-4., 6., -4.}, {1, 2, 
+         1}}, {{-4., 6., -4.}, {2, 2, 0}}, {{-4., 6., -4.}, {0.5, 0.5, 
+        0.5}}, {{-4., 6., -4.}, {0.5, 1.5, 1.5}}, {{-4., 6., -4.}, {0.5, 2.5, 
+        2.5}}, {{-4., 6., -4.}, {1.5, 1.5, 0.5}}, {{-4., 6., -4.}, {1.5, 2.5, 
+        1.5}}, {{-4., 6., -4.}, {2.5, 2.5, 0.5}}, {{-4., 6., -4.}, {0.5, 
+        0.5, -0.5}}, {{-4., 6., -4.}, {0.5, 1.5, 0.5}}, {{-4., 6., -4.}, {0.5,
+         2.5, 1.5}}, {{-4., 6., -4.}, {1.5, 1.5, -0.5}}, {{-4., 6., -4.}, {
+        1.5, 2.5, 0.5}}, {{-4., 6., -4.}, {2.5, 2.5, -0.5}}}]]}, 
+    {GrayLevel[0], 
+     Line3DBox[
+      NCache[{{{6., -4., -4.}, {0, 0, 0}}, {{6., -4., -4.}, {1, 0, 1}}, {{
+         6., -4., -4.}, {2, 0, 2}}, {{6., -4., -4.}, {1, 1, 0}}, {{
+         6., -4., -4.}, {2, 1, 1}}, {{6., -4., -4.}, {2, 2, 0}}, {{
+         6., -4., -4.}, {1, 0, 0}}, {{6., -4., -4.}, {2, 0, 1}}, {{
+         6., -4., -4.}, {3, 0, 2}}, {{6., -4., -4.}, {2, 1, 0}}, {{
+         6., -4., -4.}, {3, 1, 1}}, {{6., -4., -4.}, {3, 2, 0}}, {{
+         6., -4., -4.}, {Rational[1, 2], Rational[1, 2], Rational[-1, 2]}}, {{
+         6., -4., -4.}, {Rational[3, 2], Rational[1, 2], Rational[1, 2]}}, {{
+         6., -4., -4.}, {Rational[5, 2], Rational[1, 2], Rational[3, 2]}}, {{
+         6., -4., -4.}, {Rational[3, 2], Rational[3, 2], Rational[-1, 2]}}, {{
+         6., -4., -4.}, {Rational[5, 2], Rational[3, 2], Rational[1, 2]}}, {{
+         6., -4., -4.}, {
+         Rational[5, 2], Rational[5, 2], Rational[-1, 2]}}}, {{{
+         6., -4., -4.}, {0, 0, 0}}, {{6., -4., -4.}, {1, 0, 1}}, {{
+         6., -4., -4.}, {2, 0, 2}}, {{6., -4., -4.}, {1, 1, 0}}, {{
+         6., -4., -4.}, {2, 1, 1}}, {{6., -4., -4.}, {2, 2, 0}}, {{
+         6., -4., -4.}, {1, 0, 0}}, {{6., -4., -4.}, {2, 0, 1}}, {{
+         6., -4., -4.}, {3, 0, 2}}, {{6., -4., -4.}, {2, 1, 0}}, {{
+         6., -4., -4.}, {3, 1, 1}}, {{6., -4., -4.}, {3, 2, 0}}, {{
+        6., -4., -4.}, {0.5, 0.5, -0.5}}, {{6., -4., -4.}, {1.5, 0.5, 
+        0.5}}, {{6., -4., -4.}, {2.5, 0.5, 1.5}}, {{6., -4., -4.}, {1.5, 
+        1.5, -0.5}}, {{6., -4., -4.}, {2.5, 1.5, 0.5}}, {{6., -4., -4.}, {2.5,
+         2.5, -0.5}}}]]}, 
+    {GrayLevel[0], 
+     Line3DBox[
+      NCache[{{{-4., -4., 6.}, {0, 0, 0}}, {{-4., -4., 6.}, {0, 1, 
+         1}}, {{-4., -4., 6.}, {0, 2, 2}}, {{-4., -4., 6.}, {1, 0, 
+         1}}, {{-4., -4., 6.}, {1, 1, 2}}, {{-4., -4., 6.}, {2, 0, 2}}, {{-4.,
+          -4., 6.}, {1, 0, 0}}, {{-4., -4., 6.}, {1, 1, 1}}, {{-4., -4., 
+         6.}, {1, 2, 2}}, {{-4., -4., 6.}, {2, 0, 1}}, {{-4., -4., 6.}, {2, 1,
+          2}}, {{-4., -4., 6.}, {3, 0, 2}}, {{-4., -4., 6.}, {
+         Rational[1, 2], Rational[1, 2], Rational[1, 2]}}, {{-4., -4., 6.}, {
+         Rational[1, 2], Rational[3, 2], Rational[3, 2]}}, {{-4., -4., 6.}, {
+         Rational[1, 2], Rational[5, 2], Rational[5, 2]}}, {{-4., -4., 6.}, {
+         Rational[3, 2], Rational[1, 2], Rational[3, 2]}}, {{-4., -4., 6.}, {
+         Rational[3, 2], Rational[3, 2], Rational[5, 2]}}, {{-4., -4., 6.}, {
+         Rational[5, 2], Rational[1, 2], Rational[5, 2]}}}, {{{-4., -4., 
+         6.}, {0, 0, 0}}, {{-4., -4., 6.}, {0, 1, 1}}, {{-4., -4., 6.}, {0, 2,
+          2}}, {{-4., -4., 6.}, {1, 0, 1}}, {{-4., -4., 6.}, {1, 1, 
+         2}}, {{-4., -4., 6.}, {2, 0, 2}}, {{-4., -4., 6.}, {1, 0, 
+         0}}, {{-4., -4., 6.}, {1, 1, 1}}, {{-4., -4., 6.}, {1, 2, 
+         2}}, {{-4., -4., 6.}, {2, 0, 1}}, {{-4., -4., 6.}, {2, 1, 
+         2}}, {{-4., -4., 6.}, {3, 0, 2}}, {{-4., -4., 6.}, {0.5, 0.5, 
+        0.5}}, {{-4., -4., 6.}, {0.5, 1.5, 1.5}}, {{-4., -4., 6.}, {0.5, 2.5, 
+        2.5}}, {{-4., -4., 6.}, {1.5, 0.5, 1.5}}, {{-4., -4., 6.}, {1.5, 1.5, 
+        2.5}}, {{-4., -4., 6.}, {2.5, 0.5, 2.5}}}]]}}},
+  Axes->False,
+  Boxed->False,
+  ImageSize->{356.9285247386201, 344.60034088878655`},
+  ImageSizeRaw->Automatic,
+  ViewPoint->{2.151388993217149, 1.0715543978607331`, -2.3818682944884957`},
+  ViewVertical->{0.5713097657243525, 0.8155822049425226, 
+   0.0918194890482313}]], "Output",
+ CellChangeTimes->{
+  3.950765560744482*^9, 3.950765657915752*^9, 3.950765958617916*^9, {
+   3.950766121276334*^9, 3.950766135428092*^9}, 3.9507662879363203`*^9, 
+   3.9507664583459797`*^9, 3.95076649979006*^9, {3.950766534226153*^9, 
+   3.950766548277094*^9}, {3.950766621574566*^9, 3.950766641420319*^9}, 
+   3.950766700252445*^9, 3.950766744944133*^9, {3.950766783491783*^9, 
+   3.950766799470393*^9}, {3.950766830115204*^9, 3.950766837225297*^9}, 
+   3.950766888153158*^9, {3.950767149375188*^9, 3.950767164417742*^9}, {
+   3.950767402356043*^9, 3.9507674408421297`*^9}, 3.950768646267865*^9, 
+   3.950768736365355*^9, 3.950768875544286*^9, 3.950768958449712*^9, 
+   3.950769047654705*^9, {3.950769079141581*^9, 3.950769143490988*^9}, {
+   3.950769245432743*^9, 3.950769266169765*^9}, 3.950769322904674*^9, {
+   3.9507693681168337`*^9, 3.950769385181443*^9}, 3.95076946881625*^9, 
+   3.950769528982913*^9, 3.950769675372064*^9, 3.9507697253804073`*^9, 
+   3.950769777329198*^9, 3.950769839007453*^9, 3.9507698840972767`*^9, 
+   3.950770166853055*^9, {3.950832702781307*^9, 3.950832737670926*^9}, 
+   3.9508329352120943`*^9},
+ CellLabel->
+  "Out[1398]=",ExpressionUUID->"6c598f47-7a26-463b-aab1-3cf87ea1941d"]
+}, Open  ]]
 }, Open  ]]
 },
 WindowSize->{808, 863},
 WindowMargins->{{Automatic, 158}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
-FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (June 3, 2023)",
+FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"6f7ce249-b1bc-4c24-a96c-9baffb3d92f3"
 ]
@@ -1220,27 +2516,34 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 268, 5, 67, "Section",ExpressionUUID->"e6e9d0a8-ea47-4083-90d5-2ec049a4c512",
+Cell[580, 22, 268, 5, 66, "Section",ExpressionUUID->"e6e9d0a8-ea47-4083-90d5-2ec049a4c512",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[851, 29, 740, 18, 37, "Text",ExpressionUUID->"1d699342-09c8-420e-9a1d-133132e6555e",
+Cell[851, 29, 740, 18, 33, "Text",ExpressionUUID->"1d699342-09c8-420e-9a1d-133132e6555e",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[1594, 49, 5574, 153, 640, "Input",ExpressionUUID->"f53377a8-be10-46e9-a108-52fc52475698",
+Cell[1594, 49, 5566, 151, 621, "Input",ExpressionUUID->"f53377a8-be10-46e9-a108-52fc52475698",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
-Cell[7171, 204, 1967, 40, 364, "Output",ExpressionUUID->"4cfff268-68d7-444a-ae85-d28e1356113e",
+Cell[7163, 202, 1967, 40, 364, "Output",ExpressionUUID->"4cfff268-68d7-444a-ae85-d28e1356113e",
  CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9175, 249, 535, 8, 67, "Section",ExpressionUUID->"620ecf43-49d0-4232-a013-1fa5b6a24a50"],
+Cell[9167, 247, 535, 8, 66, "Section",ExpressionUUID->"620ecf43-49d0-4232-a013-1fa5b6a24a50"],
 Cell[CellGroupData[{
-Cell[9735, 261, 11699, 305, 1123, "Input",ExpressionUUID->"97266a09-0816-45a8-a30c-993338a0f363"],
-Cell[21437, 568, 8972, 142, 405, "Output",ExpressionUUID->"97181869-da1f-405f-b378-ef9a722baf45"]
+Cell[9727, 259, 11699, 305, 1091, "Input",ExpressionUUID->"97266a09-0816-45a8-a30c-993338a0f363"],
+Cell[21429, 566, 8972, 142, 403, "Output",ExpressionUUID->"97181869-da1f-405f-b378-ef9a722baf45"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30458, 716, 839, 12, 67, "Section",ExpressionUUID->"53ea88e4-9bcf-4c5a-a085-cef1a29135ee"],
+Cell[30450, 714, 839, 12, 66, "Section",ExpressionUUID->"53ea88e4-9bcf-4c5a-a085-cef1a29135ee"],
 Cell[CellGroupData[{
-Cell[31322, 732, 12194, 315, 1144, "Input",ExpressionUUID->"6c0d5e46-a95f-4f8a-b0e6-2d34fab0153a"],
-Cell[43519, 1049, 9345, 150, 347, "Output",ExpressionUUID->"1e57ef2e-c6b3-493b-bb2c-d45d0bfc48da"]
+Cell[31314, 730, 12194, 315, 1111, "Input",ExpressionUUID->"6c0d5e46-a95f-4f8a-b0e6-2d34fab0153a"],
+Cell[43511, 1047, 9351, 150, 413, "Output",ExpressionUUID->"1e57ef2e-c6b3-493b-bb2c-d45d0bfc48da"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52911, 1203, 170, 3, 66, "Section",ExpressionUUID->"794ad1c4-5e2f-4a94-a481-09447f1d637b"],
+Cell[CellGroupData[{
+Cell[53106, 1210, 27608, 710, 2112, "Input",ExpressionUUID->"e8847733-b574-4ce3-ae69-75828d859306"],
+Cell[80717, 1922, 38610, 573, 375, "Output",ExpressionUUID->"6c598f47-7a26-463b-aab1-3cf87ea1941d"]
 }, Open  ]]
 }, Open  ]]
 }
